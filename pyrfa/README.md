@@ -24,8 +24,11 @@ Features:
 WHAT'S NEW
 ----------
 7.5.1.0
-* 14 October 2013
-* Support ApplicationId from RFA config file
+* 15 October 2013
+* RFA 7.5.1.L1
+* ApplicationId from config file submitted for login
+* New config `responseQueueBatchInterval` for low latency inbound message setup
+* New config `flushTimerInterval` for low latency outbound message setup
 
 7.4.1.2
 * 16 August 2013
