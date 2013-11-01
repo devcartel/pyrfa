@@ -23,6 +23,10 @@ Features:
 
 WHAT'S NEW
 ----------
+7.5.1.1
+* 1 November 2013
+* isLoggedIn returning P2PS/ADS login status
+
 7.5.1.0
 * 15 October 2013
 * RFA 7.5.1.L1
