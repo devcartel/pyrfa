@@ -24,8 +24,9 @@ Features:
 WHAT'S NEW
 ----------
 7.5.1.1
-* 1 November 2013
+* 4 November 2013
 * isLoggedIn returning P2PS/ADS login status
+* Fixed bug#28 PyRFA handles login status incorrectly when ServerList is unreachable
 
 7.5.1.0
 * 15 October 2013
