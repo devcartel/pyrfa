@@ -27,6 +27,11 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.4+
 
 WHAT'S NEW
 ----------
+7.5.1.1
+* 5 November 2013
+* isLoggedIn returning P2PS/ADS login status
+* Fixed bug#35 TclRFA handles login status incorrectly when ServerList is unreachable
+
 7.5.1.0
 * 15 October 2013
 * RFA 7.5.1.L1
