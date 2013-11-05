@@ -13,7 +13,6 @@ Features:
 * dictionary download or use local files
 * directory request
 * symbol list request
-* timeseries request and decoder for IDN TS1
 * custom domain MMT_HISTORY which can be used for intraday timeseries publishing
 * non-interactive provider for MARKET_PRICE, MARKET_BY_ORDER, MARKET_BY_PRICE, SYMBOLLIST, HISTORY
 * debug mode
