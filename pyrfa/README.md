@@ -13,6 +13,7 @@ Features:
 * dictionary download or use local files
 * directory request
 * symbol list request
+* timeseries request and decoder for IDN TS1
 * custom domain MMT_HISTORY which can be used for intraday timeseries publishing
 * non-interactive provider for MARKET_PRICE, MARKET_BY_ORDER, MARKET_BY_PRICE, SYMBOLLIST, HISTORY
 * debug mode
@@ -23,11 +24,6 @@ Features:
 
 WHAT'S NEW
 ----------
-7.5.1.1
-* 4 November 2013
-* isLoggedIn returning P2PS/ADS login status
-* Fixed bug#28 PyRFA handles login status incorrectly when ServerList is unreachable
-
 7.5.1.0
 * 15 October 2013
 * RFA 7.5.1.L1
