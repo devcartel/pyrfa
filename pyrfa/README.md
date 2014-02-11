@@ -24,6 +24,12 @@ Features:
 
 WHAT'S NEW
 ----------
+7.5.1.2
+* 11 February 2014
+* Fixed provider can convert string into ASCII_STRING field
+* Fixed detect and put empty decoded string for field value
+* Support Position parameter in the config file
+
 7.5.1.1
 * 5 November 2013
 * Supported timeseries request and decoder for IDN TS1
