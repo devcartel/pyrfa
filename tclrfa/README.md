@@ -27,6 +27,11 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.4+
 
 WHAT'S NEW
 ----------
+7.5.1.2
+* 11 February 2014
+* Fixed provider can convert string into ASCII_STRING field
+* Support Position parameter in the config file
+
 7.5.1.1
 * 5 November 2013
 * isLoggedIn returning P2PS/ADS login status
