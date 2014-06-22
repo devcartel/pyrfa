@@ -120,33 +120,37 @@ To be familiar with PyRFA, please follow the steps below:
 1. Download the latest PyRFA from http://devcartel.com/pyrfa
 2. Extract the package on your server.
 3. Open the `example/` folder.
-4. Configure pyrfa.cfg for provider.py and consumer01.py as follows:
 
-       # Consumer
-       \Connections\Connection_RSSL1\rsslPort = "14002"
-       \Connections\Connection_RSSL1\ServerList = "P2PS/ADS IP address"
-       ...
-       # Provider
-       \Connections\Connection_RSSL4\rsslPort = "14003"
-       \Connections\Connection_RSSL4\ServerList = "MDH/ADH IP address"
+4. Configure pyrfa.cfg for provider.py and consumer01.py as follows:
+```
+# Consumer
+\Connections\Connection_RSSL1\rsslPort = "14002"
+\Connections\Connection_RSSL1\ServerList = "P2PS/ADS IP address"
+...
+# Provider
+\Connections\Connection_RSSL4\rsslPort = "14003"
+\Connections\Connection_RSSL4\ServerList = "MDH/ADH IP address"
+```
 
 5. Start `example/provider.py` with the command below, wait a few seconds for the data to be publis.
-
-       > python provider.py
+```
+> python provider.py
+```
 
 6. Start `example/consumer01.py` to consume the data from `provider.py` with the command below.
-
-       > python consumer01.py
+```
+> python consumer01.py
+```
 
 7. consumer01.py retrieves a market data full image followed by incremental updates of sample RICs `EUR=` and `C.N` , below is the execution result:
-
-       [Thu Jul 04 17:23:57 2013]: (ComponentName) Pyrfa: (Severity) Information: [Pyrfa::login]
-       Login successful. (username: pyrfa)
-       (('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID':
-       4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': 'NAS', 'RDNDISPLAY': 100}))
-       (('NIP', 'C.N', {'TIMACT': '17:24:00:354', 'ACVOL_1': 1031.0, 'TRDPRC_1': 4.149}),)
-       (('NIP', 'C.N', {'TIMACT': '17:24:00:854', 'ACVOL_1': 1032.0, 'TRDPRC_1': 4.555}),)
-
+```
+[Thu Jul 04 17:23:57 2013]: (ComponentName) Pyrfa: (Severity) Information: [Pyrfa::login]
+Login successful. (username: pyrfa)
+(('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID':
+4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': 'NAS', 'RDNDISPLAY': 100}))
+(('NIP', 'C.N', {'TIMACT': '17:24:00:354', 'ACVOL_1': 1031.0, 'TRDPRC_1': 4.149}),)
+(('NIP', 'C.N', {'TIMACT': '17:24:00:854', 'ACVOL_1': 1032.0, 'TRDPRC_1': 4.555}),)
+```
 
 Data Type
 =========
@@ -413,13 +417,14 @@ __Pyrfa.marketByOrderRequest(_String_)__
 For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name under **_String_**. The data dispatched through dispatchEventQueue() module in a tuple below:
 
 Images
-
-    (('<SERVICE_NAME>','<ITEM_NAME>','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>','<COMMAND>',('ORDER_ID', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
+```
+(('<SERVICE_NAME>','<ITEM_NAME>','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>','<COMMAND>',('ORDER_ID', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
+```
 
 Update
-
-    ('<SERVICE_NAME>', '<ITEM_NAME>','<COMMAND>',('ORDER_ID', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
-
+```
+('<SERVICE_NAME>', '<ITEM_NAME>','<COMMAND>',('ORDER_ID', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
+```
 
     >>> p.marketByOrderRequest("ANZ.AX");
     >>> p.dispatchEventQueue()
@@ -450,9 +455,9 @@ For a provider client to publish specified order book data to MDH/ADH, marketByO
 * DELETE - remove order from the item
 
 **_Tuple_** is an input tuple of each order and must be in the following format:
-
-    ('<ITEM_NAME>', '<ORDER_ID>', {'<FID_NAME#1>':<VALUE#1>, '<FID_NAME#2>':<VALUE#2>, ... , '<FID_NAME#X>':<VALUE#X>})
-
+```
+('<ITEM_NAME>', '<ORDER_ID>', {'<FID_NAME#1>':<VALUE#1>, '<FID_NAME#2>':<VALUE#2>, ... , '<FID_NAME#X>':<VALUE#X>})
+```
 
     >>> ORDERS = (('ANZ.AX', '538993C200083483B', {'ORDER_PRC': '20.280', 'ORDER_SIZE':100, 'ORDER_SIDE':'ASK', 'SEQNUM_QT':2744, 'EX_ORD_TYP':0, 'CHG_REAS':6,'ORDER_TONE':''}),)
     >>> p.marketByOrderSubmit('ADD', ORDERS)
@@ -469,13 +474,14 @@ __Pyrfa.marketByPriceRequest(_String_)__
 For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name. Data dispatched through dispatchEventQueue() module in a tuple below:
 
 Image
-
-    (('<SERVICE_NAME>','<ITEM_NAME>','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>','<COMMAND>',('<DEPTH>', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
+```
+(('<SERVICE_NAME>','<ITEM_NAME>','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>','<COMMAND>',('<DEPTH>', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
+```
 
 Update
-
-    ('<SERVICE_NAME>', '<ITEM_NAME>','<COMMAND>',('<DEPTH>', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
-
+```
+('<SERVICE_NAME>', '<ITEM_NAME>','<COMMAND>',('<DEPTH>', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))
+```
 
     >>> p.marketByOrderRequest("ANZ.CHA")
     >>> p.dispatchEventQueue()
@@ -493,13 +499,13 @@ Unsubscribe all items from market depth streaming service.
 
     >>> p.marketByPriceCloseAllRequest()
 
-__Pyrfa.getMarketByPriceWatchList()
+__Pyrfa.getMarketByPriceWatchList()__
 Return all subscribed item names on market depth streaming data.
 
     >>>p.getMarketByPriceWatchList()
      ANZ.CHA
 
-__Pyrfa.marketByPriceSubmit(_Command, Tuple_)
+__Pyrfa.marketByPriceSubmit(_Command, Tuple_)__
 For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit() requires two parameters, the first one is the depth placement command:
 
 * ADD - add new order to the item
@@ -507,9 +513,9 @@ For a provider client to publish the specified market depth data to MDH/ADH, mar
 * DELETE - remove order from the item
 
 **_Tuple_** is an input tuple of each depth and must be in the following format:
-
-    ('<ITEM_NAME>', '<DEPTH>', {'<FID_NAME#1>':<VALUE#1>, '<FID_NAME#2>':<VALUE#2>, ... , '<FID_NAME#X>':<VALUE#X>})
-
+```
+('<ITEM_NAME>', '<DEPTH>', {'<FID_NAME#1>':<VALUE#1>, '<FID_NAME#2>':<VALUE#2>, ... , '<FID_NAME#X>':<VALUE#X>})
+```
 
     >>>  DEPTH = ('ANZ.CHA', '210000B', {'ORDER_PRC': price , 'ORDER_SIDE':'BID', 'ORDER_SIZE':size, 'NO_ORD':no_ord, 'QUOTIM_MS':16987567,'ORDER_TONE':''})
     >>>p.marketByPriceSubmit('ADD',DEPTH)
@@ -556,13 +562,14 @@ __Pyrfa.historyRequest(_String_)__
 Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under **_String_**. The data dispatched through dispatchEventQueue() module in a tuple below:
 
 Image
-
-    (('<SERVICE_NAME>','ITEM_NAME','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))
+```
+(('<SERVICE_NAME>','ITEM_NAME','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))
+```
 
 Update
-
-    ('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))
-
+```
+('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))
+```
 
     >>> p.historyRequest("tANZ.AX")
     >>> p.dispatchEventQueue()
@@ -580,9 +587,9 @@ Unsubscribe all items from historical data streaming service.
 
 __Pyrfa.historySubmit(_Tuple_)__
 For a provider client to publish the specified history data to MDH/ADH, each history image/update **_Tuple_** must be in the following format:
-
-    ('<ITEM_NAME>', {'<FID_NAME#1>':<VALUE#1>,...,'<FID_NAME#X>':<VALUE#X>})
-
+```
+('<ITEM_NAME>', {'<FID_NAME#1>':<VALUE#1>,...,'<FID_NAME#X>':<VALUE#X>})
+```
 
     >>> UPDATES= ('tANZ.AX', {'TRDPRC_1':40.124, 'SALTIM':'now', 'TRADE_ID':'123456789', 'BID_ORD_ID':'5307FBL20AL7B', 'ASK_ORD_ID':'5307FBL20BN8A'})
     >>> p.historySubmit(UPDATES)
