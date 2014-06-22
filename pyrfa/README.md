@@ -268,7 +268,7 @@ Check whether the client successfully receives a login status from the P2PS/ADS.
 __Pyrfa.setInteractionType(_type_)__  
 Set subscription **_type_** to `snapshot` or `streaming`. If `snapshot` is specified, the client will receive only a full image of an instrument then the subscribed stream will be closed.
 
-    >>> p.setInteractionType(“snapshot”)
+    >>> p.setInteractionType("snapshot")
 
 ### Directory
 
@@ -518,7 +518,7 @@ Unsubscribe all items from market depth streaming service.
 __Pyrfa.getMarketByPriceWatchList()__  
 Return all subscribed item names on market depth streaming data.
 
-    >>>p.getMarketByPriceWatchList()
+    >>> p.getMarketByPriceWatchList()
      ANZ.CHA
 
 __Pyrfa.marketByPriceSubmit(_Command, Tuple_)__  
@@ -532,7 +532,7 @@ For a provider client to publish the specified market depth data to MDH/ADH, mar
 `('<ITEM_NAME>', '<DEPTH>', {'<FID_NAME#1>':<VALUE#1>, '<FID_NAME#2>':<VALUE#2>, ... , '<FID_NAME#X>':<VALUE#X>})`
 
     >>>  DEPTH = ('ANZ.CHA', '210000B', {'ORDER_PRC': price , 'ORDER_SIDE':'BID', 'ORDER_SIZE':size, 'NO_ORD':no_ord, 'QUOTIM_MS':16987567,'ORDER_TONE':''})
-    >>>p.marketByPriceSubmit('ADD',DEPTH)
+    >>> p.marketByPriceSubmit('ADD',DEPTH)
     [Pyrfa::marketByPriceSubmit] symbolName: ANZ.CHA
     [Pyrfa::marketByPriceSubmit] mapKey: 210000B
     [Pyrfa::marketByPriceSubmit] fieldList: [Pyrfa::marketByPriceSubmit] fieldList:
