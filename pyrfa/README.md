@@ -23,8 +23,18 @@ __Features__
 * Subscription outbound NIC binding
 * Example scripts
 
-What's new
-==========
+Table of contents
+================-
+
+[Changelog](README.md#changelog)
+[Performance](README.md#performance)
+[Supported Systems](README.md#supported-systems)
+[Installation](README.md#installation)
+[Running Examples](README.md#running-examples)
+
+
+Changelog
+=========
 7.5.1.2
 
 * 11 February 2014
@@ -363,7 +373,7 @@ For a provider client to publish a list of symbols to MDH/ADH under data domain 
 ### Market Price
 
 __Pyrfa.marketPriceRequest(_String_)__
-For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names using “,” to separate each name in **_String_** e.g “ric1,ric2”. The data dispatched through dispatchEventQueue() function in a tuple format as below:
+For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names using “,” to separate each name in **_String_** e.g “ric1,ric2”. The data dispatched through `dispatchEventQueue()` function in a tuple format as below:
 
 Image
 
@@ -409,7 +419,7 @@ For provider client to publish market data to MDH/ADH, the market data image/upd
 ### Market by Order
 
 __Pyrfa.marketByOrderRequest(_String_)__
-For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name under **_String_**. The data dispatched through dispatchEventQueue() module in a tuple below:
+For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name under **_String_**. The data dispatched through `dispatchEventQueue()` module in a tuple below:
 
 Images
 
@@ -462,7 +472,7 @@ For a provider client to publish specified order book data to MDH/ADH, marketByO
 ### Market by Price
 
 __Pyrfa.marketByPriceRequest(_String_)__
-For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name. Data dispatched through dispatchEventQueue() module in a tuple below:
+For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name. Data dispatched through `dispatchEventQueue()` module in a tuple below:
 
 Image
 
@@ -547,7 +557,7 @@ A helper function that subscribes, wait for data dissemination to be complete, u
 
 ### History
 __Pyrfa.historyRequest(_String_)__
-Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under **_String_**. The data dispatched through dispatchEventQueue() module in a tuple below:
+Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under **_String_**. The data dispatched through `dispatchEventQueue()` module in a tuple below:
 
 Image
 
@@ -564,12 +574,12 @@ Update
 __Pyrfa.historyCloseRequest(_String_)__
 Unsubscribe items from historical data streaming service. The user can define multiple item names using “,” to separate each name under **_String_**.
 
-    >>>p.historyCloseRequest("'tANZ.AX")
+    >>> p.historyCloseRequest("'tANZ.AX")
 
 __Pyrfa.historyCloseAllRequest()__
 Unsubscribe all items from historical data streaming service.
 
-    >>>p.historyCloseAllRequest()
+    >>> p.historyCloseAllRequest()
 
 __Pyrfa.historySubmit(_Tuple_)__
 For a provider client to publish the specified history data to MDH/ADH, each history image/update **_Tuple_** must be in the following format:
@@ -586,6 +596,6 @@ For a provider client to publish the specified history data to MDH/ADH, each his
 __Pyrfa.dispatchEventQueue(_[Timeout]_)__
 Dispatch the events (data) from EventQueue within a period of time (If **_Timeout_** is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in tuple format.
 
-    >>>p.dispatchEventQueue()
+    >>> p.dispatchEventQueue()
     (('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID':4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': '123', 'RDNDISPLAY': 100}))
 
