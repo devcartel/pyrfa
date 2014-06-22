@@ -24,13 +24,18 @@ __Features__
 * Example scripts
 
 Table of contents
-================-
+=================
 
-[Changelog](README.md#changelog)
-[Performance](README.md#performance)
-[Supported Systems](README.md#supported-systems)
-[Installation](README.md#installation)
-[Running Examples](README.md#running-examples)
+1. [Changelog](#changelog)
+2. [Performance](#performance)
+3. [Supported Systems](#supported-systems)
+4. [Installation](#installation)
+5. [Running Examples](#running-examples)
+6. [Getting Started](#getting-started)
+7. [Data Type](#data-type)
+8. [Functions](#functions)
+   8.1. [Initialization](#initialization)
+   8.2. [Configuration[(#configuration)
 
 
 Changelog
