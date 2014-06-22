@@ -302,9 +302,11 @@ __Pyrfa.symbolListRequest(_String_)__
 For consumer application to subscribe symbol lists. User can define multiple symbol list names using “,” to separate each name in **_String_** e.g. `ric1,ric2,ric3`. Data dispatched through `dispatchEventQueue()` function in tuples:
 
 Image
+
 `(('<SERVICE_NAME>','<SYMBOLLIST_NAME>','REFRESH'),('<SERVICE_NAME>','<SYMBOLLIST_NAME>','<COMMAND>',('ITEM_NAME', { '<FID_NAME#1>': <VALUE#1>, ... ,'<FID_NAME#X>':<VALUE#X>}))`
 
 Update
+
 `('<SERVICE_NAME>','<COMMAND>',('ITEM_NAME', { '<FID_NAME#1>': <VALUE#1>, ... ,'<FID_NAME#X>':<VALUE#X>}))`
 
     >>> p.symbolListRequest("0#BMD")
@@ -364,9 +366,11 @@ __Pyrfa.marketPriceRequest(_String_)__
 For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names using “,” to separate each name in **_String_** e.g “ric1,ric2”. The data dispatched through dispatchEventQueue() function in a tuple format as below:
 
 Image
+
 `(('<SERVICE_NAME>','ITEM_NAME','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))`
 
 Update
+
 `('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))`
 
     >>> p.marketPriceRequest('C.N')
@@ -408,9 +412,11 @@ __Pyrfa.marketByOrderRequest(_String_)__
 For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name under **_String_**. The data dispatched through dispatchEventQueue() module in a tuple below:
 
 Images
+
 `(('<SERVICE_NAME>','<ITEM_NAME>','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>','<COMMAND>',('ORDER_ID', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))`
 
 Update
+
 `('<SERVICE_NAME>', '<ITEM_NAME>','<COMMAND>',('ORDER_ID', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))`
 
     >>> p.marketByOrderRequest("ANZ.AX");
@@ -459,9 +465,11 @@ __Pyrfa.marketByPriceRequest(_String_)__
 For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name. Data dispatched through dispatchEventQueue() module in a tuple below:
 
 Image
+
 `(('<SERVICE_NAME>','<ITEM_NAME>','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>','<COMMAND>',('<DEPTH>', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))`
 
 Update
+
 `('<SERVICE_NAME>', '<ITEM_NAME>','<COMMAND>',('<DEPTH>', { '<FID_NAME#1>': <VALUE#1>, ... , '<FID_NAME#X>':<VALUE#X>}))`
 
     >>> p.marketByOrderRequest("ANZ.CHA")
@@ -542,9 +550,11 @@ __Pyrfa.historyRequest(_String_)__
 Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under **_String_**. The data dispatched through dispatchEventQueue() module in a tuple below:
 
 Image
+
 `(('<SERVICE_NAME>','ITEM_NAME','REFRESH'),('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))`
 
 Update
+
 `('<SERVICE_NAME>','<ITEM_NAME>',{'<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}))`
 
     >>> p.historyRequest("tANZ.AX")
