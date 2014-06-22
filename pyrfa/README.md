@@ -34,8 +34,20 @@ Table of contents
 6. [Getting Started](#getting-started)
 7. [Data Type](#data-type)
 8. [Functions](#functions)
-   8.1. [Initialization](#initialization)
-   8.2. [Configuration[(#configuration)
+  1. [Initialization](#initialization)
+  2. [Configuration](#configuration)
+  3. [Session](#session)
+  4. [Client](#client)
+  5. [Directory](#directory)
+  6. [Dictionary](#dictionary)
+  7. [Logging](#logging)
+  8. [Symbol List](#symbol-list)
+  9. [Market Price](#market-price)
+  10. [Maryket by Order](#market-by-order)
+  11. [Market by Price](#market-by-price)
+  12. [TS1](#ts1)
+  13. [History](#history)
+  14. [Getting Data](#getting-data)
 
 
 Changelog
@@ -186,26 +198,26 @@ Functions
 
 ### Initialization
 
-__Pyrfa.pyrfa()__
+__Pyrfa.pyrfa()__    
 Instantiate a PyRFA object.
 
     >>> p = Pyrfa.pyrfa()
 
-__Pyrfa.setDebugMode([_Boolean_])__
+__Pyrfa.setDebugMode([_Boolean_])__    
 Enable or disable debug messages. If argument is empty, it will read a value from configuration file.
 
     >>> p.setDebugMode(True)
 
 ### Configuration
 
-__Pyrfa.createConfigDb(_String_)__
+__Pyrfa.createConfigDb(_String_)__    
 Read the configuration file where **_String_** can be full path or relative path. Initialize RFA context.
 
     >>> p.createConfigDb("./pyrfa.cfg")
     [Pyrfa::initializeRFA] Initializing RFA context and Python libraries...
     [Pyrfa::createConfigDb] Loading RFA config from file: ./pyrfa.cfg
 
-__Pyrfa.printConfigDb(_[String]_)__
+__Pyrfa.printConfigDb(_[String]_)__    
 Print a configuration node. If the input parameter **_String_** is omitted, this function returns all of the configuration values under the 'Default' namespace
 
     >>> p.printConfigDb("\\Default\\Sessions")
@@ -216,7 +228,7 @@ Print a configuration node. If the input parameter **_String_** is omitted, this
 
 ### Session
 
-__Pyrfa.acquireSession(_String_)__
+__Pyrfa.acquireSession(_String_)__    
 Acquire a session as defined in the configuration file where **_String_** is a session name. Look up for an appropriate connection and create a client-server network session. For example, Session1 is defined as follows:
 
     \Sessions\Session1\connectionList = "Connection_RSSL1"
@@ -227,17 +239,17 @@ This module will create a session using `Connection_RSSL1`.
 
 ### Client
 
-__Pyrfa.createOMMConsumer()__
+__Pyrfa.createOMMConsumer()__    
 Create an OMM consumer client.
 
     >>> p.createOMMConsumer()
 
-__Pyrfa.createOMMProvider()__
+__Pyrfa.createOMMProvider()__    
 Create an OMM provider client.
 
     >>> p.createOMMProvider()
 
-__Pyrfa.login(_[username], [instanceId] , [applicationId]_)__
+__Pyrfa.login(_[username], [instanceId] , [applicationId]_)__    
 Send a login message through the acquired session. This step is mandatory in order to consume the market data from P2PS/ADS. If any argument is omitted, PyRFA will look it up from configuration file.
 
     >>> p.login()
@@ -247,25 +259,25 @@ Send a login message through the acquired session. This step is mandatory in ord
     [Thu Jul 04 17:56:48 2013]: (ComponentName) Pyrfa: (Severity) Information:
     [Pyrfa::login] Login successful. (username: pyrfa)
 
-__Pyrfa.isLoggedIn()__
+__Pyrfa.isLoggedIn()__    
 Check whether the client successfully receives a login status from the P2PS/ADS.
 
     >>> p.isLoggedIn()
     True
 
-__Pyrfa.setInteractionType(_type_)__
+__Pyrfa.setInteractionType(_type_)__  
 Set subscription **_type_** to `snapshot` or `streaming`. If `snapshot` is specified, the client will receive only a full image of an instrument then the subscribed stream will be closed.
 
     >>> p.setInteractionType(“snapshot”)
 
 ### Directory
 
-__Pyrfa.directoryRequest()__
+__Pyrfa.directoryRequest()__  
 Send a directory request through the acquired session. This step is the mandatory in order to consume the market data from P2PS/ADS.
 
     >>> p.directoryRequest()
 
-__Pyrfa.submitDirectory(_Long_)__
+__Pyrfa.submitDirectory(_Long_)__  
 Submit directory with domain type (capability) in a provider application, it currently supports:
 
 * 6 - market price
@@ -280,12 +292,12 @@ _This function is called automatically upon data submission_
 
 ### Dictionary
 
-__Pyrfa.dictionaryRequest()__
+__Pyrfa.dictionaryRequest()__  
 If downloadDataDict configuration is set to True then PyRFA will send a request for data dictionaries to P2PS/ADS. Otherwise, it uses local data dictionaries specified by `fieldDictionaryFilename` and `enumTypeFilename` from configuration file.
 
     >>> p.dictionaryRequest()
 
-__Pyrfa.isNetworkDictionaryAvailable()__
+__Pyrfa.isNetworkDictionaryAvailable()__  
 Check whether the data dictionary is successfully downloaded from the server. Returns boolean.
 
     >>> p.isNetworkDictionaryAvailable()
@@ -293,19 +305,19 @@ Check whether the data dictionary is successfully downloaded from the server. Re
 
 ### Logging
 
-__Pyrfa.log(_String_)__
+__Pyrfa.log(_String_)__  
 Write a message to a log file.
 
     >>> p.log('Print log message out')
     [Thu Jul 04 17:45:29 2013]: (ComponentName) Pyrfa: (Severity) Information: Print log message out
 
-__Pyrfa.logWarning(_String_)__
+__Pyrfa.logWarning(_String_)__  
 Write a warning message to a log file.
 
     >>> p.logWarning('Print warning message out')
     [Thu Jul 04 17:47:03 2013]: (ComponentName) Pyrfa: (Severity) Warning: Print warning message out
 
-__Pyrfa.logError(_String_)__
+__Pyrfa.logError(_String_)__  
 Write an error message to a log file.
 
     >>> p.logError('Print error message out')
@@ -313,7 +325,7 @@ Write an error message to a log file.
 
 ### Symbol List
 
-__Pyrfa.symbolListRequest(_String_)__
+__Pyrfa.symbolListRequest(_String_)__  
 For consumer application to subscribe symbol lists. User can define multiple symbol list names using “,” to separate each name in **_String_** e.g. `ric1,ric2,ric3`. Data dispatched through `dispatchEventQueue()` function in tuples:
 
 Image
@@ -328,35 +340,35 @@ Update
     >>> p.dispatchEventQueue()
     (('NIP', '0#BMD', 'REFRESH'),('NIP', '0#BMD', 'ADD', ('FKLI', {}))),('NIP', '0#BMD', 'ADD', ('FCPO', {'PROD_PERM': 10, 'PROV_SYMB': 'MY439483'}))
 
-__Pyrfa.symbolListCloseRequest(_String_)__
+__Pyrfa.symbolListCloseRequest(_String_)__  
 Unsubscribe the specified symbol lists. User can define multiple symbol list names using “,” to separate each name in **_String_**.
 
     >>> p.symbolListCloseRequest("0#BMD")
 
-__Pyrfa.symbolListCloseAllRequest()__
+__Pyrfa.symbolListCloseAllRequest()__  
 Unsubscribe all symbol lists.
 
     >>> p.symbolListCloseAllRequest()
 
-__Pyrfa.isSymbolListRefreshComplete()__
+__Pyrfa.isSymbolListRefreshComplete()__  
 Check whether the client receives a complete list of the symbol list.
 
     >>> p.isSymbolListRefreshComplete()
     True
 
-__Pyrfa.getSymbolList(_String_)__
+__Pyrfa.getSymbolList(_String_)__  
 Return item names available under the symbol list in string format.
 
     >>> p.getSymbolList("0#BMD")
     FPCO FPKC FPRD FPGO
 
-__Pyrfa.getSymbolListWatchList()__
+__Pyrfa.getSymbolListWatchList()__  
 Return names of the subscribed symbol Lists.
 
     >>> p.getSymbolListWatchList()
     0#BMCA 0#ARCA
 
-__Pyrfa.symbolListSubmit(_Command, Tuple_)__
+__Pyrfa.symbolListSubmit(_Command, Tuple_)__  
 For a provider client to publish a list of symbols to MDH/ADH under data domain 10, available commands are:
 
 * ADD - add new items to the symbol list
@@ -377,7 +389,7 @@ For a provider client to publish a list of symbols to MDH/ADH under data domain 
 
 ### Market Price
 
-__Pyrfa.marketPriceRequest(_String_)__
+__Pyrfa.marketPriceRequest(_String_)__  
 For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names using “,” to separate each name in **_String_** e.g “ric1,ric2”. The data dispatched through `dispatchEventQueue()` function in a tuple format as below:
 
 Image
@@ -393,23 +405,23 @@ Update
     (('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID': 4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': '123', 'RDNDISPLAY': 100}))
     (('NIP', 'C.N', {'TIMACT': '18:52:38:551', 'ACVOL_1': 1262.0, 'TRDPRC_1': 4.28}),)
 
-__Pyrfa.marketPriceCloseRequest(_String_)__
+__Pyrfa.marketPriceCloseRequest(_String_)__  
 Unsubscribe items from streaming data. User can define multiple item names using “,” to separate each name.
 
     >>> p.marketPriceCloseRequest ('C.N, JPY=')
 
-__Pyrfa.marketPriceCloseAllRequest()__
+__Pyrfa.marketPriceCloseAllRequest()__  
 Unsubscribe all items from streaming data.
 
     >>> p.marketPriceCloseAllRequest()
 
-__Pyrfa.getMarketPriceWatchList()__
+__Pyrfa.getMarketPriceWatchList()__  
 Returns names of the subscribed items.
 
     >>> p.getMarketPriceWatchList()
     C.N JPY=
 
-__Pyrfa.marketPriceSubmit(_Tuple_)__
+__Pyrfa.marketPriceSubmit(_Tuple_)__  
 For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must be in the following Python tuple format:
 `('<ITEM_NAME>', {'<FID_NAME#1>':<VALUE#1>,...,'<FID_NAME#X>':<VALUE#X>})`
 
@@ -423,7 +435,7 @@ For provider client to publish market data to MDH/ADH, the market data image/upd
 
 ### Market by Order
 
-__Pyrfa.marketByOrderRequest(_String_)__
+__Pyrfa.marketByOrderRequest(_String_)__  
 For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name under **_String_**. The data dispatched through `dispatchEventQueue()` module in a tuple below:
 
 Images
@@ -439,23 +451,23 @@ Update
     (('NIP', 'ANZ.AX', 'REFRESH')
     ('NIP', 'ANZ.AX', 'ADD', ('538993C200035057B', {'ORDER_SIDE': 'BID', 'ORDER_TONE': '', 'SEQNUM_QT': 67.0, 'ORDER_PRC': 20.618000000000002, 'CHG_REAS': 10.0, 'ORDER_SIZE': 390.0, 'EX_ORD_TYP': 0.0})))
 
-__Pyrfa.marketByOrderCloseRequest(_String_)__
+__Pyrfa.marketByOrderCloseRequest(_String_)__  
 Unsubscribe an item from order book data stream. User can define multiple item names using “,” to separate each name under **_String_**.
 
     >>> p.marketByOrderCloseRequest("ANZ.AX")
 
-__Pyrfa.marketByOrderCloseAllRequest()__
+__Pyrfa.marketByOrderCloseAllRequest()__  
 Unsubscribe all items from order book data streaming service.
 
     >>> p.marketByOrderCloseAllRequest()
 
-__Pyrfa.getMarketByOrderWatchList()__
+__Pyrfa.getMarketByOrderWatchList()__  
 Return all subscribed item names on order book streaming data.
 
     >>> p.getMarketByOrderWatchList()
     ANZ.AX
 
-__Pyrfa.marketByOrderSubmit(_Command, Tuple_)__
+__Pyrfa.marketByOrderSubmit(_Command, Tuple_)__  
 For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit() requires two parameters, the first one is the order book placement command:
 
 * ADD - add new order to the item
@@ -476,7 +488,7 @@ For a provider client to publish specified order book data to MDH/ADH, marketByO
 
 ### Market by Price
 
-__Pyrfa.marketByPriceRequest(_String_)__
+__Pyrfa.marketByPriceRequest(_String_)__  
 For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name. Data dispatched through `dispatchEventQueue()` module in a tuple below:
 
 Image
@@ -493,23 +505,23 @@ Update
     ('NIP', 'ANZ.CHA', 'ADD', ('210000B', {'ORDER_SIDE': 'ASK', 'ORDER_TONE': '', 'ORDER_PRC': 21.0, 'NO_ORD': 13, 'QUOTIM_MS': 16987567, 'ORDER_SIZE': 500.0}))
     ('NIP', 'ANZ.CHA', 'UPDATE', ('201000B', {'ORDER_SIDE': 'BID', 'ORDER_SIZE': 41.0, 'NO_ORD': 6}))
 
-__Pyrfa.marketByPriceCloseRequest(_String_)__
+__Pyrfa.marketByPriceCloseRequest(_String_)__  
 Unsubscribe an item from market depth data stream. User can define multiple item names using “,” to separate each name.
 
     >>> p.marketByOrderCloseRequest("ANZ.AX")
 
-__Pyrfa.marketByPriceCloseAllRequest()__
+__Pyrfa.marketByPriceCloseAllRequest()__  
 Unsubscribe all items from market depth streaming service.
 
     >>> p.marketByPriceCloseAllRequest()
 
-__Pyrfa.getMarketByPriceWatchList()__
+__Pyrfa.getMarketByPriceWatchList()__  
 Return all subscribed item names on market depth streaming data.
 
     >>>p.getMarketByPriceWatchList()
      ANZ.CHA
 
-__Pyrfa.marketByPriceSubmit(_Command, Tuple_)__
+__Pyrfa.marketByPriceSubmit(_Command, Tuple_)__  
 For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit() requires two parameters, the first one is the depth placement command:
 
 * ADD - add new order to the item
@@ -530,13 +542,13 @@ For a provider client to publish the specified market depth data to MDH/ADH, mar
 
 ### TS1
 
-__setTimeSeriesPeriod(_String_)__
+__setTimeSeriesPeriod(_String_)__  
 Define a time period for a time series subscription. String can be one of `daily` (default), `weekly`, `monthly`.
 
-__setTimeSeriesMaxRecords(_Int_)__
+__setTimeSeriesMaxRecords(_Int_)__  
 Define the maximum output before calling getTimeSeries. Default is 10.
 
-__getTimeSeries(_String_)__
+__getTimeSeries(_String_)__  
 A helper function that subscribes, wait for data dissemination to be complete, unsubscribe from the service and return series as a list of records. getTimeSeries supports one time series retrieval at a time.
 
     >>> ric = "CHK.N"
@@ -561,7 +573,7 @@ A helper function that subscribes, wait for data dissemination to be complete, u
     2013/10/23,28.370,27.660,28.680,27.470,1773109.000,28.163
 
 ### History
-__Pyrfa.historyRequest(_String_)__
+__Pyrfa.historyRequest(_String_)__  
 Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under **_String_**. The data dispatched through `dispatchEventQueue()` module in a tuple below:
 
 Image
@@ -576,17 +588,17 @@ Update
     >>> p.dispatchEventQueue()
     (('NIP', 'tANZ.AX', 'REFRESH'),('NIP', 'tANZ.AX', {'SALTIM': '23:02:07:255', 'TRADE_ID': '123456789', 'ASK_ORD_ID': '5307FBL20BN8A', 'BID_ORD_ID': '5307FBL20AL7B', 'TRDPRC_1': 40.124}))
 
-__Pyrfa.historyCloseRequest(_String_)__
+__Pyrfa.historyCloseRequest(_String_)__  
 Unsubscribe items from historical data streaming service. The user can define multiple item names using “,” to separate each name under **_String_**.
 
     >>> p.historyCloseRequest("'tANZ.AX")
 
-__Pyrfa.historyCloseAllRequest()__
+__Pyrfa.historyCloseAllRequest()__  
 Unsubscribe all items from historical data streaming service.
 
     >>> p.historyCloseAllRequest()
 
-__Pyrfa.historySubmit(_Tuple_)__
+__Pyrfa.historySubmit(_Tuple_)__  
 For a provider client to publish the specified history data to MDH/ADH, each history image/update **_Tuple_** must be in the following format:
 `('<ITEM_NAME>', {'<FID_NAME#1>':<VALUE#1>,...,'<FID_NAME#X>':<VALUE#X>})`
 
@@ -598,7 +610,7 @@ For a provider client to publish the specified history data to MDH/ADH, each his
     [OMMCProvServer::submitData] sending update service: NIP
 
 ### Getting Data
-__Pyrfa.dispatchEventQueue(_[Timeout]_)__
+__Pyrfa.dispatchEventQueue(_[Timeout]_)__  
 Dispatch the events (data) from EventQueue within a period of time (If **_Timeout_** is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in tuple format.
 
     >>> p.dispatchEventQueue()
