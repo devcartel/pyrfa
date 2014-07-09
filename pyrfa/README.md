@@ -55,6 +55,7 @@ Changelog
 7.6.0.0
 
 * 9 July 2014
+* RFA 7.6.0.L1
 * Less log output to stdout
 * Use try/except in Python example scripts
 

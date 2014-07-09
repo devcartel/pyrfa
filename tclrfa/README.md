@@ -57,6 +57,7 @@ What's new
 7.6.0.0
 
 * 9 July 2014
+* RFA 7.6.0.L1
 * Less log output to stdout
 * Remove using `update` in Tcl example scripts
 
