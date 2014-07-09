@@ -1,4 +1,4 @@
-PyRFA 7.5
+PyRFA 7.6
 =========
 
 PyRFA is a Python extension for accessing RFA (Reuters/Robust Foundationa API)
@@ -43,7 +43,7 @@ Table of contents
   7. [Logging](#logging)
   8. [Symbol List](#symbol-list)
   9. [Market Price](#market-price)
-  10. [Maryket by Order](#market-by-order)
+  10. [Market by Order](#market-by-order)
   11. [Market by Price](#market-by-price)
   12. [TS1](#ts1)
   13. [History](#history)
@@ -52,6 +52,12 @@ Table of contents
 
 Changelog
 =========
+7.6.0.0
+
+* 9 July 2014
+* Less log output to stdout
+* Use try/except in Python example scripts
+
 7.5.1.2
 
 * 11 February 2014
@@ -249,7 +255,7 @@ Create an OMM provider client.
 
     >>> p.createOMMProvider()
 
-__Pyrfa.login(_[username], [instanceId] , [applicationId]_)__    
+__Pyrfa.login(_[username], [instanceId] , [applicationId], [position]_)__    
 Send a login message through the acquired session. This step is mandatory in order to consume the market data from P2PS/ADS. If any argument is omitted, PyRFA will look it up from configuration file.
 
     >>> p.login()
