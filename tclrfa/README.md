@@ -54,6 +54,12 @@ Table of contents
 
 What's new
 ----------
+7.6.0.1
+
+* 18 July 2014
+* Minor bug fixes
+* Updates common files
+
 7.6.0.0
 
 * 9 July 2014
