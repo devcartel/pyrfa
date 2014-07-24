@@ -135,11 +135,14 @@ Supported systems
 
 Installation
 ============
+Run below commands in terminal or command prompt:
 
-* Require installing Python 2.6 or 2.7
-* Optionally, copy lib/pyrfa folder into your system's Python lib folder e.g. `c:\Python2.7\Lib` or `/usr/lib/python2.7`
-* However the examples also include `sys.path.append()` so you don't actually need to do the above to run example scripts
-
+```
+> unzip pyrfa<version>-<platform>.zip
+> cd pyrfa<version>-<platform>/
+> python setup.py install 
+```
+    
 Running examples
 ================
 On Windows CMD ,run with
