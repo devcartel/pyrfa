@@ -216,9 +216,9 @@ INSTALLATION
 Run below commands in terminal or command prompt:
 
 ```
-> unzip pyrfa<version>-<platform>.zip
-> cd pyrfa<version>-<platform>/
-> python setup.py install 
+> unzip tclrfa<version>-<platform>.zip
+> cd tclrfa<version>-<platform>/
+> tclsh setup.tcl install 
 ```
 
 RUNNING EXAMPLES
