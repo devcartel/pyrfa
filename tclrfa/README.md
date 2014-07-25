@@ -166,7 +166,7 @@ What's new
 7.0.0.159
 
 * May 5, 2011
-* Raname package to be tclrfa*rfaversion*.*build* for better tracking
+* Rename package to be tclrfa*rfaversion*.*build* for better tracking
 * Fixed bug#30 (cannot run with tcl8.4)
 * Using tcl8.4 stub (previously 8.5 lib) now so it can run with tcl8.4+
 * trap.tcl is using Tclx instead of Expect for SIGINT trapping
@@ -209,13 +209,17 @@ SUPPORT SYSTEM
 --------------
 * Linux x86 32 and 64bit
 * Windows x86 32 and 64bit
-* Tcl8.4+
+* Tcl8.4+, recommend ActiveTcl from ActiveState 8.5 (http://www.activestate.com/activetcl/downloads)
 
 INSTALLATION
 ------------
-* Require installing Tcl8.4+, recommend ActiveTcl from ActiveState 8.5 (http://www.activestate.com/activetcl/downloads)
-* Optionally, copy lib/tclrfa7.x.x folder into your system's Tcl lib folder e.g. c:\Tcl\lib or /usr/lib/tcl
-* However the examples also include "auto_path" so you don't actually need to do the above to run example scripts
+Run below commands in terminal or command prompt:
+
+```
+> unzip pyrfa<version>-<platform>.zip
+> cd pyrfa<version>-<platform>/
+> python setup.py install 
+```
 
 RUNNING EXAMPLES
 ----------------
