@@ -52,6 +52,14 @@ Table of contents
 
 Changelog
 =========
+7.6.0.2
+
+* 1 Aug 2014
+* Added setup.py: PyRFA package installer
+* Updated service group in config example
+* setServiceName() to select a service programmatically
+* Fixed core dump upon exit if call getWatchList in script
+
 7.6.0.1
 
 * 18 July 2014
