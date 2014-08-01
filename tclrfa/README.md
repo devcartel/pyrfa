@@ -1,5 +1,5 @@
-TCLRFA
-======
+TCLRFA 7.6
+==========
 
 TclRFA provides Tcl command extension for accessing RFA (Reuters/Robust Foundationa API)
 C++ functions, making connection to RMDS and subscribe/publish market data to/from RMDS
@@ -59,7 +59,7 @@ What's new
 * 1 Aug 2014
 * Added setup.tcl: TclRFA package installer
 * setServiceName() to select a service programmatically
-* Fixed core dump upon exit if call getWatchList in script
+* Fixed core dump upon exit if call getWatchList in script 
 
 7.6.0.1
 
@@ -366,6 +366,12 @@ Set subscription type `snapshot` or `streaming`. If `snapshot` is specified, the
 
     % $t setInteractionType “snapshot”
 
+__setServiceName__ _service_  
+Programmatically set service name for subcription. Call this before making any request. This allows subcription to multiple services.
+
+    % $t setServiceName "IDN"
+    % $t marketPriceRequest "EUR="
+
 ### Directory
 
 __directoryRequest__  
@@ -474,7 +480,7 @@ __getSymbolListWatchList__
 Return names of the subscribed symbol lists.
 
     % $t getSymbolListWatchList 
-    0#BMCA 0#ARCA
+    0#BMCA.RDFD 0#ARCA.RDFD
 
 __symbolListSubmit__ _command data_  
 Where:
@@ -535,10 +541,10 @@ Unsubscribe all items from streaming service.
     % $t marketPriceCloseAllRequest
 
 __getMarketPriceWatchList__  
-Returns names of the subscribed items.
+Returns names of the subscribed items with service names.
 
     % $t getMarketPriceWatchList 
-    C.N JPY=
+    C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
 __marketPriceSubmit__ _data_  
 _data = Tcl dict_
@@ -593,10 +599,10 @@ Unsubscribe all items from order book data streaming service.
     % $t marketByOrderCloseAllRequest
 
 __getMarketByOrderWatchList__  
-Return all subscribed item names on order book streaming service.
+Return all subscribed item names on order book streaming service with service names.
 
     % $t getMarketByOrderWatchList
-    ANZ.AX
+    ANZ.AX.IDN_SELECTFEED
 
 __marketByOrderSubmit__ _command data_  
 Where:
@@ -663,10 +669,10 @@ Unsubscribe all items from market depth stream.
     % $t marketByPriceCloseAllRequest
 
 __getMarketByPriceWatchList__  
-Return all subscribed item names on market depth streaming service.
+Return all subscribed item names on market depth streaming service with service names.
 
     % t getMarketByPriceWatchList 
-    ANZ.CHA
+    ANZ.CHA.IDN_SELECTFEED
 
 __marketByPriceSubmit__ _command data_  
 Where:

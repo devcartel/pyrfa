@@ -294,6 +294,12 @@ Set subscription **_type_** to `snapshot` or `streaming`. If `snapshot` is speci
 
     >>> p.setInteractionType("snapshot")
 
+__Pyrfa.setServiceName(_service_)__  
+Programmatically set service name for subcription. Call this before making any request. This allows subcription to multiple services.
+
+    >>> p.setServiceName('IDN')
+    >>> p.marketPriceRequest('EUR=')
+
 ### Directory
 
 __Pyrfa.directoryRequest()__  
@@ -391,10 +397,10 @@ Return item names available under the symbol list in string format.
     FPCO FPKC FPRD FPGO
 
 __Pyrfa.getSymbolListWatchList()__  
-Return names of the subscribed symbol Lists.
+Return names of the subscribed symbol Lists with service names.
 
     >>> p.getSymbolListWatchList()
-    0#BMCA 0#ARCA
+    0#BMCA.RDFD 0#ARCA.RDFD
 
 __Pyrfa.symbolListSubmit(_Command, Tuple_)__  
 For a provider client to publish a list of symbols to MDH/ADH under data domain 10, available commands are:
@@ -451,10 +457,10 @@ Unsubscribe all items from streaming data.
     >>> p.marketPriceCloseAllRequest()
 
 __Pyrfa.getMarketPriceWatchList()__  
-Returns names of the subscribed items.
+Returns names of the subscribed items with service names.
 
     >>> p.getMarketPriceWatchList()
-    C.N JPY=
+    C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
 __Pyrfa.marketPriceSubmit(_Tuple_)__  
 For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must be in the following Python tuple format:
@@ -504,10 +510,10 @@ Unsubscribe all items from order book data streaming service.
     >>> p.marketByOrderCloseAllRequest()
 
 __Pyrfa.getMarketByOrderWatchList()__  
-Return all subscribed item names on order book streaming data.
+Return all subscribed item names on order book streaming data with service names.
 
     >>> p.getMarketByOrderWatchList()
-    ANZ.AX
+    ANZ.AX.IDN_SELECTFEED
 
 __Pyrfa.marketByOrderSubmit(_Command, Tuple_)__  
 For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit() requires two parameters, the first one is the order book placement command:
@@ -565,10 +571,10 @@ Unsubscribe all items from market depth streaming service.
     >>> p.marketByPriceCloseAllRequest()
 
 __Pyrfa.getMarketByPriceWatchList()__  
-Return all subscribed item names on market depth streaming data.
+Return all subscribed item names on market depth streaming data with service names.
 
     >>> p.getMarketByPriceWatchList()
-     ANZ.CHA
+     ANZ.CHA.IDN_SELECTFEED
 
 __Pyrfa.marketByPriceSubmit(_Command, Tuple_)__  
 For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit() requires two parameters, the first one is the depth placement command:
