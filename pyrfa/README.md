@@ -32,9 +32,8 @@ Table of contents
 3. [Supported Systems](#supported-systems)
 4. [Installation](#installation)
 5. [Running Examples](#running-examples)
-6. [Getting Started](#getting-started)
-7. [Data Type](#data-type)
-8. [Functions](#functions)
+6. [Data Type](#data-type)
+7. [Functions](#functions)
   1. [Initialization](#initialization)
   2. [Configuration](#configuration)
   3. [Session](#session)
@@ -156,52 +155,12 @@ Running examples
 ================
 On Windows CMD ,run with
 
-    > python consumer02.py
+    > python consumer.py
 
 On Linux or Windows Cygwin:
 
-    $ python consumer02.py
-    $ ./consumer02.py
-
-
-Getting Started
-===============
-
-To be familiar with PyRFA, please follow the steps below:
-
-1. Download the latest PyRFA from http://devcartel.com/pyrfa
-2. Extract the package on your server.
-3. Open the `example/` folder.
-4. Configure pyrfa.cfg for provider.py and consumer01.py as follows:
-   ```
-   # Consumer
-   \Connections\Connection_RSSL1\rsslPort = "14002"
-   \Connections\Connection_RSSL1\ServerList = "P2PS/ADS IP address"
-   ...
-   # Provider
-   \Connections\Connection_RSSL4\rsslPort = "14003"
-   \Connections\Connection_RSSL4\ServerList = "MDH/ADH IP address"
-   ```
-
-5. Start `example/provider.py` with the command below, wait a few seconds for the data to be publis.
-   ```
-   > python provider.py
-   ```
-
-6. Start `example/consumer01.py` to consume the data from `provider.py` with the command below.
-   ```
-   > python consumer01.py
-   ```
-
-7. consumer01.py retrieves a market data full image followed by incremental updates of sample RICs `EUR=` and `C.N` , below is the execution result:
-   ```
-   [Thu Jul 04 17:23:57 2013]: (ComponentName) Pyrfa: (Severity) Information: [Pyrfa::login]
-   Login successful. (username: pyrfa)
-   (('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID':
-   4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': 'NAS', 'RDNDISPLAY': 100}))
-   (('NIP', 'C.N', {'TIMACT': '17:24:00:354', 'ACVOL_1': 1031.0, 'TRDPRC_1': 4.149}),)
-   (('NIP', 'C.N', {'TIMACT': '17:24:00:854', 'ACVOL_1': 1032.0, 'TRDPRC_1': 4.555}),)
-   ```
+    $ python consumer.py
+    $ ./consumer.py
 
 Data Type
 =========
