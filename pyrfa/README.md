@@ -213,7 +213,7 @@ FLOAT         | DOUBLE
 DOUBLE        | DOUBLE
 REAL32        | DOUBLE
 REAL64        | DOUBLE
-NT32          | INTEGER
+INT32         | INTEGER
 UINT32        | INTEGER
 INT64         | LONG
 UINT64        | LONG
