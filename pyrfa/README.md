@@ -48,7 +48,7 @@ Table of contents
   12. [TS1](#ts1)
   13. [History](#history)
   14. [Getting Data](#getting-data)
-
+8. [License](#license)
 
 Changelog
 =========
