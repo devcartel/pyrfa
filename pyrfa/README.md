@@ -1,9 +1,9 @@
 PyRFA 7.6
 =========
 
-PyRFA is a Python extension for accessing RFA (Reuters/Robust Foundationa API)
-C++ functions, making connection to RMDS and subscribe/publish market data to/from RMDS
-using OMM data message model.
+PyRFA is a Python API for accessing Thomson Reuters market data feeds know as RMDS or
+Thomson Reuter Enterprise Platform for Real-time (TREP-RT). It supports subscription
+and publication of market data using OMM data message model.
 
 __Features__
 
@@ -11,6 +11,7 @@ __Features__
 * Subscription for `MARKET_BY_ORDER` (order book)
 * Subscription for `MARKET_BY_PRICE` (market depth)
 * Snapshot request (no incremental updates)
+* Multiple service subscription
 * Dictionary download or use local files
 * Directory request
 * Symbol list request
@@ -681,3 +682,12 @@ Dispatch the events (data) from EventQueue within a period of time (If **_Timeou
     >>> p.dispatchEventQueue()
     (('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID':4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': '123', 'RDNDISPLAY': 100}))
 
+License
+=======
+Copyright (C) 2014-2015 DevCartel Company Limited
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

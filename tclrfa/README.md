@@ -1,28 +1,29 @@
 TCLRFA 7.6
 ==========
 
-TclRFA provides Tcl command extension for accessing RFA (Reuters/Robust Foundationa API)
-C++ functions, making connection to RMDS and subscribe/publish market data to/from RMDS
-using OMM data message model.
+TclRFA provides Tcl extension for accessing Thomson Reuters market data feeds know as RMDS or
+Thomson Reuter Enterprise Platform for Real-time (TREP-RT). It supports subscription
+and publication of market data using OMM data message model.
 
 Features:
 
-* subscription for MARKET_PRICE (level 1)
-* subscription for MARKET_BY_ORDER (order book)
-* subscription for MARKET_BY_PRICE (market depth)
-* includes orderbook, depth ranker in utils folder
-* snapshot request (no incremental updates)
-* dictionary download or use local files
-* directory request
-* symbol list request
-* timeseries request and decoder for IDN TS1
-* custom domain MMT_HISTORY which can be used for intraday publishing
-* non-interactive provider for MARKET_PRICE, MARKET_BY_ORDER, MARKET_BY_PRICE, SYMBOLLIST, HISTORY
-* debug mode
-* logging
-* low-latency mode
-* subscription outbound NIC binding
-* example scripts
+* Subscription for MARKET_PRICE (level 1)
+* Subscription for MARKET_BY_ORDER (order book)
+* Subscription for MARKET_BY_PRICE (market depth)
+* Supports orderbook, depth ranker in utils folder
+* Snapshot request (no incremental updates)
+* Multiple service subscription
+* Dictionary download or use local files
+* Directory request
+* Symbol list request
+* Timeseries request and decoder for IDN TS1
+* Custom domain MMT_HISTORY which can be used for intraday publishing
+* Non-interactive provider for MARKET_PRICE, MARKET_BY_ORDER, MARKET_BY_PRICE, SYMBOLLIST, HISTORY
+* Debug mode
+* Logging
+* Low-latency mode
+* Subscription outbound NIC binding
+* Example scripts
 
 Tclrfa is written with C++ and ported as a stub extension for Tcl 8.4+
 
@@ -805,3 +806,12 @@ Dispatch the events (data) from EventQueue within a period of time (If timeout i
     % $t dispatchEventQueue 
     {NIP EUR= REFRESH} {NIP EUR= { RDNDISPLAY {100} RDN_EXCHID {SES} BID {0.988} ASK {0.999} DIVPAYDATE {23 JUN 2011} }}
 
+License
+=======
+Copyright (C) 2014-2015 DevCartel Company Limited
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
