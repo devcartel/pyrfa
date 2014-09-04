@@ -1,28 +1,29 @@
-TCLRFA
-======
+TCLRFA 7.6
+==========
 
-TclRFA provides Tcl command extension for accessing RFA (Reuters/Robust Foundationa API)
-C++ functions, making connection to RMDS and subscribe/publish market data to/from RMDS
-using OMM data message model.
+TclRFA provides Tcl extension for accessing Thomson Reuters market data feeds know as RMDS or
+Thomson Reuter Enterprise Platform for Real-time (TREP-RT). It supports subscription
+and publication of market data using OMM data message model.
 
 Features:
 
-* subscription for MARKET_PRICE (level 1)
-* subscription for MARKET_BY_ORDER (order book)
-* subscription for MARKET_BY_PRICE (market depth)
-* includes orderbook, depth ranker in utils folder
-* snapshot request (no incremental updates)
-* dictionary download or use local files
-* directory request
-* symbol list request
-* timeseries request and decoder for IDN TS1
-* custom domain MMT_HISTORY which can be used for intraday publishing
-* non-interactive provider for MARKET_PRICE, MARKET_BY_ORDER, MARKET_BY_PRICE, SYMBOLLIST, HISTORY
-* debug mode
-* logging
-* low-latency mode
-* subscription outbound NIC binding
-* example scripts
+* Subscription for MARKET_PRICE (level 1)
+* Subscription for MARKET_BY_ORDER (order book)
+* Subscription for MARKET_BY_PRICE (market depth)
+* Supports orderbook, depth ranker in utils folder
+* Snapshot request (no incremental updates)
+* Multiple service subscription
+* Dictionary download or use local files
+* Directory request
+* Symbol list request
+* Timeseries request and decoder for IDN TS1
+* Custom domain MMT_HISTORY which can be used for intraday publishing
+* Non-interactive provider for MARKET_PRICE, MARKET_BY_ORDER, MARKET_BY_PRICE, SYMBOLLIST, HISTORY
+* Debug mode
+* Logging
+* Low-latency mode
+* Subscription outbound NIC binding
+* Example scripts
 
 Tclrfa is written with C++ and ported as a stub extension for Tcl 8.4+
 
@@ -34,9 +35,7 @@ Table of contents
 3. [Support Systems](#supported-systems)
 4. [Installation](#installation)
 5. [Running Examples](#running-examples)
-6. [Getting Started](#getting-started)
-7. [Data Type](#data-type)
-8. [Functions](#functions)
+6. [Functions](#functions)
   1. [Initialization](#initialization)
   2. [Configuration](#configuration)
   3. [Session](#session)
@@ -51,6 +50,7 @@ Table of contents
   12. [TS1](#ts1)
   13. [History](#history)
   14. [Getting Data](#getting-data)
+7. [License](#license)
 
 What's new
 ----------
@@ -59,7 +59,7 @@ What's new
 * 1 Aug 2014
 * Added setup.tcl: TclRFA package installer
 * setServiceName() to select a service programmatically
-* Fixed core dump upon exit if call getWatchList in script
+* Fixed core dump upon exit if call getWatchList in script 
 
 7.6.0.1
 
@@ -103,103 +103,10 @@ What's new
 7.2.1.0
 
 * 2 Feb 2013
-* Source repo relocated from Google Code to GitHub
+* Source repo relocated to GitHub
 * Using "tag" as part of the release number
 * RFA 7.2.1.L1 for Linux
 * RFA 7.2.1.E3 for Windows
-    
-7.2.0.283
-
-* 26 March 2012
-* RFA 7.2.0.L2
-* Update dictionary to v.4.10
-* New RDM domain support: MMT_HISTORY (unofficial) for indexed historical data
-* Encoder supports all FIDs from dict now
-* Support millisecond resolution in Provider
-* Improve performance on large subcription with internal watchlist enhancement
-* Auto submit Directory for Provider upon connection recovery
-* Remove marketfeed dict from distribution
-* Bugs fixed
-
-7.0.1.245
-
-* January 9, 2012
-* Timeseries client for IDN TS1 service
-* marketPrice client introduces a REFRESH tuple
-* Snapshot only subscription by setInteractionType "snapshot"
-* Fixed bugs
-
-7.0.1.219
-
-* November 18, 2011
-* 64-bit Windows support
-* SymbolList publication support
-* Subscription request/close accepts multiple RICs now e.g. "A.B C.D"
-* Bugs fixed
-
-7.0.1.205
-
-* October 20, 2011
-* Fixed bug#46 that gives wrong update list when subscribing to marketbyprice/order and marketprice with the same tclrfa instance
-
-7.0.1.200
-
-* October 17, 2011
-* Log status message in a log file
-
-7.0.1.194
-
-* October 14, 2011
-* Using RFA 7.0.1.E2
-* Fixed bug#32, Upgrade dictionary files to 4.00.14
-* Fixed bug#43, using tclstub8.4 on Windows now so tclrfa would run in Tcl 8.4 and 8.5 on both 32-bit and 64-bit Windows
-* Other bug fixes
-
-7.0.0.186
-
-* September 1, 2011
-* Level 2 data support
-* Consumer: marketByOrder, marketByPrice
-* Provider: marketByOrder, marketByPrice
-* Order book Tcl script (order book builder)
-* Market depth Tcl script (market depth builder)
-* Fixed bugs
-    
-7.0.0.163
-
-* June 22, 2011
-* 64bit Linux support
-
-7.0.0.159
-
-* May 5, 2011
-* Rename package to be tclrfa*rfaversion*.*build* for better tracking
-* Fixed bug#30 (cannot run with tcl8.4)
-* Using tcl8.4 stub (previously 8.5 lib) now so it can run with tcl8.4+
-* trap.tcl is using Tclx instead of Expect for SIGINT trapping
-    
-7.0.1
-
-* Released on April 7, 2011
-* Fixed crash when subcribe with undefined FIDs in dictionary
-* Now "log" works properly with internal strings
-* Thoughput test stats
-    
-7.0.0
-
-* Compiled with RFA C++ 7.0.0.E2
-* The wait is over. Introducing useInteralLogStrings, so long *.mc files
-* createEventQueue and acquireLogger not exposed in Tcl anymore, they are called automatically upon invoking acquireSession
-* Able to send "closed" status for published items in OMMCProv class
-* Fixed a few bugs
-
-6.5.0
-
-* Compiled with RFA C++ 6.5.0
-* OMM consumer
-* OMM client publisher
-* Statically linked with RFA
-* Both 32-bit Linux and Windows Tcl extension
 
 PERFORMANCE
 -----------
@@ -232,53 +139,12 @@ RUNNING EXAMPLES
 ----------------
 * On Windows CMD ,run with
     
-        > tclsh consumer02.tcl
+        > tclsh consumer.tcl
         
 * On Linux or Windows Cygwin:
     
-        $ tclsh consumer02.tcl
-        $ ./consumer02.tcl
-
-GETTING STARTED
-----------------
-To be familiar with TclRFA, please follow the steps below:
-
-1. Download the latest TclRFA from www.devcartel.com/tclrfa.
-2. Extract the package on your workstation.
-3. Open the `/example` folder.
-4. Open and edit `tclrfa.cfg` for `provider01.tcl` and `consumer01.tcl` as follows:
-
-    ```
-    #Consumer 
-    \Connections\Connection_RSSL1\rsslPort = "14002"
-    \Connections\Connection_RSSL1\ServerList = "P2PS/ADS IP address" 
-    ... 
-    #Provider
-    \Connections\Connection_RSSL4\rsslPort = "14003"
-    \Connections\Connection_RSSL4\ServerList = "MDH/ADH IP address"
-    ```
-
-5. Start `/example/provider.tcl` with the command below, wait for the data to be published to MDH/ADH cache:
-
-    ```
-    $ tclsh provider.tcl
-    ```
-
-6. Start `/example/consumer01.tcl` to consume data while running `provider.tcl` with
-
-    ```
-    $ tclsh consumer01.tcl
-    ```
-
-7. `consumer01.tcl` retrieves a market data full image followed by incremental updates of `EUR=`, below is the execution result:
-    
-    ```
-    [Mon Jul 15 14:37:40 2013]: (ComponentName) Tclrfa: (Severity) Information:
-    [Tclrfa::login] Login successful. (username: tclrfa)
-    [DictionaryHandler::DictionaryHandler] Successfully load dictionaries from ../etc/RDM/RDMFieldDictionary, ../etc/RDM/enumtype.def 
-    {NIP EUR= REFRESH} {NIP EUR= { RDNDISPLAY {100} RDN_EXCHID {SES} BID {0.988} ASK {0.999} DIVPAYDATE {23 JUN 2011} }} 
-    {NIP EUR= { BID_NET_CH {0.0041} BID {0.988} ASK {0.999} ASK_TIME {14:37:40:921} }}
-    ```
+        $ tclsh consumer.tcl
+        $ ./consumer.tcl
     
 FUNCTIONS
 ---------
@@ -365,6 +231,12 @@ _type = “snapshot” or “streaming”_
 Set subscription type `snapshot` or `streaming`. If `snapshot` is specified, the client will receive only the full image of an instrument then the subscribed stream will be closed.
 
     % $t setInteractionType “snapshot”
+
+__setServiceName__ _service_  
+Programmatically set service name for subcription. Call this before making any request. This allows subcription to multiple services.
+
+    % $t setServiceName "IDN"
+    % $t marketPriceRequest "EUR="
 
 ### Directory
 
@@ -474,7 +346,7 @@ __getSymbolListWatchList__
 Return names of the subscribed symbol lists.
 
     % $t getSymbolListWatchList 
-    0#BMCA 0#ARCA
+    0#BMCA.RDFD 0#ARCA.RDFD
 
 __symbolListSubmit__ _command data_  
 Where:
@@ -535,10 +407,10 @@ Unsubscribe all items from streaming service.
     % $t marketPriceCloseAllRequest
 
 __getMarketPriceWatchList__  
-Returns names of the subscribed items.
+Returns names of the subscribed items with service names.
 
     % $t getMarketPriceWatchList 
-    C.N JPY=
+    C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
 __marketPriceSubmit__ _data_  
 _data = Tcl dict_
@@ -593,10 +465,10 @@ Unsubscribe all items from order book data streaming service.
     % $t marketByOrderCloseAllRequest
 
 __getMarketByOrderWatchList__  
-Return all subscribed item names on order book streaming service.
+Return all subscribed item names on order book streaming service with service names.
 
     % $t getMarketByOrderWatchList
-    ANZ.AX
+    ANZ.AX.IDN_SELECTFEED
 
 __marketByOrderSubmit__ _command data_  
 Where:
@@ -663,10 +535,10 @@ Unsubscribe all items from market depth stream.
     % $t marketByPriceCloseAllRequest
 
 __getMarketByPriceWatchList__  
-Return all subscribed item names on market depth streaming service.
+Return all subscribed item names on market depth streaming service with service names.
 
     % t getMarketByPriceWatchList 
-    ANZ.CHA
+    ANZ.CHA.IDN_SELECTFEED
 
 __marketByPriceSubmit__ _command data_  
 Where:
@@ -799,3 +671,12 @@ Dispatch the events (data) from EventQueue within a period of time (If timeout i
     % $t dispatchEventQueue 
     {NIP EUR= REFRESH} {NIP EUR= { RDNDISPLAY {100} RDN_EXCHID {SES} BID {0.988} ASK {0.999} DIVPAYDATE {23 JUN 2011} }}
 
+License
+=======
+Copyright (C) 2014-2015 DevCartel Company Limited
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

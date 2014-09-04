@@ -1,9 +1,9 @@
 PyRFA 7.6
 =========
 
-PyRFA is a Python extension for accessing RFA (Reuters/Robust Foundationa API)
-C++ functions, making connection to RMDS and subscribe/publish market data to/from RMDS
-using OMM data message model.
+PyRFA is a Python API for accessing Thomson Reuters market data feeds know as RMDS or
+Thomson Reuter Enterprise Platform for Real-time (TREP-RT). It supports subscription
+and publication of market data using OMM data message model.
 
 __Features__
 
@@ -11,6 +11,7 @@ __Features__
 * Subscription for `MARKET_BY_ORDER` (order book)
 * Subscription for `MARKET_BY_PRICE` (market depth)
 * Snapshot request (no incremental updates)
+* Multiple service subscription
 * Dictionary download or use local files
 * Directory request
 * Symbol list request
@@ -31,9 +32,8 @@ Table of contents
 3. [Supported Systems](#supported-systems)
 4. [Installation](#installation)
 5. [Running Examples](#running-examples)
-6. [Getting Started](#getting-started)
-7. [Data Type](#data-type)
-8. [Functions](#functions)
+6. [Data Type](#data-type)
+7. [Functions](#functions)
   1. [Initialization](#initialization)
   2. [Configuration](#configuration)
   3. [Session](#session)
@@ -48,7 +48,7 @@ Table of contents
   12. [TS1](#ts1)
   13. [History](#history)
   14. [Getting Data](#getting-data)
-
+8. [License](#license)
 
 Changelog
 =========
@@ -155,52 +155,12 @@ Running examples
 ================
 On Windows CMD ,run with
 
-    > python consumer02.py
+    > python consumer.py
 
 On Linux or Windows Cygwin:
 
-    $ python consumer02.py
-    $ ./consumer02.py
-
-
-Getting Started
-===============
-
-To be familiar with PyRFA, please follow the steps below:
-
-1. Download the latest PyRFA from http://devcartel.com/pyrfa
-2. Extract the package on your server.
-3. Open the `example/` folder.
-4. Configure pyrfa.cfg for provider.py and consumer01.py as follows:
-   ```
-   # Consumer
-   \Connections\Connection_RSSL1\rsslPort = "14002"
-   \Connections\Connection_RSSL1\ServerList = "P2PS/ADS IP address"
-   ...
-   # Provider
-   \Connections\Connection_RSSL4\rsslPort = "14003"
-   \Connections\Connection_RSSL4\ServerList = "MDH/ADH IP address"
-   ```
-
-5. Start `example/provider.py` with the command below, wait a few seconds for the data to be publis.
-   ```
-   > python provider.py
-   ```
-
-6. Start `example/consumer01.py` to consume the data from `provider.py` with the command below.
-   ```
-   > python consumer01.py
-   ```
-
-7. consumer01.py retrieves a market data full image followed by incremental updates of sample RICs `EUR=` and `C.N` , below is the execution result:
-   ```
-   [Thu Jul 04 17:23:57 2013]: (ComponentName) Pyrfa: (Severity) Information: [Pyrfa::login]
-   Login successful. (username: pyrfa)
-   (('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID':
-   4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': 'NAS', 'RDNDISPLAY': 100}))
-   (('NIP', 'C.N', {'TIMACT': '17:24:00:354', 'ACVOL_1': 1031.0, 'TRDPRC_1': 4.149}),)
-   (('NIP', 'C.N', {'TIMACT': '17:24:00:854', 'ACVOL_1': 1032.0, 'TRDPRC_1': 4.555}),)
-   ```
+    $ python consumer.py
+    $ ./consumer.py
 
 Data Type
 =========
@@ -212,7 +172,7 @@ FLOAT         | DOUBLE
 DOUBLE        | DOUBLE
 REAL32        | DOUBLE
 REAL64        | DOUBLE
-NT32          | INTEGER
+INT32         | INTEGER
 UINT32        | INTEGER
 INT64         | LONG
 UINT64        | LONG
@@ -293,6 +253,12 @@ __Pyrfa.setInteractionType(_type_)__
 Set subscription **_type_** to `snapshot` or `streaming`. If `snapshot` is specified, the client will receive only a full image of an instrument then the subscribed stream will be closed.
 
     >>> p.setInteractionType("snapshot")
+
+__Pyrfa.setServiceName(_service_)__  
+Programmatically set service name for subcription. Call this before making any request. This allows subcription to multiple services.
+
+    >>> p.setServiceName('IDN')
+    >>> p.marketPriceRequest('EUR=')
 
 ### Directory
 
@@ -391,10 +357,10 @@ Return item names available under the symbol list in string format.
     FPCO FPKC FPRD FPGO
 
 __Pyrfa.getSymbolListWatchList()__  
-Return names of the subscribed symbol Lists.
+Return names of the subscribed symbol Lists with service names.
 
     >>> p.getSymbolListWatchList()
-    0#BMCA 0#ARCA
+    0#BMCA.RDFD 0#ARCA.RDFD
 
 __Pyrfa.symbolListSubmit(_Command, Tuple_)__  
 For a provider client to publish a list of symbols to MDH/ADH under data domain 10, available commands are:
@@ -451,10 +417,10 @@ Unsubscribe all items from streaming data.
     >>> p.marketPriceCloseAllRequest()
 
 __Pyrfa.getMarketPriceWatchList()__  
-Returns names of the subscribed items.
+Returns names of the subscribed items with service names.
 
     >>> p.getMarketPriceWatchList()
-    C.N JPY=
+    C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
 __Pyrfa.marketPriceSubmit(_Tuple_)__  
 For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must be in the following Python tuple format:
@@ -504,10 +470,10 @@ Unsubscribe all items from order book data streaming service.
     >>> p.marketByOrderCloseAllRequest()
 
 __Pyrfa.getMarketByOrderWatchList()__  
-Return all subscribed item names on order book streaming data.
+Return all subscribed item names on order book streaming data with service names.
 
     >>> p.getMarketByOrderWatchList()
-    ANZ.AX
+    ANZ.AX.IDN_SELECTFEED
 
 __Pyrfa.marketByOrderSubmit(_Command, Tuple_)__  
 For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit() requires two parameters, the first one is the order book placement command:
@@ -565,10 +531,10 @@ Unsubscribe all items from market depth streaming service.
     >>> p.marketByPriceCloseAllRequest()
 
 __Pyrfa.getMarketByPriceWatchList()__  
-Return all subscribed item names on market depth streaming data.
+Return all subscribed item names on market depth streaming data with service names.
 
     >>> p.getMarketByPriceWatchList()
-     ANZ.CHA
+     ANZ.CHA.IDN_SELECTFEED
 
 __Pyrfa.marketByPriceSubmit(_Command, Tuple_)__  
 For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit() requires two parameters, the first one is the depth placement command:
@@ -675,3 +641,12 @@ Dispatch the events (data) from EventQueue within a period of time (If **_Timeou
     >>> p.dispatchEventQueue()
     (('NIP', 'C.N', 'REFRESH'), ('NIP', 'C.N', {'OPEN_TIME': '09:00:01:000', 'BID':4.23, 'DIVPAYDATE': '23 JUN 2011', 'OFFCL_CODE': 'isin1234XYZ', 'RDN_EXCHID': '123', 'RDNDISPLAY': 100}))
 
+License
+=======
+Copyright (C) 2014-2015 DevCartel Company Limited
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
