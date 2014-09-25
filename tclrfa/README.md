@@ -54,6 +54,13 @@ Table of contents
 
 What's new
 ----------
+7.6.0.3
+
+* 2 Sep 2014
+* Added logger eventqueue to process log events
+* Fixed log() functions purge data in buffer resulted missing updates
+* Will be free software under MIT license
+
 7.6.0.2
 
 * 1 Aug 2014
