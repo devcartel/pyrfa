@@ -53,7 +53,7 @@ Table of contents
 7. [License](#license)
 
 Changelog
----------
+=========
 7.6.0.3
 
 * 2 Sep 2014
