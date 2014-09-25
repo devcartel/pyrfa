@@ -52,8 +52,8 @@ Table of contents
   14. [Getting Data](#getting-data)
 7. [License](#license)
 
-What's new
-----------
+Changelog
+---------
 7.6.0.3
 
 * 2 Sep 2014
