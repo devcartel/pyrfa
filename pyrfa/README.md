@@ -55,11 +55,11 @@ Changelog
 7.6.1.0
 
 * 8 December 2014
+* Compiled with RFA 7.6.1.E1
 * Fixed publisher crash when extracting floating point value
-* Fixed crashes if publish time field with no millisecond
-* Fixed Level2 data precision lost
-* Fixed PrettyPrint print the data with the lost precision
-* Fixed MarketByOrder does not publish the data
+* Fixed crashes when publishing time field with no millisecond
+* Fixed MarketByOrder not return data
+* Other minor fixes
 
 7.6.0.3
 
