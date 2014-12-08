@@ -52,6 +52,15 @@ Table of contents
 
 Changelog
 =========
+7.6.1.0
+
+* 8 December 2014
+* Fixed publisher crash when extracting floating point value
+* Fixed crashes if publish time field with no millisecond
+* Fixed Level2 data precision lost
+* Fixed PrettyPrint print the data with the lost precision
+* Fixed MarketByOrder does not publish the data
+
 7.6.0.3
 
 * 3 Sep 2014
