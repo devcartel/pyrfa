@@ -52,6 +52,14 @@ Table of contents
 
 Changelog
 =========
+7.6.0.3
+
+* 3 Sep 2014
+* Added logger eventqueue to process log events
+* Fixed log() functions purge data in buffer resulted missing updates
+* Will be free software under MIT license
+* Support for RHEL 6.4 with Python 2.6
+
 7.6.0.2
 
 * 1 Aug 2014
