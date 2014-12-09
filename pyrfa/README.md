@@ -59,6 +59,7 @@ Changelog
 * Fixed publisher crash when extracting floating point value
 * Fixed crashes when publishing time field with no millisecond
 * Fixed MarketByOrder not return data
+* Backward support for RHEL 5 with Python 2.4
 * Other minor fixes
 
 7.6.0.3
