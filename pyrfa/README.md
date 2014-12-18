@@ -55,7 +55,7 @@ Changelog
 7.6.1.1
 
 * 17 December 2014
-* OMMProvider does not submitDirectory after reconnecting to ADH/MDH
+* OMMProvider does not submit directory after reconnecting to ADH/MDH
 
 7.6.1.0
 
