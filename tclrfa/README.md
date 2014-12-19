@@ -54,6 +54,11 @@ Table of contents
 
 Changelog
 =========
+7.6.1.1
+
+* 19 December 2014
+* Fixed OMM provider not submit directory data after reconnecting to ADH/MDH
+
 7.6.0.3
 
 * 2 Sep 2014
