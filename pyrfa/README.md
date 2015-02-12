@@ -288,6 +288,13 @@ Programmatically set service name for subcription. Call this before making any r
     >>> p.setServiceName('IDN')
     >>> p.marketPriceRequest('EUR=')
 
+### Service status
+
+__Pyrfa.serviceDownSubmit()__  
+Submit service down status to ADH
+
+    >>> p.serviceDownSubmit()
+    
 ### Directory
 
 __Pyrfa.directoryRequest()__  
