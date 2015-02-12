@@ -287,13 +287,6 @@ Programmatically set service name for subcription. Call this before making any r
 
     >>> p.setServiceName('IDN')
     >>> p.marketPriceRequest('EUR=')
-
-### Service status
-
-__Pyrfa.serviceDownSubmit()__  
-Submit service down status to ADH
-
-    >>> p.serviceDownSubmit()
     
 ### Directory
 
@@ -314,6 +307,11 @@ Submit directory with domain type (capability) in a provider application, it cur
 _This function is called automatically upon data submission_
 
     >>> p.submitDirectory(6)
+
+__Pyrfa.serviceDownSubmit()__  
+Submit service down status to ADH
+
+    >>> p.serviceDownSubmit()
 
 ### Dictionary
 
