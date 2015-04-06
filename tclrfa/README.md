@@ -30,7 +30,7 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.4+
 Table of contents
 =================
 
-1. [What's new](#whats-new)
+1. [Changelog](#changelog)
 2. [Performance](#performance)
 3. [Support Systems](#supported-systems)
 4. [Installation](#installation)
