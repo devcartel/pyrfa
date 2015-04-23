@@ -54,6 +54,9 @@ Changelog
 =========
 7.6.1.2
 
+* 22 April 2015
+* Released for Windows and Linux
+
 * 27 January 2015
 * Support sending service down status programmatically
 
