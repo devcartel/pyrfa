@@ -54,6 +54,12 @@ Table of contents
 
 Changelog
 =========
+
+7.6.1.2
+
+* 28 May 2015
+* Support sending service down status programmatically
+
 7.6.1.1
 
 * 19 December 2014
