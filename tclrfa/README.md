@@ -32,7 +32,7 @@ Table of contents
 
 1. [Changelog](#changelog)
 2. [Performance](#performance)
-3. [Support Systems](#supported-systems)
+3. [Support System](#support-system)
 4. [Installation](#installation)
 5. [Running Examples](#running-examples)
 6. [Functions](#functions)
@@ -52,7 +52,7 @@ Table of contents
   14. [Getting Data](#getting-data)
 7. [License](#license)
 
-Changelog
+CHANGELOG
 =========
 
 7.6.1.2
@@ -277,6 +277,12 @@ Submit directory with domain type (capability) in a provider application, it cur
 This function is normally called automatically upon data submission.
 
     % $t submitDirectory 6
+
+__serviceDownSubmit__   
+
+Submit service down status to ADH
+
+    % $t serviceDownSubmit
 
 ### Dictionary
 
