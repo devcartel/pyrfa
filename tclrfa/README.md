@@ -1,9 +1,9 @@
 TCLRFA 8.0
 ==========
 
-TclRFA provides Tcl extension for accessing Thomson Reuters market data feeds know as RMDS or
-Thomson Reuter Enterprise Platform for Real-time (TREP-RT). It supports subscription
-and publication of market data using OMM data message model.
+TclRFA provides Tcl extension for accessing Thomson Reuters market data feeds such as Elektron,
+RMDS,Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or RDF-D. It supports subscription
+and publication of level 1 and 2 market data using OMM data message model.
 
 Features:
 
@@ -57,7 +57,7 @@ CHANGELOG
 
 8.0.0.0
 
-* 16 June 2015
+* 18 June 2015
 * Compiled with RFA 8.0.0.L1
 * New output message in pure dictionary format
 * Supports STATUS output message type
@@ -65,6 +65,7 @@ CHANGELOG
 * RIC and SERVICE now treated as part of data output
 * Fixed for service group failover by RFA 8.0
 * Minimum requirement is now Tcl 8.5
+* Available in 64-bit only
 
 7.6.1.2
 
@@ -88,7 +89,7 @@ CHANGELOG
 * 1 Aug 2014
 * Added setup.tcl: TclRFA package installer
 * setServiceName() to select a service programmatically
-* Fixed core dump upon exit if call getWatchList in script 
+* Fixed core dump upon exit if call getWatchList in script
 
 7.6.0.1
 
@@ -122,7 +123,7 @@ CHANGELOG
 * ApplicationId from config file submitted for login
 * New config `responseQueueBatchInterval` for low latency inbound message setup
 * New config `flushTimerInterval` for low latency outbound message setup
-  
+
 7.4.1.0
 
 * 28 April 2013
@@ -141,18 +142,17 @@ PERFORMANCE
 -----------
 Subscription
 
-* 20,000 updates/sec on Core 2 Duo 2.6 GHz, RAM 4 GB on 64bit Windows 7
-* 30,000 updates/sec on Core 2 Duo 2.66 GHz, RAM 2 GB on 64bit Linux 2.6.35
+* coming soon...
 
 Publication
 
-* N/A
+* coming soon...
 
 SUPPORT SYSTEM
 --------------
 * Linux x86 64bit
 * Windows x86 64bit
-* Tcl8.5+, recommend ActiveTcl from ActiveState 8.5 (http://www.activestate.com/activetcl/downloads)
+* Tcl8.5+, recommend ActiveTcl 8.5 from ActiveState (http://www.activestate.com/activetcl/downloads)
 
 INSTALLATION
 ------------
@@ -161,20 +161,20 @@ Run below commands in terminal or command prompt:
 ```
 > unzip tclrfa<version>-<platform>.zip
 > cd tclrfa<version>-<platform>/
-> tclsh setup.tcl install 
+> tclsh setup.tcl install
 ```
 
 RUNNING EXAMPLES
 ----------------
 * On Windows CMD ,run with
-    
+
         > tclsh consumer.tcl
-        
+
 * On Linux or Windows Cygwin:
-    
+
         $ tclsh consumer.tcl
         $ ./consumer.tcl
-    
+
 FUNCTIONS
 ---------
 
@@ -184,12 +184,12 @@ __[tclrfa]__
 Instantiate a TclRFA object
 
     % set t [tclrfa]
-    
+
 __setDebugMode__ _True|False_  
 Enable or disable debug messages.
 
     % $t setDebugMode True
-    
+
 ### Configuration
 
 __createConfigDb__ _filename_  
@@ -243,9 +243,9 @@ Where:
 
 Send an authentication message with user information. This step is mandatory in order to consume the market data from P2PS/ADS. If arguments are omitted, TclRFA will read values from configuration file.
 
-    % $t login 
-    ... 
-    [Thu Jul 04 17:56:48 2013]: (ComponentName) Tclrfa: (Severity) Information: 
+    % $t login
+    ...
+    [Thu Jul 04 17:56:48 2013]: (ComponentName) Tclrfa: (Severity) Information:
     [Tclrfa::login] Login successful. (username: TclRFA)
 
 __isLoggedIn__  
@@ -289,8 +289,7 @@ This function is normally called automatically upon data submission.
 
     % $t directorySubmit 6
 
-__serviceDownSubmit__   
-
+__serviceDownSubmit__  
 Submit service down status to ADH
 
     % $t serviceDownSubmit
@@ -305,7 +304,7 @@ If `downloadDataDict` configuration is set to True then TclRFA will send a reque
 __isNetworkDictionaryAvailable__  
 Check whether the data dictionary is successfully downloaded from the server.
 
-    % $t isNetworkDictionaryAvailable 
+    % $t isNetworkDictionaryAvailable
     1
 
 ### Logging
@@ -313,19 +312,19 @@ Check whether the data dictionary is successfully downloaded from the server.
 __log__ _message_  
 Write a normal message to a log file.
 
-    % $t log “Print log message out” 
+    % $t log “Print log message out”
     [Thu Jul 04 17:45:29 2013]: (ComponentName) Tclrfa: (Severity) Information: Print log message out
 
 __logWarning__ _message_  
 Write a warning message to a log file.
 
-    % $t logWarning “Print warning message out” 
+    % $t logWarning “Print warning message out”
     [Thu Jul 04 17:47:03 2013]: (ComponentName) Tclrfa: (Severity) Warning: Print warning message out
 
 __logError__ _message_  
 Write an error message to a log file.
 
-    % $t logError “Print error message out” 
+    % $t logError “Print error message out”
     [Thu Jul 04 17:48:00 2013]: (ComponentName) Tclrfa: (Severity) Error: Unexpected error: Print error message out
 
 ### Symbol List
@@ -336,15 +335,15 @@ _RIC = Reuters Instrument Code_
 For consumer application to subscribe symbol lists. User can define multiple symbol list names. Data dispatched using dispatchEventQueue function.
 
 Image
-    
+
     {SERVICE {SERVICE_NAME} RIC {SYMBOLLIST_NAME} MTYPE {REFRESH}}
     {SERVICE {SERVICE_NAME} RIC {SYMBOLLIST_NAME} MTYPE {IMAGE} ACTION {ADD} KEY {ITEM#1_NAME} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
 
 Example
 
-    % $t symbolListRequest "0#BMD" 
-    ... 
-    % $t dispatchEventQueue 
+    % $t symbolListRequest "0#BMD"
+    ...
+    % $t dispatchEventQueue
     [SymbolListHandler::processResponse] SymbolList Refresh: 0#BMD.NIP {SERVICE {NIP} RIC {0#BMD} MTYPE {REFRESH}} {SERVICE {NIP} RIC {0#BMD} MTYPE {IMAGE} ACTION {ADD} KEY {FKLI}}
 
 __symbolListCloseRequest__ _RIC ?RIC RIC ...?_  
@@ -362,7 +361,7 @@ Unsubscribe all symbol lists in the watch list.
 __isSymbolListRefreshComplete__  
 Check whether the client receives a complete list of the symbol list.
 
-    % $t isSymbolListRefreshComplete 
+    % $t isSymbolListRefreshComplete
     1
 
 __getSymbolList__ _RIC_  
@@ -370,42 +369,34 @@ _RIC = Reuters Instrument Code_
 
 Return item names available under a symbol list in string format.
 
-    % $t getSymbolList “0#BMD” 
+    % $t getSymbolList “0#BMD”
     FPCO FPKC FPRD FPGO
 
 __getSymbolListWatchList__  
 Return names of the subscribed symbol lists.
 
-    % $t getSymbolListWatchList 
+    % $t getSymbolListWatchList
     0#BMCA.RDFD 0#ARCA.RDFD
 
-__symbolListSubmit__ _data_  
-Where:
-
-* _data = Tcl dict_
+__symbolListSubmit__ _data ?data data ...?_  
+_data = a Tcl dict_
 
 For a provider client to publish a list of symbols to MDH/ADH under data domain 10, The Tcl dict must be specify in the format:
 
-    {RIC {SYMBOLLIST_NAME} KEY {ITEM#1_NAME} ACTION {ACTION} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>} ... FID_NAME#X {VALUE#X}}
+    {RIC {SYMBOLLIST_NAME} KEY {ITEM#1_NAME} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>} ... FID_NAME#X {VALUE#X}}
 
-Where:
-
-_SYMBOLLIST_NAME_ = name of the symbollist
-
-_KEY_ = name of the RIC inside the symbollist
-
-_ACTION_ = one of the commands below:
-* ADD - add a new symbol to the list
-* UPDATE - update a symbol’s attributes
-* DELETE - delete a symbol from the list
+_RIC_ contains the name of an instrument list. _KEY_ contains an instrument name and _ACTION_ is one of the following:
+* ADD - add a new instrument name to the list
+* UPDATE - update an instrument name's attributes
+* DELETE - remove an instrument from the list
 
 Example
 
     % set SYMBOLLIST {RIC {0#BMD} KEY {FCPO} ACTION {ADD} PROD_PERM {10} PROV_SYMB {MY439483}}
     % $t symbolListSubmit add $SYMBOLLIST
-    [Tclrfa::symbolListSubmit] mapAction: add 
-    [Tclrfa::symbolListSubmit] symbolName: 0#BMD 
-    [Tclrfa::symbolListSubmit] mapKey: FCPO 
+    [Tclrfa::symbolListSubmit] mapAction: add
+    [Tclrfa::symbolListSubmit] symbolName: 0#BMD
+    [Tclrfa::symbolListSubmit] mapKey: FCPO
     [Tclrfa::symbolListSubmit] fieldList: [Tclrfa::symbolListSubmit] fieldList: PROV_SYMB=MY439483,PROD_PERM=10
 
 ### Market Price
@@ -416,22 +407,22 @@ _RIC = Reuters Instrument Code_
 For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names. The data dispatched through dispatchEventQueue function in Tcl dict format:
 
 Image
-    
+
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {REFRESH}}
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {IMAGE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>} ... FID_NAME#3 {VALUE#X}}
 
 Update
-    
+
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {UPDATE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>} ... FID_NAME#3 {VALUE#X}}
 
-Status   
+Status
 
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {STATUS} DATA_STATE {Suspect} STREAM_STATE {Open/Closed} TEXT {TEXT}}
 
-Example 
+Example
 
-    % $t marketPriceRequest “EUR=” 
-    % $t dispatchEventQueue 10 
+    % $t marketPriceRequest “EUR=”
+    % $t dispatchEventQueue 10
     {SERVICE {NIP} RIC {EUR=} MTYPE {REFRESH}}
     {SERVICE {NIP} RIC {EUR=} MTYPE {IMAGE} RDNDISPLAY {100} RDN_EXCHID {SES} BID {0.988} ASK {0.999} DIVPAYDATE {23 JUN 2011}}
 
@@ -442,7 +433,7 @@ Unsubscribe items from streaming service. User can define multiple item names.
 
     % $t marketPriceCloseRequest “C.N” “JPY=”
 
-__marketPriceCloseAllRequest__ 
+__marketPriceCloseAllRequest__  
 Unsubscribe all items from streaming service.
 
     % $t marketPriceCloseAllRequest
@@ -450,11 +441,11 @@ Unsubscribe all items from streaming service.
 __getMarketPriceWatchList__  
 Returns names of the subscribed items with service names.
 
-    % $t getMarketPriceWatchList 
+    % $t getMarketPriceWatchList
     C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
-__marketPriceSubmit__ _data_  
-_data = Tcl dict_
+__marketPriceSubmit__ _data ?data data...?_  
+_data = a Tcl dict_
 
 For provider client to publish market data to MDH/ADH, the market data image/update must be in the following Tcl dict format:
 
@@ -462,7 +453,7 @@ For provider client to publish market data to MDH/ADH, the market data image/upd
 
 Example
 
-    % set IMAGE1 {RIC {EUR=} RDNDISPLAY {100} RDN_EXCHID {155} BID {0.988} ASK {0.999} DIVPAYDATE {20110623}}    
+    % set IMAGE1 {RIC {EUR=} RDNDISPLAY {100} RDN_EXCHID {155} BID {0.988} ASK {0.999} DIVPAYDATE {20110623}}
     % set IMAGE2 {RIC {C.N} RDNDISPLAY {100} RDN_EXCHID {NAS} OFFCL_CODE {isin1234XYZ} BID {4.23} DIVPAYDATE {20110623} OPEN_TIME {09:00:01.000}}
     % $t marketPriceSubmit $IMAGE1 $IMAGE2
     [Tclrfa::marketPriceSubmit] {RIC {EUR=} RDNDISPLAY {100} RDN_EXCHID {155} BID {0.988} ASK {0.999} DIVPAYDATE {20110623}} {RIC {C.N} RDNDISPLAY {100} RDN_EXCHID {NAS} OFFCL_CODE {isin1234XYZ} BID {4.23} DIVPAYDATE {20110623} OPEN_TIME {09:00:01.000}}
@@ -480,28 +471,28 @@ _RIC = Reuters Instrument Code_
 For a consumer application to subscribe order book data, user can define multiple item names. The data dispatched through dispatchEventQueue in Tcl dict format:
 
 Image
-    
+
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {REFRESH}}
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {IMAGE} ACTION {ADD} KEY {ORDER_ID} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
 
 Update
 
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {UPDATE} ACTION {UPDATE} KEY {ORDER_ID} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
-    
+
 Delete
 
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {UPDATE} ACTION {DELETE} KEY {ORDER_ID}}
 
-Status   
-    
+Status
+
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {STATUS} DATA_STATE {Suspect} STREAM_STATE {Open/Closed} TEXT {TEXT_MESSAGE}}
 
 Example
 
-    % $t marketByOrderRequest "ANZ.AX" 
-    % $t dispatchEventQueue 10000     
-    {SERVICE {NIP} RIC {ANZ.AX} MTYPE {REFRESH}} 
-    {SERVICE {NIP} RIC {ANZ.AX} MTYPE {IMAGE} ACTION {ADD} KEY {538993C200035057B} ORDER_PRC {20.412} ORDER_SIZE {237} ORDER_SIDE {BID} SEQNUM_QT {191} EX_ORD_TYP {0} CHG_REAS {10} ORDER_TONE {}} 
+    % $t marketByOrderRequest "ANZ.AX"
+    % $t dispatchEventQueue 10000
+    {SERVICE {NIP} RIC {ANZ.AX} MTYPE {REFRESH}}
+    {SERVICE {NIP} RIC {ANZ.AX} MTYPE {IMAGE} ACTION {ADD} KEY {538993C200035057B} ORDER_PRC {20.412} ORDER_SIZE {237} ORDER_SIDE {BID} SEQNUM_QT {191} EX_ORD_TYP {0} CHG_REAS {10} ORDER_TONE {}}
     {SERVICE {NIP} RIC {ANZ.AX} MTYPE {IMAGE} ACTION {ADD} KEY {538993C200083483B} ORDER_PRC {20.280} ORDER_SIZE {100} ORDER_SIDE {BID} SEQNUM_QT {2744} EX_ORD_TYP {0} CHG_REAS {6} ORDER_TONE {}}
 
 __marketByOrderCloseRequest__ _RIC ?RIC RIC ...?_  
@@ -522,39 +513,30 @@ Return all subscribed item names on order book streaming service with service na
     % $t getMarketByOrderWatchList
     ANZ.AX.IDN_SELECTFEED
 
-__marketByOrderSubmit__   
-Where:
-
-* _data = Tcl dict_
+__marketByOrderSubmit__ _data ?data data...?_  
+_data = a Tcl dict_
 
 For a provider client to publish specified order book data to MDH/ADH, `marketByOrderSubmit` requires two parameters, The Tcl dict must be specify in the format:
 
-    {RIC {ITEM_NAME} KEY {ORDER_ID} ACTION {ADD} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
+    {RIC {ITEM_NAME} KEY {ORDER_ID} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
 
-Where:     
- _ITEM_NAME_
- name of the RIC
- 
- -KEY_     
- id of the order
-
-_ACTION_     
-* ADD - add new order to the item
-* UPDATE - update an order’s attributes
+_RIC_ contains the name of an instrument. _KEY_ contains an order ID name and _ACTION_ is one of the following:
+* ADD - add a new order to the book
+* UPDATE - update an order's attributes
 * DELETE - remove an order from the book
 
 Example
 
     % set ORDER1 {RIC {ANZ.AX} KEY {538993C200035057B} ACTION {ADD} ORDER_PRC {20.260} ORDER_SIZE {50} ORDER_SIDE {BID} SEQNUM_QT {2744} EX_ORD_TYP {0} CHG_REAS {6} ORDER_TONE {}}
-    
-    % $t marketByOrderSubmit $ORDER1 
-    
+
+    % $t marketByOrderSubmit $ORDER1
+
     [Tclrfa::dispatchEventQueue] Event loop - approximate pending Events: 0
-    [Tclrfa::marketByOrderSubmit] mapAction: add 
-    [Tclrfa::marketByOrderSubmit] symbol name: ANZ.AX 
-    [Tclrfa::marketByOrderSubmit] mapKey: 538993C200035057B 
-    [Tclrfa::marketByOrderSubmit] fieldList: ORDER_PRC=20.260,ORDER_SIZE=50,ORDER_SIDE=BID,SEQNUM_QT=2744,EX_ORD_TYP=0,CHG_REAS=6,ORDER_TONE=, 
-    [OMMCProvServer::submitData] sending refresh item: ANZ.AX 
+    [Tclrfa::marketByOrderSubmit] mapAction: add
+    [Tclrfa::marketByOrderSubmit] symbol name: ANZ.AX
+    [Tclrfa::marketByOrderSubmit] mapKey: 538993C200035057B
+    [Tclrfa::marketByOrderSubmit] fieldList: ORDER_PRC=20.260,ORDER_SIZE=50,ORDER_SIDE=BID,SEQNUM_QT=2744,EX_ORD_TYP=0,CHG_REAS=6,ORDER_TONE=,
+    [OMMCProvServer::submitData] sending refresh item: ANZ.AX
     [OMMCProvServer::submitData] sending refresh service: NIP
 
 ### Market by Price
@@ -565,7 +547,7 @@ _RIC = Reuters Instrument Code_
 For consumer application to subscribe market depth data, user can define multiple item names. Data dispatched through dispatchEventQueue module in a tuple below:
 
 Image
-    
+
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {REFRESH}}
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {IMAGE} ACTION {ADD} KEY {ORDER_ID} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
 
@@ -577,14 +559,14 @@ Delete
 
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {UPDATE} ACTION {DELETE} KEY {ORDER_ID}}
 
-Status   
-    
+Status
+
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {STATUS} DATA_STATE {Suspect} STREAM_STATE {Open/Closed} TEXT {TEXT_MESSAGE}}
 
 Example
 
-    % $t marketByOrderRequest "ANZ.CHA"     
-    % $t dispatchEventQueue 1000 
+    % $t marketByOrderRequest "ANZ.CHA"
+    % $t dispatchEventQueue 1000
     {SERVICE {NIP} RIC {ANZ.CHA} MTYPE {REFRESH}}
     {SERVICE {NIP} RIC {ANZ.CHA} MTYPE {IMAGE} ACTION {ADD} KEY {201000B} ORDER_PRC {20.1000} ORDER_SIDE {BID} ORDER_SIZE {17} NO_ORD {6} QUOTIM_MS {16987567} ORDER_TONE {}}
 
@@ -603,40 +585,31 @@ Unsubscribe all items from market depth stream.
 __getMarketByPriceWatchList__  
 Return all subscribed item names on market depth streaming service with service names.
 
-    % t getMarketByPriceWatchList 
+    % t getMarketByPriceWatchList
     ANZ.CHA.IDN_SELECTFEED
 
-__marketByPriceSubmit__  
-Where:
-
-* _data = Tcl dict_
+__marketByPriceSubmit__ _data ?data data ...?_  
+_data = a Tcl dict_
 
 For a provider client to publish the specified market depth data to MDH/ADH, `marketByPriceSubmit` requires two parameters, The Tcl dict must be specify in the format:
 
-    { RIC {ITEM_NAME} KEY {ORDER_ID} ACTION {ADD} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>... FID_NAME#X {VALUE#X}}
+    { RIC {ITEM_NAME} KEY {PRICE} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>... FID_NAME#X {VALUE#X}}
 
-Where:     
- _ITEM_NAME_
- name of the RIC
- 
- -KEY_     
- id of the order
-
-_ACTION_   
-* ADD – add a new price to the depth
-* UPDATE - update a price level’s attributes
+_RIC_ contains the name of an instrument. _KEY_ contains a price and _ACTION_ is one of the following:
+* ADD - add a new price to the depth
+* UPDATE - update a price's attributes
 * DELETE - remove a price from the depth
 
 
 Example
 
-    set DEPTH1 { RIC {ANZ.CHA} KEY {201000B} ACTION {ADD} ORDER_PRC {20.1000} ORDER_SIDE {BID} ORDER_SIZE {1300} NO_ORD {13} QUOTIM_MS {16987567} ORDER_TONE {}} 
-    % $t marketByPriceSubmit $DEPTH1 
+    set DEPTH1 { RIC {ANZ.CHA} KEY {201000B} ACTION {ADD} ORDER_PRC {20.1000} ORDER_SIDE {BID} ORDER_SIZE {1300} NO_ORD {13} QUOTIM_MS {16987567} ORDER_TONE {}}
+    % $t marketByPriceSubmit $DEPTH1
     [Tclrfa::dispatchEventQueue] Event loop - approximate pending Events: 0
-    [Tclrfa::marketByPriceSubmit] mapAction: add 
-    [Tclrfa::marketByPriceSubmit] symbol name: ANZ.CHA 
-    [Tclrfa::marketByPriceSubmit] mapKey: 201000B 
-    [Tclrfa::marketByPriceSubmit] fieldList: ORDER_PRC=20.1000,ORDER_SIDE=BID,ORDER_SIZE=1300,NO_ORD=13,QUOTIM_MS=16987567,ORDER_TONE=, 
+    [Tclrfa::marketByPriceSubmit] mapAction: add
+    [Tclrfa::marketByPriceSubmit] symbol name: ANZ.CHA
+    [Tclrfa::marketByPriceSubmit] mapKey: 201000B
+    [Tclrfa::marketByPriceSubmit] fieldList: ORDER_PRC=20.1000,ORDER_SIDE=BID,ORDER_SIZE=1300,NO_ORD=13,QUOTIM_MS=16987567,ORDER_TONE=,
     [OMMCProvServer::submitData] sending refresh item: ANZ.CHA
     [OMMCProvServer::submitData] sending refresh service: NIP
 
@@ -655,23 +628,23 @@ _RIC = Reuters Instrument Code_
 
 A helper function that subscribes, wait for data dissemination to be complete, unsubscribe from the service and return series as a list of records. getTimeSeries supports one time series retrieval at a time.
 
-    % set ric "CHK.N" 
-    % set period "daily" 
-    % set maxrecords "15" 
-    % $t setTimeSeriesPeriod $period 
-    % $t setTimeSeriesMaxRecords $maxrecords 
-    % set timeseries [$t getTimeSeries $ric] 
-    % puts "\n\n############## $ric $period ([llength $timeseries] records)##############" 
-    % puts [join $timeseries "\n"]\n\n 
-    
+    % set ric "CHK.N"
+    % set period "daily"
+    % set maxrecords "15"
+    % $t setTimeSeriesPeriod $period
+    % $t setTimeSeriesMaxRecords $maxrecords
+    % set timeseries [$t getTimeSeries $ric]
+    % puts "\n\n############## $ric $period ([llength $timeseries] records)##############"
+    % puts [join $timeseries "\n"]\n\n
+
     ############## CHK.N daily (21 records) ##############
     DATE,CLOSE,OPEN,HIGH,LOW,VOLUME,VWAP
     2012/02/26,25.110,25.360,25.440,25.010,2457997.000,25.218
     2012/02/23,25.450,24.830,25.830,24.820,3420367.000,25.451
     2012/02/22,24.980,24.130,24.990,23.960,3786628.000,24.582
     2012/02/21,24.030,24.220,24.340,23.640,4144242.000,23.998
-    2012/02/20,24.620,25.000,25.060,24.540,3713133.000,24.767 
-    2012/02/19,Market holiday 
+    2012/02/20,24.620,25.000,25.060,24.540,3713133.000,24.767
+    2012/02/19,Market holiday
     2012/02/16,24.710,24.220,24.980,24.130,5116842.000,24.508
     2012/02/15,23.770,23.070,23.790,22.730,3540557.000,23.489
     2012/02/14,23.020,22.740,23.270,22.520,3885523.000,22.923
@@ -691,21 +664,21 @@ Request for historical data (data domain 12), this domain is not officially supp
 
 Image
 
-    {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {REFRESH}} 
+    {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {REFRESH}}
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {IMAGE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2} ... FID_NAME#3 {VALUE#X}}
-    
+
  Status
 
     {SERVICE {SERVICE_NAME} RIC {ITEM_NAME} MTYPE {STATUS} DATA_STATE {Suspect} STREAM_STATE {Open/Closed} TEXT {TEXT_MESSAGE}}
 
 Example
 
-    % $t historyRequest "tANZ.AX" 
-    % $t dispatchEventQueue 
-    [HistoryHandler::processResponse] History Refresh: tANZ.AX.NIP 
-     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {REFRESH}} 
-     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {IMAGE} TRDPRC_1 {40.124} SALTIM {16:39:33:805:000:000} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B} ASK_ORD_ID {5307FBL20BN8A}} 
-     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {IMAGE} TRDPRC_1 {40.124} SALTIM {16:39:33:805:000:000} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B} ASK_ORD_ID {5307FBL20BN8A}} 
+    % $t historyRequest "tANZ.AX"
+    % $t dispatchEventQueue
+    [HistoryHandler::processResponse] History Refresh: tANZ.AX.NIP
+     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {REFRESH}}
+     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {IMAGE} TRDPRC_1 {40.124} SALTIM {16:39:33:805:000:000} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B} ASK_ORD_ID {5307FBL20BN8A}}
+     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {IMAGE} TRDPRC_1 {40.124} SALTIM {16:39:33:805:000:000} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B} ASK_ORD_ID {5307FBL20BN8A}}
 
 __historyCloseRequest__ _RIC ?RIC RIC ...?_  
 _RIC = Reuters Instrument Code_
@@ -719,8 +692,8 @@ Unsubscribe all items from historical data stream.
 
     % $t historyCloseAllRequest
 
-__historySubmit__ _data_  
-_data = Tcl dict_
+__historySubmit__ _data ?data data ...?_  
+_data = a Tcl dict_
 
 For a provider client to publish the specified history data to MDH/ADH, each history data image/update must be in the following format:
 
@@ -728,10 +701,10 @@ For a provider client to publish the specified history data to MDH/ADH, each his
 
 Example
 
-    % UPDATE1 { RIC {tANZ.AX} TRDPRC_1 {40.124} SALTIM {now} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B} ASK_ORD_ID {5307FBL20BN8A}} 
-    % $t historySubmit $UPDATE1 
-    [Tclrfa::historySubmit] symbolName: tANZ.AX 
-    [Tclrfa::historySubmit] fieldList: TRDPRC_1=40.124,BID_ORD_ID=5307FBL20AL7B,ASK_ORD_ID=5307FBL20BN8A,TRADE_ID=123456789,SATIM=now 
+    % UPDATE1 { RIC {tANZ.AX} TRDPRC_1 {40.124} SALTIM {now} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B} ASK_ORD_ID {5307FBL20BN8A}}
+    % $t historySubmit $UPDATE1
+    [Tclrfa::historySubmit] symbolName: tANZ.AX
+    [Tclrfa::historySubmit] fieldList: TRDPRC_1=40.124,BID_ORD_ID=5307FBL20AL7B,ASK_ORD_ID=5307FBL20BN8A,TRADE_ID=123456789,SATIM=now
     [OMMCProvServer::submitData] sending update item: tANZ.AX
     [OMMCProvServer::submitData] sending update service: NIP
 
@@ -742,12 +715,12 @@ _timeout = time in milliseconds to wait for data_
 
 Dispatch the events (data) from EventQueue within a period of time (If timeout is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in a list of Tcl dicts.
 
-    % $t dispatchEventQueue 
+    % $t dispatchEventQueue
     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {REFRESH}} {SERVICE {NIP} RIC {tANZ.AX} MTYPE {IMAGE} TRPRC_1 {40.124} SALTIM {14:31:34:335:000:000} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B}ASK_ORD_ID {5307FBL20BN8A}}
 
 License
 =======
-Copyright (C) 2014-2015 DevCartel Company Limited
+Copyright (C) 2015-2017 DevCartel Company Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
