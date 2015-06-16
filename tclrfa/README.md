@@ -57,10 +57,14 @@ CHANGELOG
 
 8.0.0.0
 
-* 12 June 2015
-* Support Tcl8.5+
-* New message format to support STATUS events
-* Improved provider/consumer data format
+* 16 June 2015
+* Compiled with RFA 8.0.0.L1
+* New output message in pure dictionary format
+* Supports STATUS output message type
+* New message types include REFRESH, IMAGE, UPDATE, STATUS
+* RIC and SERVICE now treated as part of data output
+* Fixed for service group failover by RFA 8.0
+* Minimum requirement is now Tcl 8.5
 
 7.6.1.2
 
