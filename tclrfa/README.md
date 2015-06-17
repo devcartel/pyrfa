@@ -63,6 +63,7 @@ CHANGELOG
 * Supports STATUS output message type
 * New message types include REFRESH, IMAGE, UPDATE, STATUS
 * RIC and SERVICE now treated as part of data output
+* Translate Reuters tick symbol to unicode
 * Fixed for service group failover by RFA 8.0
 * Minimum requirement is now Tcl 8.5
 * Available in 64-bit only
