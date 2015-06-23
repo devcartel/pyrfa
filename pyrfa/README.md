@@ -404,15 +404,13 @@ Return names of the subscribed symbol Lists with service names.
     >>> p.getSymbolListWatchList()
     0#BMCA.RDFD 0#ARCA.RDFD
 
-__Pyrfa.symbolListSubmit(_Dictionary_)__  
-For a provider client to publish a list of symbols to MDH/ADH under data domain 10. This funtcion requires a parameter below:
+__Pyrfa.symbolListSubmit(_Tuple_)__  
+For a provider client to publish a list of symbols to MDH/ADH under data domain 10. **_Tuple_** must contain python dictionaries in the following format:
+```
+{'ACTION':'<ADD/UPDATE/DELETE>','MTYPE':'UPDATE','SERVICE':'<SERVICE_NAME>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#X>':'<VALUE#X>'}
+```
 
-**_Dictionary_** is an input for which each symbol list must be in the following format:
-
-
-    {'ACTION':'<ADD/UPDATE/DELETE>','MTYPE':'UPDATE','SERVICE':'<SERVICE_NAME>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#X>':'<VALUE#X>'}
-
-    >>> SYMBOLLIST = {'ACTION':'ADD', 'RIC':'0#BMD', 'KEY':'FCPO', 'PROD_PERM':10, 'PROV_SYMB':'MY439483'}
+    >>> SYMBOLLIST = {'ACTION':'ADD', 'RIC':'0#BMD', 'KEY':'FCPO', 'PROD_PERM':10, 'PROV_SYMB':'MY439483'},
     [Pyrfa::symbolListSubmit] mapAction: add
     [Pyrfa::symbolListSubmit] symbolName: 0#BMD
     [Pyrfa::symbolListSubmit] mapKey: FCPO
@@ -435,11 +433,9 @@ Update
     {'MTYPE':'UPDATE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
 
 Status
-
-    {'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
-
-<br />
-
+```
+{'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
+```  
     >>> p.marketPriceRequest('EUR=')
     >>> p.dispatchEventQueue()
     {'MTYPE':'REFRESH','RIC':'EUR=','SERVICE':'IDN_RDF_SDS'}
@@ -462,13 +458,12 @@ Returns names of the subscribed items with service names.
     >>> p.getMarketPriceWatchList()
     C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
-__Pyrfa.marketPriceSubmit(_Dictionary_)__  
-For provider client to publish market data to MDH/ADH, the market data image/update **_Dictionary_** must be in the following Python dictionary format:
-
-    {'RIC':'<ITEM_NAME>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
-
-
-    >>> IMAGES = {'RIC':'EUR=', 'RDNDISPLAY':200, 'RDN_EXCHID':155, 'BID':0.988, 'ASK':0.999, 'DIVPAYDATE':'20110623'}
+__Pyrfa.marketPriceSubmit(_Tuple_)__  
+For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must contain python dictionaries in the following format:
+```
+{'RIC':'<ITEM_NAME>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
+```  
+    >>> IMAGES = {'RIC':'EUR=', 'RDNDISPLAY':200, 'RDN_EXCHID':155, 'BID':0.988, 'ASK':0.999, 'DIVPAYDATE':'20110623'},
     >>> p.marketPriceSubmit(IMAGES)
     [Pyrfa::marketPriceSubmit] symbolName: EUR=
     [Pyrfa::marketPriceSubmit] fieldList: BID_NET_CH=0.0041,BID=0.988,ASK_TIME=now,ASK=0.999
@@ -494,11 +489,9 @@ Delete
     {'MTYPE':'UPDATE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'DELETE','KEY':'<ORDER_ID>'}
 
 Status
-
-    {'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
-
-<br />
-
+```
+{'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
+```
     >>> p.marketByOrderRequest("ANZ.AX");
     >>> p.dispatchEventQueue()
     {'MTYPE': 'REFRESH', 'RIC': 'ANZ.AX', 'SERVICE': 'NIP'}
@@ -520,14 +513,12 @@ Return all subscribed item names on order book streaming data with service names
     >>> p.getMarketByOrderWatchList()
     ANZ.AX.IDN_SELECTFEED
 
-__Pyrfa.marketByOrderSubmit(_Dictionary_)__  
-For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit() requires a parameter as follows:
-
-**_Dictionary_** is an input each order and must be in the following format:
-
-    {'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<ORDER_ID>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}
-
-    >>> ORDERS = {'ACTION':'ADD', 'RIC':'ANZ.AX', 'KEY':'538993C200035057B', 'ORDER_PRC': '20.260', 'ORDER_SIZE':50, 'ORDER_SIDE':'BID', 'SEQNUM_QT':2744, 'EX_ORD_TYP':0, 'CHG_REAS':6,'ORDER_TONE':''}
+__Pyrfa.marketByOrderSubmit(_Tuple_)__  
+For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit(). **_Tuple_** must contain python dictionaries in the following format:
+```
+{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<ORDER_ID>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}
+```
+    >>> ORDERS = {'ACTION':'ADD', 'RIC':'ANZ.AX', 'KEY':'538993C200035057B', 'ORDER_PRC': '20.260', 'ORDER_SIZE':50, 'ORDER_SIDE':'BID', 'SEQNUM_QT':2744, 'EX_ORD_TYP':0, 'CHG_REAS':6,'ORDER_TONE':''},
     >>> p.marketByOrderSubmit(ORDERS)
     [Pyrfa::marketByOrderSubmit] mapAction: update
     [Pyrfa::marketByOrderSubmit] symbolName: ANZ.AX
@@ -555,11 +546,9 @@ Delete
     {'MTYPE':'UPDATE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'DELETE','KEY':'<ORDER_ID>'}
 
 Status
-
-    {'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
-
-<br />
-
+```
+{'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
+```
     >>> p.marketByPriceRequest("ANZ.CHA")
     >>> p.dispatchEventQueue()
     {'MTYPE': 'REFRESH', 'RIC': 'ANZ.CHA', 'SERVICE': 'NIP'}
@@ -581,14 +570,12 @@ Return all subscribed item names on market depth streaming data with service nam
     >>> p.getMarketByPriceWatchList()
      ANZ.CHA.IDN_SELECTFEED
 
-__Pyrfa.marketByPriceSubmit(_Dictionary_)__  
-For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit() requires a parameter below:
-
-**_Dictionary_** is an input of each depth and must be in the following format:
-
-    {'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<DEPTH>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>, ... ,'<FID_NAME#X>':<VALUE#X>}    
-
-    >>> DEPTHS = {'ACTION':'ADD', 'RIC':'ANZ.CHA','KEY':'201000B','ORDER_PRC': '20.1000', 'ORDER_SIDE':'BID', 'ORDER_SIZE':'1300', 'NO_ORD':13, 'QUOTIM_MS':16987567,'ORDER_TONE':''}
+__Pyrfa.marketByPriceSubmit(_Tuple_)__  
+For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit(). **_Tuple_** must contain python dictionaries in the following format:
+```
+{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<DEPTH>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>, ... ,'<FID_NAME#X>':<VALUE#X>}    
+```
+    >>> DEPTHS = {'ACTION':'ADD', 'RIC':'ANZ.CHA','KEY':'201000B','ORDER_PRC': '20.1000', 'ORDER_SIDE':'BID', 'ORDER_SIZE':'1300', 'NO_ORD':13, 'QUOTIM_MS':16987567,'ORDER_TONE':''},
     >>> p.marketByPriceSubmit(DEPTHS)
     [Pyrfa::marketByPriceSubmit] symbolName: ANZ.CHA
     [Pyrfa::marketByPriceSubmit] mapKey: 210000B
@@ -634,12 +621,10 @@ __Pyrfa.historyRequest(_String_)__
 Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under **_String_**. The data dispatched through `dispatchEventQueue()` module in a dictionary below:
 
 Image
-
-    {'MTYPE':'REFRESH','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>'}
-    {'MTYPE':'IMAGE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}
-
-<br />
-
+```
+{'MTYPE':'REFRESH','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>'}
+{'MTYPE':'IMAGE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}
+```
     >>> p.historyRequest("tANZ.AX")
     >>> p.dispatchEventQueue()
     {'MTYPE':'REFRESH','RIC':'tANZ.AX','SERVICE':'NIP'}
@@ -655,14 +640,13 @@ Unsubscribe all items from historical data streaming service.
 
     >>> p.historyCloseAllRequest()
 
-__Pyrfa.historySubmit(_Dictionary_)__  
-For a provider client to publish the specified history data to MDH/ADH, each history image/update **_Dictionary_** must be in the following format:
+__Pyrfa.historySubmit(_Tuple_)__  
+For a provider client to publish the specified history data to MDH/ADH, each history image/update. **_Tuple_** must contain python dictionaries in the following format:
+```
+{'RIC':'<ITEM_NAME>','<FID_NAME#1>':<VALUE#1>,...,'<FID_NAME#X>':<VALUE#X>}
+```
 
-    {'RIC':'<ITEM_NAME>','<FID_NAME#1>':<VALUE#1>,...,'<FID_NAME#X>':<VALUE#X>}
-
-<br />
-
-    >>> UPDATES = {'RIC':'tANZ.AX', 'TRDPRC_1':40.124, 'SALTIM':'now', 'TRADE_ID':'123456789', 'BID_ORD_ID':'5307FBL20AL7B', 'ASK_ORD_ID':'5307FBL20BN8A'}
+    >>> UPDATES = {'RIC':'tANZ.AX', 'TRDPRC_1':40.124, 'SALTIM':'now', 'TRADE_ID':'123456789', 'BID_ORD_ID':'5307FBL20AL7B', 'ASK_ORD_ID':'5307FBL20BN8A'},
     >>> p.historySubmit(UPDATES)
     [Pyrfa::historySubmit] symbolName: tANZ.AX
     [Pyrfa::historySubmit] fieldList: TRDPRC_1=40.124,BID_ORD_ID=5307FBL20AL7B,ASK_ORD_ID=5307FBL20BN8A,TRADE_ID=123456789,SATIM=now
