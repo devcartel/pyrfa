@@ -407,7 +407,7 @@ Return names of the subscribed symbol Lists with service names.
 __Pyrfa.symbolListSubmit(_Tuple_)__  
 For a provider client to publish a list of symbols to MDH/ADH under data domain 10. **_Tuple_** must contain python dictionaries in the following format:
 ```
-{'ACTION':'<ADD/UPDATE/DELETE>','MTYPE':'UPDATE','SERVICE':'<SERVICE_NAME>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#X>':'<VALUE#X>'}
+{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#X>':'<VALUE#X>'}
 ```
 
     >>> SYMBOLLIST = {'ACTION':'ADD', 'RIC':'0#BMD', 'KEY':'FCPO', 'PROD_PERM':10, 'PROV_SYMB':'MY439483'},
