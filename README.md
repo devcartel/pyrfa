@@ -1,8 +1,9 @@
-# DevCartel
+DevCartel
+=========
 At DevCartel, our consultants are helping companies in financial service industry access, integrate, visualize and make sense of financial market data such as streaming stock prices, FX rates, economic indicators, historical prices, real-time news. Enabling market engagement with world's leading brokers. Through our professional consultancy services and our own super robust API products, we are helping our clients making informed decision and stay afloat. Visit http://devcartel.com for more information.
 
-## APIs
-
+APIs
+====
 ### PyRFA
 Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
 
@@ -28,3 +29,13 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl langua
 | 7.6.1.2 | [download](https://github.com/devcartel/api/releases/download/tclrfa7.6.1.2/tclrfa7.6.1.2-win32-ix86.zip)  |   |   |
 
 Read [documentation](https://github.com/devcartel/api/blob/master/tclrfa/README.md#table-of-contents) for more detail or ask our [support](https://github.com/devcartel/api/issues).
+
+License
+=======
+Copyright (C) 2015-2018 DevCartel Company Limited
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
