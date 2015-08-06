@@ -11,8 +11,10 @@ Features:
 * Subscription for MARKET_BY_ORDER (order book)
 * Subscription for MARKET_BY_PRICE (market depth)
 * Supports orderbook, depth ranker in utils folder
-* Snapshot request (no incremental updates)
+* Snapshot request
 * Multiple service subscription
+* Pause and resume subscription
+* OMM Posting
 * Dictionary download or use local files
 * Directory request
 * Symbol list request
@@ -34,7 +36,7 @@ Table of contents
 2. [Performance](#performance)
 3. [Support System](#support-system)
 4. [Installation](#installation)
-5. [Running Examples](#running-examples)
+5. [Example](#example)
 6. [Functions](#functions)
   1. [Initialization](#initialization)
   2. [Configuration](#configuration)
@@ -47,13 +49,24 @@ Table of contents
   9. [Market Price](#market-price)
   10. [Market by Order](#market-by-order)
   11. [Market by Price](#market-by-price)
-  12. [TS1](#ts1)
-  13. [History](#history)
-  14. [Getting Data](#getting-data)
+  12. [OMM Posting](#omm-posting)
+  13. [Pause and Resume](#pause-and-resume)
+  14. [TS1](#ts1)
+  15. [History](#history)
+  16. [Getting Data](#getting-data)
 7. [License](#license)
 
 CHANGELOG
 =========
+
+8.0.0.1
+
+* 6 August 2015
+* Supports Pause and Resume
+* Supports OMM Posting for market price
+* Provider can submit data as unsolicited REFRESH using MTYPE = IMAGE
+* Provider can submit data to different service using SERVICE key in dict 
+* Supports sending service up/down status
 
 8.0.0.0
 
@@ -165,16 +178,113 @@ Run below commands in terminal or command prompt:
 > tclsh setup.tcl install
 ```
 
-RUNNING EXAMPLES
-----------------
-* On Windows CMD ,run with
+EXAMPLE
+-------
+```tcl
+package require tclrfa
+set t [tclrfa]
+$t createConfigDb "./tclrfa.cfg"
+$t acquireSession "Session1"
+$t createOMMConsumer
+$t login
+$t directoryRequest
+$t dictionaryRequest
+$t marketPriceRequest "EUR= JPY="
 
-        > tclsh consumer.tcl
+while {1} {
+    foreach u [$t dispatchEventQueue] {
+        puts "\n[dict get $u SERVICE] - [dict get $u RIC]"
+        foreach {k v} $u {
+            puts "[format "%15s    %-10s" $k $v]"
+        }
+    }
+}
 
-* On Linux or Windows Cygwin:
+```
 
-        $ tclsh consumer.tcl
-        $ ./consumer.tcl
+CONFIGURATION FILE
+------------------
+### Example
+
+    \tclrfa\debug = false
+
+    \Logger\AppLogger\useInternalLogStrings  = true
+    \Logger\AppLogger\windowsLoggerEnabled   = false
+    \Logger\AppLogger\fileLoggerEnabled      = true
+    \Logger\AppLogger\fileLoggerFilename     = "./tclrfa.log"
+
+    \Connections\Connection_RSSL1\rsslPort = "14002"
+    \Connections\Connection_RSSL1\ServerList = "127.0.0.1"
+    \Connections\Connection_RSSL1\connectionType = "RSSL"
+    \Connections\Connection_RSSL1\logEnabled = true
+    \Connections\Connection_RSSL1\UserName = "USERNAME"
+    \Connections\Connection_RSSL1\InstanceId = "1"
+    \Connections\Connection_RSSL1\ApplicationId = "180"
+    \Connections\Connection_RSSL1\Position = "127.0.0.1"
+    \Connections\Connection_RSSL1\ServiceName = "SERVICE"
+    \Connections\Connection_RSSL1\fieldDictionaryFilename = "../etc/RDM/RDMFieldDictionary"
+    \Connections\Connection_RSSL1\enumTypeFilename  = "../etc/RDM/enumtype.def"
+    \Connections\Connection_RSSL1\downloadDataDict = false
+
+    \Sessions\Session1\connectionList = "Connection_RSSL1"
+
+    \ServiceGroups\SG1\serviceList = "SERVICE1, SERVICE2"
+    \Sessions\Session1\serviceGroupList = "SG1"
+
+### Debug
+Namespace: `\tclrfa\`
+
+| Parameter        | Example value    | Description                                            |
+|------------------|------------------|--------------------------------------------------------|
+| `debug`          | `true`/`false`   | Enable/Disable debug mode                              |
+
+### Logging  
+Namespace: `\Logger\AppLogger\`
+   
+| Parameter            | Example value    | Description                                        |
+|----------------------|------------------|----------------------------------------------------|
+| `fileLoggerEnabled`  | `true`/`false`   | Enable/Disable logging capability                  |
+| `fileLoggerFilename` | `"./tclrfa.log"`  | Log file name                                      |
+
+
+### Connection
+Namespace: `\Connections\<connection_name>\`
+
+| Parameter        | Example value    | Description                                            |
+|------------------|------------------|--------------------------------------------------------|
+| `rsslPort`       | `"14002"`        | P2PS/ADS RSSL port number                              |
+| `ServerList`     | `"127.0.0.1"`    | P2PS/ADS IP address or hostnam                         |
+| `connectionType` | `"RSSL"`         | The specific type of the connection. Must be `RSSL`    |
+| `logEnabled`     | `true`/`false`   | Enable/Disable logging capability                      |
+| `UserName`       | `"tclrfa"`       | DACS username                                          |
+| `InstanceId`     | `"123"`          | Application instance ID                                |
+| `ApplicationId`  | `"180"`          | Application ID                                         |
+| `Position`       | `"127.0.0.1/net"`| DACS position                                          |
+| `ServiceName`    | `"NIP"`          | Service name to be subscribe                           |
+| `VendorName`     | `"OMMCProv_DevCartel"` | Name of the vendor that provides the data for this service |
+| `symbolList`     | `"0#BMD"`        | Symbollist name to be subscribe(d)                     |
+| `maxSymbols`     | `30`             | Configure maximum number of symbol inside symbollist   |
+| `fieldDictionaryFilename` | `"../etc/RDM/RDMFieldDictionary"`| Dictionary file path          |
+| `enumTypeFilename` | `"../etc/RDM/enumtype.def"` | enumtype file path                        |
+| `downloadDataDict` | `true`/`false` | Enable/Disable data dictionary download from P2PS/ADS  |
+| `dumpDataDict`   | `true`/`false`   | Enable/Disable to dump data dictionary from P2PS/ADS   |
+
+### Session
+Namespace: `\Sessions\<session_name>\`
+
+| Parameter          | Example value         | Description                                            |
+|--------------------|-----------------------|--------------------------------------------------------|
+| `connectionList`   | `"Connection_RSSL1"`  | Match `connection_name`                                |
+| `serviceGroupList` | `"SG1"`               | Service group name                                     |
+
+`session_name` must be passed to `acquireSession()` function.
+
+### Service Group
+Namespace: `\ServiceGroups\<service_group_name>\`
+
+| Parameter          | Example value         | Description                                            |
+|--------------------|-----------------------|--------------------------------------------------------|
+| `serviceList`      | `"SERVICE1, SERVICE2"`| Available service names for the group                  |
 
 FUNCTIONS
 ---------
@@ -275,8 +385,9 @@ Send a directory request through the acquired session. This step is the mandator
 
     % $t directoryRequest
 
-__directorySubmit__ _domain_  
-_domain = data domain number_
+__directorySubmit__ _domain_ _service_  
+_domain = data domain number_  
+_service = target service_
 
 Submit directory with domain type (capability) in a provider application, it currently supports:
 
@@ -288,12 +399,14 @@ Submit directory with domain type (capability) in a provider application, it cur
 
 This function is normally called automatically upon data submission.
 
-    % $t directorySubmit 6
+    % $t directorySubmit 6 IDN
 
-__serviceDownSubmit__  
-Submit service down status to ADH
+__serviceDownSubmit__ _?service?_  
+_service = target service_  
 
-    % $t serviceDownSubmit
+Submit service down status to ADH. If _service_ is omitted, it uses _serviceName_ from configuration file.  
+
+    % $t serviceDownSubmit IDN
 
 ### Dictionary
 
@@ -347,7 +460,7 @@ Example
     % $t dispatchEventQueue
     [SymbolListHandler::processResponse] SymbolList Refresh: 0#BMD.NIP {SERVICE {NIP} RIC {0#BMD} MTYPE {REFRESH}} {SERVICE {NIP} RIC {0#BMD} MTYPE {IMAGE} ACTION {ADD} KEY {FKLI}}
 
-__symbolListCloseRequest__ _RIC ?RIC RIC ...?_  
+__symbolListCloseRequest__ _RIC ?RIC RIC ...?_   
 _RIC = Reuters Instrument Code_
 
 Unsubscribe the specified symbol lists. User can define multiple symbol list names
@@ -379,12 +492,12 @@ Return names of the subscribed symbol lists.
     % $t getSymbolListWatchList
     0#BMCA.RDFD 0#ARCA.RDFD
 
-__symbolListSubmit__ _data ?data data ...?_  
+__symbolListSubmit__ _data ?data data ...?_   
 _data = a Tcl dict_
 
-For a provider client to publish a list of symbols to MDH/ADH under data domain 10, The Tcl dict must be specify in the format:
+For a provider client to publish a list of symbols to MDH/ADH under data domain 10, The Tcl dict must be specify in the below format. `MTYPE IMAGE` can be added to `data` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).
 
-    {RIC {SYMBOLLIST_NAME} KEY {ITEM#1_NAME} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>} ... FID_NAME#X {VALUE#X}}
+    {RIC {SYMBOLLIST_NAME} KEY {ITEM#1_NAME} MTYPE {IMAGE/UPDATE} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>} ... FID_NAME#X {VALUE#X}}
 
 _RIC_ contains the name of an instrument list. _KEY_ contains an instrument name and _ACTION_ is one of the following:
 * ADD - add a new instrument name to the list
@@ -402,8 +515,8 @@ Example
 
 ### Market Price
 
-__marketPriceRequest__ _RIC ?RIC RIC ...?_  
-_RIC = Reuters Instrument Code_
+__marketPriceRequest__ _RIC ?RIC RIC ...?_   
+_RIC = Reuters Instrument Code_  
 
 For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names. The data dispatched through dispatchEventQueue function in Tcl dict format:
 
@@ -445,12 +558,12 @@ Returns names of the subscribed items with service names.
     % $t getMarketPriceWatchList
     C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
-__marketPriceSubmit__ _data ?data data...?_  
+__marketPriceSubmit__ _data ?data data...?_   
 _data = a Tcl dict_
 
-For provider client to publish market data to MDH/ADH, the market data image/update must be in the following Tcl dict format:
+For provider client to publish market data to MDH/ADH, the market data image/update must be in the below Tcl dict format. `MTYPE IMAGE` can be added to `data` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).
 
-    {RIC {ITEM_NAME} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
+    {RIC {ITEM_NAME} MTYPE {IMAGE/UPDATE} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
 
 Example
 
@@ -463,10 +576,24 @@ Example
     [Tclrfa::marketPriceSubmit] symbolName: C.N
     [Tclrfa::marketPriceSubmit] fieldList: RDNDISPLAY=100,RDN_EXCHID=NAS,OFFCL_CODE=isin1234XYZ,BID=4.23,DIVPAYDATE=20110623,OPEN_TIME=09:00:01.000,
     [Tclrfa::marketPriceSubmit] {RIC {EUR=} BID_NET_CH {0.0041} BID {0.988} ASK {0.999} ASK_TIME {now}} {RIC {C.N} ACVOL_1 {1001} TRDPRC_1 {4.561} TIMACT {now}}
+    
+__marketPricePause__ _RIC ?RIC RIC ...?_   
+_RIC = Reuters Instrument Code_  
+
+Pause subscription to the items. 
+
+    % $t marketPricePause EUR=
+
+__marketPriceResume__ _RIC ?RIC RIC ...?_  
+_RIC = Reuters Instrument Code_  
+
+Resume subscription to the item.
+
+    % $t marketPriceResume EUR=
 
 ### Market by Order
 
-__marketByOrderRequest__ _RIC ?RIC RIC ...?_  
+__marketByOrderRequest__ _RIC ?RIC RIC ...?_   
 _RIC = Reuters Instrument Code_
 
 For a consumer application to subscribe order book data, user can define multiple item names. The data dispatched through dispatchEventQueue in Tcl dict format:
@@ -517,9 +644,9 @@ Return all subscribed item names on order book streaming service with service na
 __marketByOrderSubmit__ _data ?data data...?_  
 _data = a Tcl dict_
 
-For a provider client to publish specified order book data to MDH/ADH, `marketByOrderSubmit` requires two parameters, The Tcl dict must be specify in the format:
+For a provider client to publish specified order book data to MDH/ADH, `marketByOrderSubmit` requires two parameters, The Tcl dict must be specify in the below format. `MTYPE IMAGE` can be added to `data` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`). 
 
-    {RIC {ITEM_NAME} KEY {ORDER_ID} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
+    {RIC {ITEM_NAME} KEY {ORDER_ID} MTYPE {IMAGE/UPDATE} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
 
 _RIC_ contains the name of an instrument. _KEY_ contains an order ID name and _ACTION_ is one of the following:
 * ADD - add a new order to the book
@@ -592,15 +719,14 @@ Return all subscribed item names on market depth streaming service with service 
 __marketByPriceSubmit__ _data ?data data ...?_  
 _data = a Tcl dict_
 
-For a provider client to publish the specified market depth data to MDH/ADH, `marketByPriceSubmit` requires two parameters, The Tcl dict must be specify in the format:
+For a provider client to publish the specified market depth data to MDH/ADH, `marketByPriceSubmit` requires two parameters, The Tcl dict must be specify in the below format. `MTYPE IMAGE` can be added to `data` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
 
-    { RIC {ITEM_NAME} KEY {PRICE} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>... FID_NAME#X {VALUE#X}}
+    { RIC {ITEM_NAME} KEY {PRICE} MTYPE {IMAGE/UPDATE} ACTION {ADD|UPDATE|DELETE} FID_NAME#1 {VALUE#1} FID_NAME#2 {VALUE#2>... FID_NAME#X {VALUE#X}}
 
 _RIC_ contains the name of an instrument. _KEY_ contains a price and _ACTION_ is one of the following:
 * ADD - add a new price to the depth
 * UPDATE - update a price's attributes
 * DELETE - remove a price from the depth
-
 
 Example
 
@@ -613,6 +739,36 @@ Example
     [Tclrfa::marketByPriceSubmit] fieldList: ORDER_PRC=20.1000,ORDER_SIDE=BID,ORDER_SIZE=1300,NO_ORD=13,QUOTIM_MS=16987567,ORDER_TONE=,
     [OMMCProvServer::submitData] sending refresh item: ANZ.CHA
     [OMMCProvServer::submitData] sending refresh service: NIP
+    
+### OMM Posting  
+__marketPricePost__ _data ?data data ...?_  
+Use OMM Post to contribute data to ADH/ADS cache. Note that the posted service must be up. `MTYPE IMAGE` can be added to `data` in order to post the IMAGE (default `MTYPE` is `UPDATE`)
+
+    {RIC {ITEM_NAME} MTYPE {IMAGE/UPDATE} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
+
+Example
+
+    % $t marketPricePost "RIC TRI.N TIMACT now TRDPRC_1 100"
+    [Tclrfa::marketPricePost] RIC TRI.N TIMACT now TRDPRC_1 100
+    TIMACT=now,TRDPRC_1=100,
+    [OMMPost::submitData] sending update item: TRI.N
+    [OMMPost::submitData] sending update service: NIP
+    [Encoder::encodeMarketPriceDataBody]
+    TIMACT(5)=16:02:55.571
+    TRDPRC_1(6)=100e-0
+
+### Pause and Resume  
+
+__pauseAll__  
+Pause all subscription on all domains. Updates are conflated during the pause.
+
+    % $t pauseAll
+
+__resumeAll__  
+Resume all subscription.
+
+    % $t resumeAll
+
 
 ### TS1
 
@@ -696,9 +852,10 @@ Unsubscribe all items from historical data stream.
 __historySubmit__ _data ?data data ...?_  
 _data = a Tcl dict_
 
-For a provider client to publish the specified history data to MDH/ADH, each history data image/update must be in the following format:
+For a provider client to publish the specified history data to MDH/ADH, each history data image/update must be in the following format:  
+_*Noted : `MTYPE IMAGE` can be added to `data` in order to publish the IMAGE of the item(default `MTYPE = UPDATE`)_  
 
-    {RIC {ITEM_NAME} FID_NAME#1 {VALUE#1} ... {FID_NAME#X} VALUE#X}
+    {RIC {ITEM_NAME} MTYPE {IMAGE/UPDATE} FID_NAME#1 {VALUE#1} ... {FID_NAME#X} VALUE#X}
 
 Example
 
