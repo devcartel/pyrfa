@@ -5,7 +5,7 @@ At DevCartel, our consultants are helping companies in financial service industr
 APIs
 ====
 ### PyRFA
-Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
+Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.  
 
 | Version | Windows (x86 + Python2.7) | Windows (x86 + Python2.6) | Windows (64-bit + Python3.4)| Windows (64-bit + Python2.7) | Windows (64-bit + Python2.6) |
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -18,7 +18,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
 | 7.6.1.2 |   |   |   | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.1.2/pyrfa7.6.1.2-rhel5-gcc412-x86_64-py24.zip) |
 | 7.6.1.1 |   |   | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.1.1/pyrfa7.6.1.1-rhel64-gcc447-x86_64-py26.zip) |   |
 
-*Read [documentation](https://github.com/devcartel/api/blob/master/pyrfa/README.md#table-of-contents) for more detail or ask our [support](https://github.com/devcartel/api/issues).*
+**[Documentation](https://github.com/devcartel/api/blob/master/pyrfa/README.md#table-of-contents) |  [Support](https://github.com/devcartel/api/issues)**
 
 ### TclRFA
 Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl language. Requires Tcl8.5+.
@@ -28,7 +28,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl langua
 | 8.0.0.1  |   | [download](https://github.com/devcartel/api/releases/download/tclrfa8.0.0.1/tclrfa8.0.0.1-win32-ix86_64.zip)  | [download](https://github.com/devcartel/api/releases/download/tclrfa8.0.0.1/tclrfa8.0.0.1-linux-x86_64.zip) |
 | 7.6.1.2 | [download](https://github.com/devcartel/api/releases/download/tclrfa7.6.1.2/tclrfa7.6.1.2-win32-ix86.zip)  |   |   |
 
-*Read [documentation](https://github.com/devcartel/api/blob/master/tclrfa/README.md#table-of-contents) for more detail or ask our [support](https://github.com/devcartel/api/issues).*
+**[Documentation](https://github.com/devcartel/api/blob/master/tclrfa/README.md#table-of-contents) |  [Support](https://github.com/devcartel/api/issues)**
 
 License
 =======
