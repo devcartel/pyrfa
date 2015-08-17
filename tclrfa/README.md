@@ -59,6 +59,12 @@ Table of contents
 CHANGELOG
 =========
 
+8.0.0.2
+
+* 17 August 2015
+* Fixed timeseries floating point data limitation
+* Fixed memory leak in data dictionary handler
+
 8.0.0.1
 
 * 6 August 2015
