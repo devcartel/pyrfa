@@ -56,6 +56,12 @@ Table of contents
 
 Changelog
 =========
+8.0.0.2
+
+* 17 August 2015
+* Fixed timeseries floating point data limitation
+* Fixed memory leak in data dictionary handler
+
 8.0.0.1
 
 * 6 August 2015
@@ -522,7 +528,7 @@ Return names of the subscribed symbol Lists with service names.
     0#BMCA.RDFD 0#ARCA.RDFD
 
 __Pyrfa.symbolListSubmit(_Tuple_)__  
-For a provider client to publish a list of symbols to MDH/ADH under data domain 10. **_Tuple_** must contain python dictionaries in the following format:
+For a provider client to publish a list of symbols to MDH/ADH under data domain 10, **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
 ```
 {'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#X>':'<VALUE#X>'}
 ```
@@ -578,7 +584,7 @@ C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 ```
 
 __Pyrfa.marketPriceSubmit(_Tuple_)__  
-For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must contain python dictionaries in the following format:
+For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
 ```
 {'RIC':'<ITEM_NAME>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
 ```  
@@ -592,12 +598,12 @@ For provider client to publish market data to MDH/ADH, the market data image/upd
 __Pyrfa.marketPricePause(_String_)__  
 Pause subscription to items. User can define multiple item names using “,” to separate each name in **_String_**
 
-    >> p.marketPricePause('ANZ.CHA')
+    >> p.marketPricePause('EUR=')
 
 __Pyrfa.marketPriceResume(_String_)__  
 Resume subscription to the item. User can define multiple item names using “,” to separate each name in **_String_**
 
-    >> p.marketPriceResume('ANZ.CHA')
+    >> p.marketPriceResume('EUR=')
 
 ### Market by Order
 
@@ -611,7 +617,7 @@ Image
 
 Update
 
-    {'MTYPE':'<UPDATE/IMAGE>','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'UPDATE','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
+    {'MTYPE':'<UPDATE>','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'UPDATE','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
 
 Delete
 
@@ -643,7 +649,7 @@ Return all subscribed item names on order book streaming data with service names
     ANZ.AX.IDN_SELECTFEED
 
 __Pyrfa.marketByOrderSubmit(_Tuple_)__  
-For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit(). **_Tuple_** must contain python dictionaries in the following format:
+For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit(). **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
 ```
 {'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<ORDER_ID>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}
 ```
@@ -700,7 +706,7 @@ Return all subscribed item names on market depth streaming data with service nam
      ANZ.CHA.IDN_SELECTFEED
 
 __Pyrfa.marketByPriceSubmit(_Tuple_)__  
-For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit(). **_Tuple_** must contain python dictionaries in the following format:
+For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit(). **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).   
 ```
 {'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<DEPTH>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>, ... ,'<FID_NAME#X>':<VALUE#X>}    
 ```
@@ -717,8 +723,7 @@ For a provider client to publish the specified market depth data to MDH/ADH, mar
 ### OMM Posting
 
 __marketPricePost(_Tuple_)__   
-OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache.  
-_*Noted : Posted service must be up_  
+OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache. Note that the posted service must be up. `MTYPE IMAGE` can be added to `data` in order to post the IMAGE (default `MTYPE` is `UPDATE`)   
 
 Post Image
 
@@ -744,12 +749,12 @@ Post Update to different service
 ### Pause and Resume
 
 __Pyrfa.pauseAll()__  
-Pause all subscription on all domains. Updates are conflated during the pause.
+Pause all subscriptions on all domains. Updates are conflated during the pause.
 
     >>> p.pauseAll()
 
 __Pyrfa.resumeAll()__  
-Resume all subscription.
+Resume all subscriptions.
 
     >>> p.resumeAll()
 
