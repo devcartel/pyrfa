@@ -87,6 +87,26 @@ CHANGELOG
 * Minimum requirement is now Tcl 8.5
 * Available in 64-bit only
 
+7.6.1.3
+
+* 24 August 2015
+* New output message in pure dictionary format
+* Supports STATUS output message type
+* New message types include REFRESH, IMAGE, UPDATE, STATUS
+* RIC and SERVICE now treated as part of data output
+* Translate Reuters tick symbol to unicode
+* Minimum requirement is now Tcl 8.5
+* Supports Pause and Resume
+* Supports OMM Posting for market price
+* Provider can submit data as unsolicited REFRESH using MTYPE = IMAGE
+* Provider can submit data to different service using SERVICE key in dict 
+* Supports sending service up/down status
+* Fixed timeseries floating point data limitation
+* Fixed memory leak in data dictionary handler
+* Fixed memory leak in data dictionary handler
+* Prevent memory leak caused by login handler
+* Fixed another potential memory leak
+
 7.6.1.2
 
 * 28 May 2015
