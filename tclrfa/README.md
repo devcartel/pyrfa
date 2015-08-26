@@ -59,6 +59,12 @@ Table of contents
 CHANGELOG
 =========
 
+8.0.0.3
+
+* 26 August 2015
+* Prevent memory leak caused by login handler
+* Fixed another potential memory leak
+
 8.0.0.2
 
 * 17 August 2015
