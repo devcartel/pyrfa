@@ -56,6 +56,12 @@ Table of contents
 
 Changelog
 =========
+8.0.0.4
+
+* 30 September 2015
+* Added serviceStateSubmit() for bringing service up or down
+* Fixed serviceDownSubmit() that caused session disconnection
+
 8.0.0.3
 
 * 25 August 2015
@@ -244,7 +250,6 @@ Example
 
 ```python
 import pyrfa
-import sys
 p = pyrfa.Pyrfa()
 p.createConfigDb("./pyrfa.cfg")
 p.acquireSession("Session1")
@@ -264,8 +269,10 @@ while not end:
         for u in updates:
             print(u['SERVICE'] + " - " + u['RIC'])
             for k,v in u.items():
-                sys.stdout.write(k.rjust(15) + " ")
-                print(round(v,10) if type(v) is float else v)
+                if type(v) is float:
+                    print("%15s %g" % (k,v))
+                else:
+                    print("%15s %s" % (k,v))
             print("")
 p.marketPriceCloseAllRequest()
 ```
@@ -287,7 +294,7 @@ UINT64        | LONG
 
 Configuration File
 ==================
-### Example
+Below is an example of a configuration file:
 
     \pyrfa\debug = false
 
@@ -314,14 +321,14 @@ Configuration File
     \ServiceGroups\SG1\serviceList = "SERVICE1, SERVICE2"
     \Sessions\Session1\serviceGroupList = "SG1"
 
-### Debug
+## Debug Configuration
 Namespace: `\pyrfa\`
 
 | Parameter        | Example value    | Description                                            |
 |------------------|------------------|--------------------------------------------------------|
 | `debug`          | `true`/`false`   | Enable/Disable debug mode                              |
 
-### Logging  
+## Logging  
 Namespace: `\Logger\AppLogger\`
    
 | Parameter            | Example value    | Description                                        |
@@ -330,7 +337,7 @@ Namespace: `\Logger\AppLogger\`
 | `fileLoggerFilename` | `"./pyrfa.log"`  | Log file name                                      |
 
 
-### Connection
+## Connection
 Namespace: `\Connections\<connection_name>\`
 
 | Parameter        | Example value    | Description                                            |
@@ -352,7 +359,7 @@ Namespace: `\Connections\<connection_name>\`
 | `downloadDataDict` | `true`/`false` | Enable/Disable data dictionary download from P2PS/ADS  |
 | `dumpDataDict`   | `true`/`false`   | Enable/Disable to dump data dictionary from P2PS/ADS   |
 
-### Session
+## Session
 Namespace: `\Sessions\<session_name>\`
 
 | Parameter          | Example value         | Description                                            |
@@ -362,7 +369,7 @@ Namespace: `\Sessions\<session_name>\`
 
 `session_name` must be passed to `acquireSession()` function.
 
-### Service Group
+## Service Group
 Namespace: `\ServiceGroups\<service_group_name>\`
 
 | Parameter          | Example value         | Description                                            |
@@ -372,7 +379,7 @@ Namespace: `\ServiceGroups\<service_group_name>\`
 Functions
 =========
 
-### Initialization
+## Initialization
 
 __Pyrfa.pyrfa()__    
 Instantiate a PyRFA object.
@@ -384,7 +391,7 @@ Enable or disable debug messages. If argument is empty, it will read a value fro
 
     >>> p.setDebugMode(True)
 
-### Configuration
+## Configuration
 
 __Pyrfa.createConfigDb(_String_)__    
 Read the configuration file where **_String_** can be full path or relative path. Initialize RFA context.
@@ -402,7 +409,7 @@ Print a configuration node. If the input parameter **_String_** is omitted, this
     \Default\Sessions\Session3\connectionList = Connection_RSSL3
     \Default\Sessions\Session4\connectionList = Connection_RSSL4
 
-### Session
+## Session
 
 __Pyrfa.acquireSession(_String_)__    
 Acquire a session as defined in the configuration file where **_String_** is a session name. Look up for an appropriate connection and create a client-server network session. For example, Session1 is defined as follows:
@@ -413,7 +420,7 @@ This module will create a session using `Connection_RSSL1`.
 
     >>> p.acquireSession("Session4")
 
-### Client
+## Client
 
 __Pyrfa.createOMMConsumer()__    
 Create an OMM consumer client.
@@ -452,7 +459,7 @@ Programmatically set service name before making a subcription. Call this before 
     >>> p.setServiceName('IDN')
     >>> p.marketPriceRequest('EUR=')
 
-### Directory
+## Directory
 
 __Pyrfa.directoryRequest()__  
 Send a directory request through the acquired session. This step is the mandatory in order to consume the market data from P2PS/ADS.
@@ -468,16 +475,26 @@ Submit directory with domain type (capability) in a provider application and ser
 * '10' - symbol list
 * '12' - history
 
-This function is called automatically upon data submission. If **_service_** is omitted, it will use values from configuration file.
+This function is called automatically upon data submission. If **_service_** is omitted, it will use the value from configuration file.
 
     >>> p.directorySubmit('6','IDN')
     
-__Pyrfa.serviceDownSubmit(_String_)__  
-Submit the specified down service status to ADH.
+__Pyrfa.serviceDownSubmit([_service=String_])__  
+Submit the specified down service status to ADH. If **_service_** is omitted, it will use the value from configuration file.
 
     >>> p.serviceDownSubmit('IDN')
 
-### Dictionary
+__Pyrfa.serviceStateSubmit(_Int_,[_service=String_])__  
+Submit the service state to ADH. If **_service_** is omitted, it will use the value from configuration file.
+
+* 1 - service is up
+* 0 - service is down
+
+This function must be called after `directorySubmit()`.
+
+    >>> p.serviceStateSubmit(0)
+
+## Dictionary
 
 __Pyrfa.dictionaryRequest()__  
 If downloadDataDict configuration is set to True then PyRFA will send a request for data dictionaries to P2PS/ADS. Otherwise, it uses local data dictionaries specified by `fieldDictionaryFilename` and `enumTypeFilename` from configuration file.
@@ -490,7 +507,7 @@ Check whether the data dictionary is successfully downloaded from the server. Re
     >>> p.isNetworkDictionaryAvailable()
     True
 
-### Logging
+## Logging
 
 __Pyrfa.log(_String_)__  
 Write a message to a log file.
@@ -510,12 +527,12 @@ Write an error message to a log file.
     >>> p.logError('Print error message out')
     [Thu Jul 04 17:48:00 2013]: (ComponentName) Pyrfa: (Severity) Error: Unexpected error: Print error message out
 
-### Symbol List
+## Symbol List
 
 __Pyrfa.symbolListRequest(_String_)__  
 For consumer application to subscribe symbol lists. User can define multiple symbol list names using “,” to separate each name in **_String_** e.g. `ric1,ric2,ric3`. Data dispatched through `dispatchEventQueue()` function in dictionarys:
 
-Image
+IMAGE
 
     {{'MTYPE':'REFRESH','RIC':'<SYMBOLLIST_NAME>','SERVICE':'<SERVICE_NAME>'},   
     {'ACTION':'<ADD/UPDATE/DELETE>','MTYPE':'IMAGE','SERVICE':'<SERVICE_NAME>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#1>':'<VALUE#1>'},   
@@ -565,21 +582,21 @@ For a provider client to publish a list of symbols to MDH/ADH under data domain 
     [OMMCProvServer::submitData] sending refresh item: 0#BMD
     [OMMCProvServer::submitData] sending refresh service: NIP
 
-### Market Price
+## Market Price
 
 __Pyrfa.marketPriceRequest(_String_)__  
 For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names using “,” to separate each name in **_String_** e.g “ric1,ric2”. The data dispatched through `dispatchEventQueue()` function in a dictionary format as below:
 
-Image
+IMAGE
 
     {'MTYPE':'REFRESH','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>'}
     {'MTYPE':'IMAGE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}   
 
-Update
+UPDATE
 
     {'MTYPE':'<UPDATE/IMAGE>','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
 
-Status
+STATUS
 ```
 {'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
 ```  
@@ -629,25 +646,25 @@ Resume subscription to the item. User can define multiple item names using “,�
 
     >> p.marketPriceResume('EUR=')
 
-### Market by Order
+## Market by Order
 
 __Pyrfa.marketByOrderRequest(_String_)__  
 For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name in **_String_**. The data dispatched through `dispatchEventQueue()` module in a dictionary below:
 
-Image
+IMAGE
 
     {'MTYPE':'REFRESH','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>'}
     {'MTYPE':'IMAGE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'ADD','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}
 
-Update
+UPDATE
 
     {'MTYPE':'<UPDATE>','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'UPDATE','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
 
-Delete
+DELETE
 
     {'MTYPE':'UPDATE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'DELETE','KEY':'<ORDER_ID>'}
 
-Status
+STATUS
 ```
 {'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
 ```
@@ -686,25 +703,25 @@ For a provider client to publish specified order book data to MDH/ADH, marketByO
     [OMMCProvServer::submitData] sending update item: ANZ.AX
     [OMMCProvServer::submitData] sending update service: NIP
 
-### Market by Price
+## Market by Price
 
 __Pyrfa.marketByPriceRequest(_String_)__  
 For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name. Data dispatched through `dispatchEventQueue()` module in a dictionary below:
 
-Image
+IMAGE
 
     {'MTYPE':'REFRESH','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>'}
     {'MTYPE':'IMAGE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'ADD','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}
 
-Update
+UPDATE
 
     {'MTYPE':'UPDATE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'UPDATE','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
 
-Delete
+DELETE
 
     {'MTYPE':'UPDATE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','ACTION':'DELETE','KEY':'<ORDER_ID>'}
 
-Status
+STATUS
 ```
 {'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'}
 ```
@@ -744,20 +761,20 @@ For a provider client to publish the specified market depth data to MDH/ADH, mar
     [OMMCProvServer::submitData] sending update item: ANZ.CHA
     [OMMCProvServer::submitData] sending update service: NIP
 
-### OMM Posting
+## OMM Posting
 
 __marketPricePost(_Tuple_)__   
 OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache. Note that the posted service must be up. `MTYPE IMAGE` can be added to `data` in order to post the IMAGE (default `MTYPE` is `UPDATE`)   
 
-Post Image
+POST IMAGE
 
     {'MTYPE':'IMAGE','RIC':'<ITEM_NAME>', 'TRDPRC_1':price, 'TIMACT':'now'}
     
-Post Update _default_
+POST UPDATE
     
     {'RIC':'<ITEM_NAME>', 'TRDPRC_1':price,'TIMACT':'now'}
 
-Post Update to different service
+POST UPDATE WITH SELECTED SERVICE
 ```
 {'RIC':'<ITEM_NAME>', 'TRDPRC_1':price, 'TIMACT':'now', 'SERVICE':'<SERVICE_NAME>'}
 ```  
@@ -770,7 +787,7 @@ Post Update to different service
     TRDPRC_1(6)=4445e-3
     TIMACT(5)=19:27:24.281
 
-### Pause and Resume
+## Pause and Resume
 
 __Pyrfa.pauseAll()__  
 Pause all subscriptions on all domains. Updates are conflated during the pause.
@@ -782,7 +799,7 @@ Resume all subscriptions.
 
     >>> p.resumeAll()
 
-### TS1
+## TS1
 
 __setTimeSeriesPeriod(_String_)__  
 Define a time period for a time series subscription. String can be one of `daily` (default), `weekly`, `monthly`.
@@ -814,11 +831,11 @@ A helper function that subscribes, wait for data dissemination to be complete, u
     2013/10/24,28.470,28.410,28.680,28.153,2462643.000,28.447
     2013/10/23,28.370,27.660,28.680,27.470,1773109.000,28.163
 
-### History
+## History
 __Pyrfa.historyRequest(_String_)__  
 Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under **_String_**. The data dispatched through `dispatchEventQueue()` module in a dictionary below:
 
-Image
+IMAGE
 ```
 {'MTYPE':'REFRESH','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>'}
 {'MTYPE':'IMAGE','RIC':'<ITEM_NAME>','SERVICE':'<SERVICE_NAME>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#3>':<VALUE#X>}
@@ -851,7 +868,7 @@ For a provider client to publish the specified history data to MDH/ADH, each his
     [OMMCProvServer::submitData] sending update item: tANZ.AX
     [OMMCProvServer::submitData] sending update service: NIP
 
-### Getting Data
+## Getting Data
 __Pyrfa.dispatchEventQueue([_Timeout_])__  
 Dispatch the events (data) from EventQueue within a period of time (If **_Timeout_** is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in dictionary format.
 
