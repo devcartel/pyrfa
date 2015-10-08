@@ -52,10 +52,18 @@ Table of contents
   14. [TS1](#ts1)
   15. [History](#history)
   16. [Getting Data](#getting-data)
+  17. [Publication](#publication)
 8. [License](#license)
 
 Changelog
 =========
+8.0.0.5
+
+* 8 October 2015
+* Removed serviceStateSubmit()
+* Added serviceUpSubmit()
+* Fixed a bug where it fails to close a complete published item list
+
 8.0.0.4
 
 * 30 September 2015
@@ -242,7 +250,7 @@ Run below commands in terminal or command prompt:
 ```
 > unzip pyrfa<version>-<platform>.zip
 > cd pyrfa<version>-<platform>/
-> python setup.py install 
+> python setup.py install --force
 ```
     
 Example
@@ -466,34 +474,6 @@ Send a directory request through the acquired session. This step is the mandator
 
     >>> p.directoryRequest()
 
-__Pyrfa.directorySubmit([_domain=String_],[_service=String_])__  
-Submit directory with domain type (capability) in a provider application and service name, domain type currently supports:
-
-* '6' - market price
-* '7' - market by order
-* '8' - market by price
-* '10' - symbol list
-* '12' - history
-
-This function is called automatically upon data submission. If **_service_** is omitted, it will use the value from configuration file.
-
-    >>> p.directorySubmit('6','IDN')
-    
-__Pyrfa.serviceDownSubmit([_service=String_])__  
-Submit the specified down service status to ADH. If **_service_** is omitted, it will use the value from configuration file.
-
-    >>> p.serviceDownSubmit('IDN')
-
-__Pyrfa.serviceStateSubmit(_Int_,[_service=String_])__  
-Submit the service state to ADH. If **_service_** is omitted, it will use the value from configuration file.
-
-* 1 - service is up
-* 0 - service is down
-
-This function must be called after `directorySubmit()`.
-
-    >>> p.serviceStateSubmit(0)
-
 ## Dictionary
 
 __Pyrfa.dictionaryRequest()__  
@@ -568,20 +548,6 @@ Return names of the subscribed symbol Lists with service names.
     >>> p.getSymbolListWatchList()
     0#BMCA.RDFD 0#ARCA.RDFD
 
-__Pyrfa.symbolListSubmit(_Tuple_)__  
-For a provider client to publish a list of symbols to MDH/ADH under data domain 10, **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
-```
-{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#X>':'<VALUE#X>'}
-```
-
-    >>> SYMBOLLIST = {'ACTION':'ADD', 'RIC':'0#BMD', 'KEY':'FCPO', 'PROD_PERM':10, 'PROV_SYMB':'MY439483'},
-    [Pyrfa::symbolListSubmit] mapAction: add
-    [Pyrfa::symbolListSubmit] symbolName: 0#BMD
-    [Pyrfa::symbolListSubmit] mapKey: FCPO
-    [Pyrfa::symbolListSubmit] fieldList: [Pyrfa::symbolListSubmit] fieldList: PROV_SYMB=MY439483,PROD_PERM=10
-    [OMMCProvServer::submitData] sending refresh item: 0#BMD
-    [OMMCProvServer::submitData] sending refresh service: NIP
-
 ## Market Price
 
 __Pyrfa.marketPriceRequest(_String_)__  
@@ -623,18 +589,6 @@ Returns names of the subscribed items with service names.
 >>> p.getMarketPriceWatchList()   
 C.N.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 ```
-
-__Pyrfa.marketPriceSubmit(_Tuple_)__  
-For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
-```
-{'RIC':'<ITEM_NAME>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
-```  
-    >>> IMAGES = {'RIC':'EUR=', 'RDNDISPLAY':200, 'RDN_EXCHID':155, 'BID':0.988, 'ASK':0.999, 'DIVPAYDATE':'20110623'},
-    >>> p.marketPriceSubmit(IMAGES)
-    [Pyrfa::marketPriceSubmit] symbolName: EUR=
-    [Pyrfa::marketPriceSubmit] fieldList: BID_NET_CH=0.0041,BID=0.988,ASK_TIME=now,ASK=0.999
-    [OMMCProvServer::submitData] sending update item: EUR=
-    [OMMCProvServer::submitData] sending update service: NIP
     
 __Pyrfa.marketPricePause(_String_)__  
 Pause subscription to items. User can define multiple item names using “,” to separate each name in **_String_**
@@ -689,20 +643,6 @@ Return all subscribed item names on order book streaming data with service names
     >>> p.getMarketByOrderWatchList()
     ANZ.AX.IDN_SELECTFEED
 
-__Pyrfa.marketByOrderSubmit(_Tuple_)__  
-For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit(). **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
-```
-{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<ORDER_ID>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}
-```
-    >>> ORDERS = {'ACTION':'ADD', 'RIC':'ANZ.AX', 'KEY':'538993C200035057B', 'ORDER_PRC': '20.260', 'ORDER_SIZE':50, 'ORDER_SIDE':'BID', 'SEQNUM_QT':2744, 'EX_ORD_TYP':0, 'CHG_REAS':6,'ORDER_TONE':''},
-    >>> p.marketByOrderSubmit(ORDERS)
-    [Pyrfa::marketByOrderSubmit] mapAction: update
-    [Pyrfa::marketByOrderSubmit] symbolName: ANZ.AX
-    [Pyrfa::marketByOrderSubmit] mapKey: 538993C200083483B
-    [Pyrfa::marketByOrderSubmit] fieldList: [Pyrfa::marketByOrderSubmit] fieldList: EX_ORD_TYP=0,ORDER_SIZE=50,CHG_REAS=6,ORDER_PRC=20.260,SEQNUM_QT=2744,ORDER_TONE=,ORDER_SIDE=BID
-    [OMMCProvServer::submitData] sending update item: ANZ.AX
-    [OMMCProvServer::submitData] sending update service: NIP
-
 ## Market by Price
 
 __Pyrfa.marketByPriceRequest(_String_)__  
@@ -745,21 +685,6 @@ Return all subscribed item names on market depth streaming data with service nam
 
     >>> p.getMarketByPriceWatchList()
      ANZ.CHA.IDN_SELECTFEED
-
-__Pyrfa.marketByPriceSubmit(_Tuple_)__  
-For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit(). **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).   
-```
-{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<DEPTH>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>, ... ,'<FID_NAME#X>':<VALUE#X>}    
-```
-
-    >>> DEPTHS = {'ACTION':'ADD', 'RIC':'ANZ.CHA','KEY':'201000B','ORDER_PRC': '20.1000', 'ORDER_SIDE':'BID', 'ORDER_SIZE':'1300', 'NO_ORD':13, 'QUOTIM_MS':16987567,'ORDER_TONE':''},
-    >>> p.marketByPriceSubmit(DEPTHS)
-    [Pyrfa::marketByPriceSubmit] symbolName: ANZ.CHA
-    [Pyrfa::marketByPriceSubmit] mapKey: 210000B
-    [Pyrfa::marketByPriceSubmit] fieldList: [Pyrfa::marketByPriceSubmit] fieldList:
-    ORDER_SIZE=500,QUOTIM_MS=16987567,NO_ORD=13,ORDER_PRC=21.0000,ORDER_TONE=,ORDER_SIDE=ASK
-    [OMMCProvServer::submitData] sending update item: ANZ.CHA
-    [OMMCProvServer::submitData] sending update service: NIP
 
 ## OMM Posting
 
@@ -855,6 +780,97 @@ Unsubscribe all items from historical data streaming service.
 
     >>> p.historyCloseAllRequest()
 
+## Getting Data
+__Pyrfa.dispatchEventQueue([_Timeout_])__  
+Dispatch the events (data) from EventQueue within a period of time (If **_Timeout_** is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in dictionary format.
+
+    >>> p.dispatchEventQueue()
+    {'MTYPE':'REFRESH','RIC':'EUR=','SERVICE':'IDN_RDF_SDS'}
+    {'MTYPE':'IMAGE','RIC':'EUR=','SERVICE':'IDN_RDF_SDS','ASK':1.3712,'BID':1.3709}
+
+## Publication
+__Pyrfa.directorySubmit([_domain=String_],[_service=String_])__  
+Submit directory with domain type (capability) in a provider application and service name, domain type currently supports:
+
+* '6' - market price
+* '7' - market by order
+* '8' - market by price
+* '10' - symbol list
+* '12' - history
+
+This function is called automatically upon data submission. If **_service_** is omitted, it will use the value from configuration file.
+
+    >>> p.directorySubmit('6','IDN')
+    
+__Pyrfa.serviceDownSubmit([_service=String_])__  
+Submit the specified down service status to ADH. If **_service_** is omitted, it will use the value from configuration file.
+
+    >>> p.serviceDownSubmit('IDN')
+
+This function must be called after `directorySubmit()`.
+
+__Pyrfa.serviceUpSubmit([_service=String_])__  
+Submit the specified up service status to ADH. If **_service_** is omitted, it will use the value from configuration file.
+
+    >>> p.serviceUpSubmit('IDN')
+
+This function must be called after `directorySubmit()`. However, service will be automatically up if IMAGE is sent.
+
+__Pyrfa.symbolListSubmit(_Tuple_)__  
+For a provider client to publish a list of symbols to MDH/ADH under data domain 10, **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
+```
+{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<SYMBOLLIST_NAME>','<FID_NAME#X>':'<VALUE#X>'}
+```
+
+    >>> SYMBOLLIST = {'ACTION':'ADD', 'RIC':'0#BMD', 'KEY':'FCPO', 'PROD_PERM':10, 'PROV_SYMB':'MY439483'},
+    [Pyrfa::symbolListSubmit] mapAction: add
+    [Pyrfa::symbolListSubmit] symbolName: 0#BMD
+    [Pyrfa::symbolListSubmit] mapKey: FCPO
+    [Pyrfa::symbolListSubmit] fieldList: [Pyrfa::symbolListSubmit] fieldList: PROV_SYMB=MY439483,PROD_PERM=10
+    [OMMCProvServer::submitData] sending refresh item: 0#BMD
+    [OMMCProvServer::submitData] sending refresh service: NIP
+
+__Pyrfa.marketPriceSubmit(_Tuple_)__  
+For provider client to publish market data to MDH/ADH, the market data image/update **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
+```
+{'RIC':'<ITEM_NAME>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#X>,...,'<FID_NAME#X>':<VALUE#X>}
+```  
+    >>> IMAGES = {'RIC':'EUR=', 'RDNDISPLAY':200, 'RDN_EXCHID':155, 'BID':0.988, 'ASK':0.999, 'DIVPAYDATE':'20110623'},
+    >>> p.marketPriceSubmit(IMAGES)
+    [Pyrfa::marketPriceSubmit] symbolName: EUR=
+    [Pyrfa::marketPriceSubmit] fieldList: BID_NET_CH=0.0041,BID=0.988,ASK_TIME=now,ASK=0.999
+    [OMMCProvServer::submitData] sending update item: EUR=
+    [OMMCProvServer::submitData] sending update service: NIP
+
+__Pyrfa.marketByOrderSubmit(_Tuple_)__  
+For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit(). **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).  
+```
+{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<ORDER_ID>','<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>,...,'<FID_NAME#X>':<VALUE#X>}
+```
+    >>> ORDERS = {'ACTION':'ADD', 'RIC':'ANZ.AX', 'KEY':'538993C200035057B', 'ORDER_PRC': '20.260', 'ORDER_SIZE':50, 'ORDER_SIDE':'BID', 'SEQNUM_QT':2744, 'EX_ORD_TYP':0, 'CHG_REAS':6,'ORDER_TONE':''},
+    >>> p.marketByOrderSubmit(ORDERS)
+    [Pyrfa::marketByOrderSubmit] mapAction: update
+    [Pyrfa::marketByOrderSubmit] symbolName: ANZ.AX
+    [Pyrfa::marketByOrderSubmit] mapKey: 538993C200083483B
+    [Pyrfa::marketByOrderSubmit] fieldList: [Pyrfa::marketByOrderSubmit] fieldList: EX_ORD_TYP=0,ORDER_SIZE=50,CHG_REAS=6,ORDER_PRC=20.260,SEQNUM_QT=2744,ORDER_TONE=,ORDER_SIDE=BID
+    [OMMCProvServer::submitData] sending update item: ANZ.AX
+    [OMMCProvServer::submitData] sending update service: NIP
+
+__Pyrfa.marketByPriceSubmit(_Tuple_)__  
+For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit(). **_Tuple_** must contain python dictionaries in the below format. `MTYPE IMAGE` can be added to `Tuple` in order to publish the IMAGE of the item (default `MTYPE` is `UPDATE`).   
+```
+{'ACTION':'<ADD/UPDATE/DELETE>','RIC':'<ITEM_NAME>','KEY':'<DEPTH>',<FID_NAME#1>':<VALUE#1>,'<FID_NAME#2>':<VALUE#2>, ... ,'<FID_NAME#X>':<VALUE#X>}    
+```
+
+    >>> DEPTHS = {'ACTION':'ADD', 'RIC':'ANZ.CHA','KEY':'201000B','ORDER_PRC': '20.1000', 'ORDER_SIDE':'BID', 'ORDER_SIZE':'1300', 'NO_ORD':13, 'QUOTIM_MS':16987567,'ORDER_TONE':''},
+    >>> p.marketByPriceSubmit(DEPTHS)
+    [Pyrfa::marketByPriceSubmit] symbolName: ANZ.CHA
+    [Pyrfa::marketByPriceSubmit] mapKey: 210000B
+    [Pyrfa::marketByPriceSubmit] fieldList: [Pyrfa::marketByPriceSubmit] fieldList:
+    ORDER_SIZE=500,QUOTIM_MS=16987567,NO_ORD=13,ORDER_PRC=21.0000,ORDER_TONE=,ORDER_SIDE=ASK
+    [OMMCProvServer::submitData] sending update item: ANZ.CHA
+    [OMMCProvServer::submitData] sending update service: NIP
+
 __Pyrfa.historySubmit(_Tuple_)__  
 For a provider client to publish the specified history data to MDH/ADH, each history image/update. **_Tuple_** must contain python dictionaries in the following format:
 ```
@@ -867,14 +883,19 @@ For a provider client to publish the specified history data to MDH/ADH, each his
     [Pyrfa::historySubmit] fieldList: TRDPRC_1=40.124,BID_ORD_ID=5307FBL20AL7B,ASK_ORD_ID=5307FBL20BN8A,TRADE_ID=123456789,SATIM=now
     [OMMCProvServer::submitData] sending update item: tANZ.AX
     [OMMCProvServer::submitData] sending update service: NIP
+    
+__Pyrfa.closeSubmit([_item=String_].[_service=String_])__  
+For a provider to close the published item with specific service. User can define multiple item names using “,” to separate each name.  
 
-## Getting Data
-__Pyrfa.dispatchEventQueue([_Timeout_])__  
-Dispatch the events (data) from EventQueue within a period of time (If **_Timeout_** is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in dictionary format.
+    >>> p.closeSubmit('EUR=.DEV')
+    [Tue Oct  6 17:34:07 2015]: (ComponentName) Pyrfa: (Severity) Information: [OMMCProvServer::closeSubmit] Close item subscription for: EUR=.DEV, ItemList size: 0
+    [Pyrfa::dispatchLoggerEventQueue] Event loop - approximate pending Events: 0
 
-    >>> p.dispatchEventQueue()
-    {'MTYPE':'REFRESH','RIC':'EUR=','SERVICE':'IDN_RDF_SDS'}
-    {'MTYPE':'IMAGE','RIC':'EUR=','SERVICE':'IDN_RDF_SDS','ASK':1.3712,'BID':1.3709}
+__Pyrfa.closeAllSubmit()__  
+For a provider to close all published item.
+
+    >>> p.closeAllSubmit()
+
 
 License
 =======
