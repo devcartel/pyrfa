@@ -104,6 +104,16 @@ Changelog
 * Support for Python 3.4
 * Available in 64-bit only
 
+7.6.1.4
+
+* 23 November 2015
+* Compiled with RFA 7.6.1.E5
+* Added serviceStateSubmit() for bringing service up or down
+* Fixed serviceDownSubmit() that caused session disconnection
+* Removed serviceStateSubmit()
+* Added serviceUpSubmit()
+* Fixed a bug where it fails to close a complete published item list
+
 7.6.1.3
 
 * 24 August 2015
