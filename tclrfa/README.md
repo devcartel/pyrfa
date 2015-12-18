@@ -101,6 +101,11 @@ Changelog
 * Minimum requirement is now Tcl 8.5
 * Available in 64-bit only
 
+7.6.2.0
+
+* 17 December 2015
+* Compiled with RFA 7.6.2.L1
+
 7.6.1.4
 
 * 24 November 2015
