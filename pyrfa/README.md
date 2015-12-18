@@ -104,6 +104,11 @@ Changelog
 * Support for Python 3.4
 * Available in 64-bit only
 
+7.6.2.0
+
+* 17 December 2015
+* Compiled with RFA 7.6.2.L1
+
 7.6.1.4
 
 * 23 November 2015
