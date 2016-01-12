@@ -98,10 +98,6 @@ __Features__
 * Compiled with RFA 7.6.2.L1
 
 7.6.1.4
-* 17 December 2015
-* Compiled with RFA 7.6.2.L1
-
-7.6.1.4
 * 23 November 2015
 * Compiled with RFA 7.6.1.E5
 * Added serviceStateSubmit() for bringing service up or down
@@ -373,7 +369,7 @@ Instantiate a PyRFA object.
 
 __Pyrfa.setDebugMode([_mode_])__  
 _mode: Boolean_  
-Enable or disable debug messages. If argument is empty, it will read a value from configuration file.
+Enable or disable debug messages. If argument is empty, it will read a value from `\pyrfa\debug` in the configuration file.
 
     >>> p.setDebugMode(True)
 
@@ -793,6 +789,7 @@ A helper function that subscribes, wait for data dissemination to be complete, u
     2013/10/23,28.370,27.660,28.680,27.470,1773109.000,28.163
 
 ## History
+
 __Pyrfa.historyRequest(_symbols_)__  
 _symbols: String_
 
