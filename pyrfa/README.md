@@ -372,7 +372,7 @@ Instantiate a PyRFA object.
     >>> p = Pyrfa.pyrfa()
 
 __Pyrfa.setDebugMode([_mode_])__  
-_**mode**: Boolean_  
+_mode: Boolean_  
 Enable or disable debug messages. If argument is empty, it will read a value from configuration file.
 
     >>> p.setDebugMode(True)
