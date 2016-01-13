@@ -46,7 +46,7 @@ __Features__
   11. [Market by Price](#market-by-price)
   12. [OMM Posting](#omm-posting)
   13. [Pause and Resume](#pause-and-resume)
-  14. [TS1](#ts1)
+  14. [Timeseries](#timeseries)
   15. [History](#history)
   16. [Getting Data](#getting-data)
   17. [Publication](#publication)
@@ -311,7 +311,7 @@ Namespace: `\pyrfa\`
 |------------------|------------------|--------------------------------------------------------|
 | `debug`          | `true`/`false`   | Enable/Disable debug mode                              |
 
-## Logging  
+## Logger  
 Namespace: `\Logger\AppLogger\`
    
 | Parameter            | Example value    | Description                                        |
@@ -750,7 +750,7 @@ Resume all subscriptions.
 
     >>> p.resumeAll()
 
-## TS1
+## Timeseries
 
 __setTimeSeriesPeriod(_period_)__  
 _period: String_  
