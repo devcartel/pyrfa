@@ -277,7 +277,7 @@ INT64         | LONG
 UINT64        | LONG
 
 # Configuration File
-Below is an example of a configuration file:
+## Example of pyrfa.cfg
 
     \pyrfa\debug = false
 
@@ -304,14 +304,15 @@ Below is an example of a configuration file:
     \ServiceGroups\SG1\serviceList = "SERVICE1, SERVICE2"
     \Sessions\Session1\serviceGroupList = "SG1"
 
-## Debug Configuration
+## Parameter
+### Debug
 Namespace: `\pyrfa\`
 
 | Parameter        | Example value    | Description                                            |
 |------------------|------------------|--------------------------------------------------------|
 | `debug`          | `true`/`false`   | Enable/Disable debug mode                              |
 
-## Logger  
+### Logger  
 Namespace: `\Logger\AppLogger\`
    
 | Parameter            | Example value    | Description                                        |
@@ -320,7 +321,7 @@ Namespace: `\Logger\AppLogger\`
 | `fileLoggerFilename` | `"./pyrfa.log"`  | Log file name                                      |
 
 
-## Connection
+### Connection
 Namespace: `\Connections\<connection_name>\`
 
 | Parameter        | Example value    | Description                                            |
@@ -342,7 +343,7 @@ Namespace: `\Connections\<connection_name>\`
 | `downloadDataDict` | `true`/`false` | Enable/Disable data dictionary download from P2PS/ADS  |
 | `dumpDataDict`   | `true`/`false`   | Enable/Disable to dump data dictionary from P2PS/ADS   |
 
-## Session
+### Session
 Namespace: `\Sessions\<session_name>\`
 
 | Parameter          | Example value         | Description                                            |
@@ -352,7 +353,7 @@ Namespace: `\Sessions\<session_name>\`
 
 `session_name` must be passed to `acquireSession()` function.
 
-## Service Group
+### Service Group
 Namespace: `\ServiceGroups\<service_group_name>\`
 
 | Parameter          | Example value         | Description                                            |
