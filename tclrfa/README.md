@@ -1,6 +1,4 @@
-TCLRFA 8.0
-==========
-
+# TCLRFA 8.0
 TclRFA provides Tcl extension for accessing Thomson Reuters market data feeds such as Elektron,
 RMDS,Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or RDF-D. It supports subscription
 and publication of level 1 and 2 market data using OMM data message model.
@@ -29,12 +27,10 @@ Features:
 
 Tclrfa is written with C++ and ported as a stub extension for Tcl 8.5+
 
-Table of contents
-=================
-
+# Table of contents
 1. [Changelog](#changelog)
 2. [Performance](#performance)
-3. [Supported Systemm](#supported-systems)
+3. [Supported Systems](#supported-systems)
 4. [Installation](#installation)
 5. [Example](#example)
 6. [Functions](#functions)
@@ -51,16 +47,14 @@ Table of contents
   11. [Market by Price](#market-by-price)
   12. [OMM Posting](#omm-posting)
   13. [Pause and Resume](#pause-and-resume)
-  14. [TS1](#ts1)
+  14. [Timeseries](#timeseries)
   15. [History](#history)
   16. [Getting Data](#getting-data)
   17. [Publication](#publication)
 7. [License](#license)
 
-Changelog
-=========
+# Changelog
 8.0.0.5
-
 * 16 October 2015
 * Compiled with RFA 8.0.0.E1
 * Added serviceUpSubmit()
@@ -68,19 +62,16 @@ Changelog
 * Fixed a bug where it fails to close a complete published item list
 
 8.0.0.3
-
 * 26 August 2015
 * Prevent memory leak caused by login handler
 * Fixed another potential memory leak
 
 8.0.0.2
-
 * 17 August 2015
 * Fixed timeseries floating point data limitation
 * Fixed memory leak in data dictionary handler
 
 8.0.0.1
-
 * 6 August 2015
 * Supports Pause and Resume
 * Supports OMM Posting for market price
@@ -89,7 +80,6 @@ Changelog
 * Supports sending service up/down status
 
 8.0.0.0
-
 * 18 June 2015
 * Compiled with RFA 8.0.0.L1
 * New output message in pure dictionary format
@@ -102,12 +92,10 @@ Changelog
 * Available in 64-bit only
 
 7.6.2.0
-
 * 17 December 2015
 * Compiled with RFA 7.6.2.L1
 
 7.6.1.4
-
 * 24 November 2015
 * Compiled with RFA 7.6.1.E5
 * Added serviceUpSubmit()
@@ -115,7 +103,6 @@ Changelog
 * Fixed a bug where it fails to close a complete published item list
 
 7.6.1.3
-
 * 24 August 2015
 * New output message in pure dictionary format
 * Supports STATUS output message type
@@ -135,56 +122,47 @@ Changelog
 * Fixed another potential memory leak
 
 7.6.1.2
-
 * 28 May 2015
 * Support sending service down status programmatically
 
 7.6.1.1
-
 * 19 December 2014
 * Fixed OMM provider not submit directory data after reconnecting to ADH/MDH
 
 7.6.0.3
-
 * 2 Sep 2014
 * Added logger eventqueue to process log events
 * Fixed log() functions purge data in buffer resulted missing updates
 * Will be free software under MIT license
 
 7.6.0.2
-
 * 1 Aug 2014
 * Added setup.tcl: TclRFA package installer
 * setServiceName() to select a service programmatically
 * Fixed core dump upon exit if call getWatchList in script
 
 7.6.0.1
-
 * 18 July 2014
 * Minor bug fixes
 * Updates common files
 
 7.6.0.0
-
 * 9 July 2014
 * RFA 7.6.0.L1
 * Less log output to stdout
 * Remove using `update` in Tcl example scripts
 
 7.5.1.2
-
 * 11 February 2014
 * Fixed provider can convert string into ASCII_STRING field
 * Support Position parameter in the config file
 
 7.5.1.1
-
 * 5 November 2013
 * isLoggedIn returning P2PS/ADS login status
 * Fixed bug#35 TclRFA handles login status incorrectly when ServerList is unreachable
 
 7.5.1.0
-
 * 15 October 2013
 * RFA 7.5.1.L1
 * ApplicationId from config file submitted for login
@@ -192,37 +170,30 @@ Changelog
 * New config `flushTimerInterval` for low latency outbound message setup
 
 7.4.1.0
-
 * 28 April 2013
 * RFA 7.4.1.L1 for Linux and Windows
 * Ability to bind OMM Consumer to a NIC in config file
 
 7.2.1.0
-
 * 2 Feb 2013
 * Source repo relocated to GitHub
 * Using "tag" as part of the release number
 * RFA 7.2.1.L1 for Linux
 * RFA 7.2.1.E3 for Windows
 
-Performance
------------
+# Performance
 Subscription
-
-* coming soon...
+* N/A
 
 Publication
+* N/A
 
-* coming soon...
-
-Supported systems
---------------
+# Supported systems
 * Linux x86 64bit
 * Windows x86 64bit
 * Tcl8.5+, recommend ActiveTcl 8.5 from ActiveState (http://www.activestate.com/activetcl/downloads)
 
-Installation
-------------
+# Installation
 Run below commands in terminal or command prompt:
 
 ```
@@ -231,8 +202,7 @@ Run below commands in terminal or command prompt:
 > tclsh setup.tcl install
 ```
 
-Example
--------
+# Example
 ```tcl
 package require tclrfa
 set t [tclrfa]
@@ -255,9 +225,8 @@ while {1} {
 
 ```
 
-Configuration File
-------------------
-### Example
+# Configuration File
+## Example of pyrfa.cfg
 
     \tclrfa\debug = false
 
@@ -284,6 +253,7 @@ Configuration File
     \ServiceGroups\SG1\serviceList = "SERVICE1, SERVICE2"
     \Sessions\Session1\serviceGroupList = "SG1"
 
+## Parameter
 ### Debug Configuration
 Namespace: `\tclrfa\`
 
@@ -291,13 +261,13 @@ Namespace: `\tclrfa\`
 |------------------|------------------|--------------------------------------------------------|
 | `debug`          | `true`/`false`   | Enable/Disable debug mode                              |
 
-### Logging  
+### Logger
 Namespace: `\Logger\AppLogger\`
    
 | Parameter            | Example value    | Description                                        |
 |----------------------|------------------|----------------------------------------------------|
 | `fileLoggerEnabled`  | `true`/`false`   | Enable/Disable logging capability                  |
-| `fileLoggerFilename` | `"./tclrfa.log"`  | Log file name                                      |
+| `fileLoggerFilename` | `"./tclrfa.log"` | Log file name                                      |
 
 
 ### Connection
@@ -339,11 +309,8 @@ Namespace: `\ServiceGroups\<service_group_name>\`
 |--------------------|-----------------------|--------------------------------------------------------|
 | `serviceList`      | `"SERVICE1, SERVICE2"`| Available service names for the group                  |
 
-Functions
----------
-
-### Initialization
-
+# Functions
+## Initialization
 __[tclrfa]__  
 Instantiate a TclRFA object
 
@@ -354,8 +321,7 @@ Enable or disable debug messages.
 
     % $t setDebugMode True
 
-### Configuration
-
+## Configuration
 __createConfigDb__ _filename_  
 _filename = configuration file location, full or relative path_
 
@@ -376,8 +342,7 @@ Print current configuration values. If the arg is omitted, this function returns
     \Default\Sessions\Session3\connectionList = Connection_RSSL3
     \Default\Sessions\Session4\connectionList = Connection_RSSL4
 
-### Session
-
+## Session
 __acquireSession__ _session_  
 _session = session name_
 
@@ -385,8 +350,7 @@ Acquire a session as defined in the configuration file and look up for an approp
 
     % $t acquireSession "Session1"
 
-### Client
-
+## Client
 __createOMMConsumer__  
 Create an OMM data consumer client.
 
@@ -398,12 +362,10 @@ Create an OMM data provider client.
     % $t createOMMProvider
 
 __login__ _?username instanceid appid position?_  
-Where:
-
-* _username = DACS user ID_
-* _instanceid = unique application instance ID_
-* _appid = application ID (1-256)_
-* _position = application position e.g. IP address_
+_username = DACS user ID_  
+_instanceid = unique application instance ID_  
+_appid = application ID (1-256)_  
+_position = application position e.g. IP address_
 
 Send an authentication message with user information. This step is mandatory in order to consume the market data from P2PS/ADS. If arguments are omitted, TclRFA will read values from configuration file.
 
@@ -431,15 +393,13 @@ Programmatically set service name for subcription. Call this before making any r
     % $t setServiceName "IDN"
     % $t marketPriceRequest "EUR="
 
-### Directory
-
+## Directory
 __directoryRequest__  
 Send a directory request through the acquired session. This step is the mandatory in order to consume the market data from P2PS/ADS.
 
     % $t directoryRequest
 
-### Dictionary
-
+## Dictionary
 __dictionaryRequest__  
 If `downloadDataDict` configuration is set to True then TclRFA will send a request for data dictionaries to P2PS/ADS. Otherwise, it uses local data dictionaries specified by `fieldDictionaryFilename` and `enumTypeFilename` from configuration file.
 
@@ -451,8 +411,7 @@ Check whether the data dictionary is successfully downloaded from the server.
     % $t isNetworkDictionaryAvailable
     1
 
-### Logging
-
+## Logging
 __log__ _message_  
 Write a normal message to a log file.
 
@@ -471,8 +430,7 @@ Write an error message to a log file.
     % $t logError “Print error message out”
     [Thu Jul 04 17:48:00 2013]: (ComponentName) Tclrfa: (Severity) Error: Unexpected error: Print error message out
 
-### Symbol List
-
+## Symbol List
 __symbolListRequest__ _RIC ?RIC RIC ...?_  
 _RIC = Reuters Instrument Code_
 
@@ -531,8 +489,7 @@ Example
     [Tclrfa::symbolListSubmit] mapKey: FCPO
     [Tclrfa::symbolListSubmit] fieldList: [Tclrfa::symbolListSubmit] fieldList: PROV_SYMB=MY439483,PROD_PERM=10
 
-### Market Price
-
+## Market Price
 __marketPriceRequest__ _RIC ?RIC RIC ...?_   
 _RIC = Reuters Instrument Code_  
 
@@ -590,8 +547,7 @@ Resume subscription to the item.
 
     % $t marketPriceResume EUR=
 
-### Market by Order
-
+## Market by Order
 __marketByOrderRequest__ _RIC ?RIC RIC ...?_   
 _RIC = Reuters Instrument Code_
 
@@ -640,8 +596,7 @@ Return all subscribed item names on order book streaming service with service na
     % $t getMarketByOrderWatchList
     ANZ.AX.IDN_SELECTFEED
 
-### Market by Price
-
+## Market by Price
 __marketByPriceRequest__ _RIC ?RIC RIC ...?_  
 _RIC = Reuters Instrument Code_
 
@@ -689,7 +644,7 @@ Return all subscribed item names on market depth streaming service with service 
     % t getMarketByPriceWatchList
     ANZ.CHA.IDN_SELECTFEED
 
-### OMM Posting  
+## OMM Posting  
 __marketPricePost__ _data ?data data ...?_  
 Use OMM Post to contribute data to ADH/ADS cache. Note that the posted service must be up. `MTYPE IMAGE` can be added to `data` in order to post the IMAGE (default `MTYPE` is `UPDATE`)
 
@@ -706,8 +661,7 @@ Example
     TIMACT(5)=16:02:55.571
     TRDPRC_1(6)=100e-0
 
-### Pause and Resume  
-
+## Pause and Resume  
 __pauseAll__  
 Pause all subscription on all domains. Updates are conflated during the pause.
 
@@ -719,8 +673,7 @@ Resume all subscription.
     % $t resumeAll
 
 
-### TS1
-
+## Timeseries
 __setTimeSeriesPeriod__ _daily|weekly|monthly_  
 Define a time period for a time series subscription. Default is daily.
 
@@ -761,8 +714,7 @@ A helper function that subscribes, wait for data dissemination to be complete, u
     2012/02/07,22.110,22.310,22.510,22.030,2662700.000,22.187
     2012/02/06,22.180,22.680,22.680,22.020,2829459.000,22.175
 
-### History
-
+## History
 __historyRequest__ _RIC ?RIC RIC ...?_  
 _RIC = Reuters Instrument Code_
 
@@ -798,8 +750,7 @@ Unsubscribe all items from historical data stream.
 
     % $t historyCloseAllRequest
 
-### Getting Data
-
+## Getting Data
 __dispatchEventQueue__ _?timeout?_  
 _timeout = time in milliseconds to wait for data_
 
@@ -808,8 +759,7 @@ Dispatch the events (data) from EventQueue within a period of time (If timeout i
     % $t dispatchEventQueue
     {SERVICE {NIP} RIC {tANZ.AX} MTYPE {REFRESH}} {SERVICE {NIP} RIC {tANZ.AX} MTYPE {IMAGE} TRPRC_1 {40.124} SALTIM {14:31:34:335:000:000} TRADE_ID {123456789} BID_ORD_ID {5307FBL20AL7B}ASK_ORD_ID {5307FBL20BN8A}}
 
-### Publication  
-
+## Publication  
 __directorySubmit__ _?domain?_ _?service?_  
 _domain = data domain number_  
 _service = target service_
@@ -950,15 +900,12 @@ For a provider to close the published item with specific service. User can defin
     [Fri Oct 16 14:53:12 2015]: (ComponentName) Tclrfa: (Severity) Information: [OMMCProvServer::closeSubmit] Close item publication for: EUR=.DEV, ItemList size is now: 0
     [Tclrfa::dispatchLoggerEventQueue] Event loop - approximate pending Events: 0
 
-
 __closeAllSubmit__  
 For a provider to close all published item.  
 
     % $t closeAllSubmit
 
-
-License
-=======
+# License
 Copyright (C) 2015-2017 DevCartel Company Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
