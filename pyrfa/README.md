@@ -53,6 +53,10 @@ __Features__
 9. [License](#license)
 
 # Changelog
+8.0.0.6
+* 3 March 2016
+* Supports Interactive Provider
+
 8.0.0.5
 * 8 October 2015
 * Replaced serviceStateSubmit() with serviceUpSubmit() and serviceDownSubmit()
@@ -328,7 +332,7 @@ Namespace: `\Connections\<connection_name>\`
 |------------------|------------------|--------------------------------------------------------|
 | `rsslPort`       | `"14002"`        | P2PS/ADS RSSL port number                              |
 | `ServerList`     | `"127.0.0.1"`    | P2PS/ADS IP address or hostnam                         |
-| `connectionType` | `"RSSL"`         | The specific type of the connection. Must be `RSSL`    |
+| `connectionType` | `"RSSL"`         | `RSSL`, `RSSL_NIPROV` or `RSSL_PROV`                   |
 | `logEnabled`     | `true`/`false`   | Enable/Disable logging capability                      |
 | `UserName`       | `"pyrfa"`        | DACS username                                          |
 | `InstanceId`     | `"123"`          | Application instance ID                                |
@@ -715,7 +719,7 @@ Return all subscribed item names on market depth streaming data with service nam
 __marketPricePost(_data_)__  
 _data: Tuple_  
 
-OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache. Note that the posted service must be up.
+OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache or provider application. The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
 
     >>> p.marketPricePost(({'MTYPE':'IMAGE','RIC':'TRI.N', 'TRDPRC_1':price,'TIMACT':'now'},))
     [Pyrfa::marketPricePost] fieldList: TRDPRC_1=4.445,RIC=TRI.N,TIMACT=now,MTYPE=IMAGE
@@ -843,14 +847,14 @@ Submit directory with domain type (capability) in a provider application and ser
 * '10' - symbol list
 * '12' - history
 
-This function is called automatically upon data submission. If **_service_** is omitted, it will use the value from configuration file.
+This function is called automatically upon data submission. If **_service_** is omitted, it will use the value from configuration file.  
 
     >>> p.directorySubmit('6','IDN')
     
 __Pyrfa.serviceDownSubmit([_service_])__  
 _service: String_  
 
-Submit the specified down service status to ADH. If **_service_** is omitted, it will use the value from configuration file.
+Submit the specified down service status to ADH. If **_service_** is omitted, it will use the value from configuration file. For Interactive Provider, **_service_** will be ignored and use the default value from configuration file instead.
 
     >>> p.serviceDownSubmit('IDN')
 
@@ -859,7 +863,7 @@ This function must be called after `directorySubmit()`.
 __Pyrfa.serviceUpSubmit([_service_])__  
 _service: String_  
 
-Submit the specified up service status to ADH. If **_service_** is omitted, it will use the value from configuration file.
+Submit the specified up service status to ADH. If **_service_** is omitted, it will use the value from configuration file. For Interactive Provider, **_service_** will be ignored and use the default value from configuration file instead.
 
     >>> p.serviceUpSubmit('IDN')
 
