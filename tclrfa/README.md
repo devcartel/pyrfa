@@ -54,6 +54,10 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.5+
 7. [License](#license)
 
 # Changelog
+8.0.0.6
+* 3 March 2016
+* Supports Interactive Provider
+
 8.0.0.5
 * 16 October 2015
 * Compiled with RFA 8.0.0.E1
@@ -646,9 +650,11 @@ Return all subscribed item names on market depth streaming service with service 
 
 ## OMM Posting  
 __marketPricePost__ _data ?data data ...?_  
-Use OMM Post to contribute data to ADH/ADS cache. Note that the posted service must be up. `MTYPE IMAGE` can be added to `data` in order to post the IMAGE (default `MTYPE` is `UPDATE`)
+OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache or provider application. The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
 
     {RIC {ITEM_NAME} MTYPE {IMAGE/UPDATE} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
+
+`MTYPE IMAGE` can be added to `data` in order to post item IMAGE (default `MTYPE` is `UPDATE`).
 
 Example
 
@@ -779,14 +785,14 @@ This function is normally called automatically upon data submission. If _service
 __serviceDownSubmit__ _?service?_  
 _service = target service_  
 
-Submit service down status to ADH. If _service_ is omitted, it uses _service_ from configuration file.  
+Submit service down status to ADH. If _service_ is omitted, it uses _service_ from configuration file. For Interactive Provider, **_service_** will be ignored and use the default value from configuration file instead.
 
     % $t serviceDownSubmit IDN
 
 __serviceUpSubmit__ _?service?_  
 _service = target service_  
 
-Submit service up status to ADH. If _service_ is omitted, it uses _service_ from configuration file.  
+Submit service up status to ADH. If _service_ is omitted, it uses _service_ from configuration file. For Interactive Provider, **_service_** will be ignored and use the default value from configuration file instead.
 
     % $t serviceDownSubmit IDN
 
