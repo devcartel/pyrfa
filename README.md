@@ -24,7 +24,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl langua
 | Version | Release Date| Windows (x86) | Windows (64-bit) | Linux (64-bit) |
 |:-:|:-:|:-:|:-:|:-:|
 | 8.0.1.0  | 18 May 16 |  | [download](https://github.com/devcartel/api/releases/download/tclrfa8.0.1.0/tclrfa8.0.1.0-win32-ix86_64.zip)  | [download](https://github.com/devcartel/api/releases/download/tclrfa8.0.1.0/tclrfa8.0.1.0-linux-x86_64.zip) |
-| 7.6.2.0 | 17 Dec 15 | [download](https://github.com/devcartel/api/releases/download/tclrfa7.6.2.0/tclrfa7.6.2.0-win32-ix86.zip)  |   |   |
+| 7.6.2.1 | 18 May 16 | [download](https://github.com/devcartel/api/releases/download/tclrfa7.6.2.1/tclrfa7.6.2.1-win32-ix86.zip)  |   |   |
 
 Download Statistics
 =======
