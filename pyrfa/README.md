@@ -1,4 +1,4 @@
-# PyRFA 8.0
+# PyRFA
 PyRFA is a Python API for accessing Thomson Reuters market data feeds know as RMDS or
 Thomson Reuter Enterprise Platform for Real-time (TREP-RT). It supports subscription
 and publication of market data using OMM data message model.
@@ -12,12 +12,14 @@ __Features__
 * Multiple service subscription
 * Pause and resume subscription
 * OMM Posting
+* View
 * Dictionary download or use local files
 * Directory request
 * Symbol list request
 * Timeseries request and decoder for IDN TS1
 * Custom domain `MMT_HISTORY` which can be used for intraday timeseries publishing
-* Non-interactive provider for `MARKET_PRICE`, `MARKET_BY_ORDER`, `MARKET_BY_PRICE`, `SYMBOLLIST`, `HISTORY`
+* Non-interactive provider for `MARKET_PRICE`, `MARKET_BY_ORDER`, `MARKET_BY_PRICE`, `SYMBOLLIST`, `HISTORY` domain
+* Interactive provider for `MARKET_PRICE` domain
 * Debug mode
 * Logging
 * Low-latency mode
@@ -53,6 +55,12 @@ __Features__
 9. [License](#license)
 
 # Changelog
+8.0.1.0
+* 19 May 2016
+* Supports FID filtering subscription with View
+* Updates RDMDictionary and enumtype.def
+* Compiled with RFA 8.0.1.L1
+
 8.0.0.6
 * 3 March 2016
 * Supports Interactive Provider
@@ -96,6 +104,12 @@ __Features__
 * Fixed for service group failover by RFA 8.0
 * Support for Python 3.4
 * Available in 64-bit only
+
+7.6.2.1
+* 19 May 2016
+* Supports Interactive Provider
+* Supports FID filtering subscription with View
+* Updates RDMDictionary and enumtype.def
 
 7.6.2.0
 * 17 December 2015
@@ -583,7 +597,18 @@ STATUS
 
     {'STREAM_STATE':'<Open/Closed>','SERVICE':'<SERVICE_NAME>','TEXT':'<TEXT_MESSAGE>','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'<ITEM_NAME>'} 
 
-    
+__Pyrfa.setView(_fids_)__  
+_fids: String_
+
+To specifies a view (a subset of fields to be filtered) for the next subscribed items. User can define multitple fields using “,” to separate each field in **_fids_** which can be a valid field name or number.
+
+    >>> p.setView('RDNDISPLAY,TRDPRC_1,22,25')
+    >>> p.marketPriceRequest('EUR=')
+
+Or reset view to subscribe all fields with
+
+    >>> p.setView()
+
 __Pyrfa.marketPriceCloseRequest(_symbols_)__  
 _symbols: String_  
 
@@ -715,11 +740,13 @@ Return all subscribed item names on market depth streaming data with service nam
      ANZ.CHA.IDN_SELECTFEED
 
 ## OMM Posting
+OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache or provider application.
+The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
 
 __marketPricePost(_data_)__  
 _data: Tuple_  
 
-OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache or provider application. The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
+Post market price data. **_data_** must be in Tuple format.
 
     >>> p.marketPricePost(({'MTYPE':'IMAGE','RIC':'TRI.N', 'TRDPRC_1':price,'TIMACT':'now'},))
     [Pyrfa::marketPricePost] fieldList: TRDPRC_1=4.445,RIC=TRI.N,TIMACT=now,MTYPE=IMAGE
@@ -756,6 +783,10 @@ Resume all subscriptions.
     >>> p.resumeAll()
 
 ## Timeseries
+Time Series One (TS1) provides access to historical data distributed via the Reuter Integrated Data Network (IDN).
+It provides a range of facts (such as Open, High, Low, Close) for the equity, money, fixed income, commodities and energy markets.
+TS1 data is available in three frequencies; daily, weekly, and monthly.
+For daily data there is up to two years worth of history, for weekly data there is five years, and for monthly data up to ten years.
 
 __setTimeSeriesPeriod(_period_)__  
 _period: String_  
