@@ -10,12 +10,12 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
 | Version | Release Date | Windows (x86 + Python2.7) | Windows (x86 + Python2.6) | Windows (64-bit + Python3.4)| Windows (64-bit + Python2.7) | Windows (64-bit + Python2.6) |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | 8.0.1.0 | 19 May 16| |  | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.0/pyrfa8.0.1.0-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.0/pyrfa8.0.1.0-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.0/pyrfa8.0.1.0-win32-x86_64-py26.zip)  |
-|  7.6.2.0 | 17 Dec 15 | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.0/pyrfa7.6.2.0-win32-x86-py27.zip)| [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.0/pyrfa7.6.2.0-win32-x86-py26.zip) |   |  |  |
+|  7.6.2.1 | 19 May 16 | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.1/pyrfa7.6.2.1-win32-x86-py27.zip)| [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.1/pyrfa7.6.2.1-win32-x86-py26.zip) |   |  |  |
 
 | Version | Release Date | Linux (64-bit + Python3.4) | Linux/RHEL7 (64-bit + Python2.7) | RHEL6 (64-bit + Python 2.6) | RHEL5 (64-bit + Python2.4)  |
 |:-:|:-:|:-:|:-:|:-:|:-:|
 | 8.0.1.0 | 19 May 16 | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.0/pyrfa8.0.1.0-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.0/pyrfa8.0.1.0-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.0/pyrfa8.0.1.0-rhel64-gcc447-x86_64-py26.zip) |   |
-| 7.6.2.0 | 17 Dec 15 |  |   |   | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.0/pyrfa7.6.2.0-rhel5-gcc412-x86_64-py24.zip) |
+| 7.6.2.1 | 19 May 16 |  |   |   | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.1/pyrfa7.6.2.1-rhel5-gcc412-x86_64-py24.zip) |
 
 
 #### TclRFA ( [Documentation](https://github.com/devcartel/api/blob/master/tclrfa/README.md#table-of-contents) |  [Issue](https://github.com/devcartel/api/issues) )
