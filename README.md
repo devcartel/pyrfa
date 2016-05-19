@@ -29,7 +29,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl langua
 Download Statistics
 =======
 
-![PyRFA Downloads](http://media.virbcdn.com/cdn_images/resize_1024x1365/d9/ddafca7e56897326-PyRFA_download_overview.jpg "Updated on 9 Feb 2016")
+![PyRFA Downloads](https://files.slack.com/files-pri/T0C1M2G8N-F1A5V5A0J/stat_20160519.png "Updated on 19 May 2016")
 
 
 License
