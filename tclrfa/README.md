@@ -1,4 +1,4 @@
-# TCLRFA 8.0
+# TCLRFA
 TclRFA provides Tcl extension for accessing Thomson Reuters market data feeds such as Elektron,
 RMDS,Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or RDF-D. It supports subscription
 and publication of level 1 and 2 market data using OMM data message model.
@@ -13,12 +13,14 @@ Features:
 * Multiple service subscription
 * Pause and resume subscription
 * OMM Posting
+* View
 * Dictionary download or use local files
 * Directory request
 * Symbol list request
 * Timeseries request and decoder for IDN TS1
 * Custom domain MMT_HISTORY which can be used for intraday publishing
-* Non-interactive provider for MARKET_PRICE, MARKET_BY_ORDER, MARKET_BY_PRICE, SYMBOLLIST, HISTORY
+* Non-interactive provider for `MARKET_PRICE`, `MARKET_BY_ORDER`, `MARKET_BY_PRICE`, `SYMBOLLIST`, `HISTORY` domain
+* Interactive provider for `MARKET_PRICE` domain
 * Debug mode
 * Logging
 * Low-latency mode
@@ -54,6 +56,12 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.5+
 7. [License](#license)
 
 # Changelog
+8.0.1.0
+* 18 May 2016
+* Supports FID filtering subscription with View
+* Updates RDMDictionary and enumtype.def
+* Compiled with RFA 8.0.1.L1
+
 8.0.0.6
 * 3 March 2016
 * Supports Interactive Provider
@@ -94,6 +102,12 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.5+
 * Fixed for service group failover by RFA 8.0
 * Minimum requirement is now Tcl 8.5
 * Available in 64-bit only
+
+7.6.2.1
+* 18 May 2016
+* Supports Interactive Provider
+* Supports FID filtering subscription with View
+* Updates RDMDictionary and enumtype.def
 
 7.6.2.0
 * 17 December 2015
@@ -519,6 +533,23 @@ Example
     {SERVICE {NIP} RIC {EUR=} MTYPE {REFRESH}}
     {SERVICE {NIP} RIC {EUR=} MTYPE {IMAGE} RDNDISPLAY {100} RDN_EXCHID {SES} BID {0.988} ASK {0.999} DIVPAYDATE {23 JUN 2011}}
 
+__setView__ FID ?FID FID ...?_  
+_FID = a valid field name or number_
+
+To specify a view (a subset of fields to be filtered) for the next subscribed items. User can define multitple fields. 
+
+    % $t setView "RDNDISPLAY TRDPRC_1 22 25"
+    % $t marketPriceRequest "EUR= JPY="
+
+Or define as multiple arguments.
+
+    % $t setView RDNDISPLAY TRDPRC_1 22 25
+    % $t marketPriceRequest EUR= JPY=
+
+And reset view to subscribe all fields with
+
+    $t setView
+
 __marketPriceCloseRequest__ _RIC ?RIC RIC ...?_  
 _RIC = Reuters Instrument Code_
 
@@ -649,12 +680,15 @@ Return all subscribed item names on market depth streaming service with service 
     ANZ.CHA.IDN_SELECTFEED
 
 ## OMM Posting  
+OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache or provider application.
+The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
+
 __marketPricePost__ _data ?data data ...?_  
-OMM Posting (off-stream) leverages on consumer login channel to contribute aka. "post" data up to ADH/ADS cache or provider application. The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
+_data = a Tcl dict_
+
+`MTYPE IMAGE` can be added to `data` in order to post item as an IMAGE (default `MTYPE` is `UPDATE`).
 
     {RIC {ITEM_NAME} MTYPE {IMAGE/UPDATE} FID_NAME#1 {VALUE#1} ... FID_NAME#X {VALUE#X}}
-
-`MTYPE IMAGE` can be added to `data` in order to post item IMAGE (default `MTYPE` is `UPDATE`).
 
 Example
 
@@ -680,6 +714,11 @@ Resume all subscription.
 
 
 ## Timeseries
+Time Series One (TS1) provides access to historical data distributed via the Reuter Integrated Data Network (IDN).
+It provides a range of facts (such as Open, High, Low, Close) for the equity, money, fixed income, commodities and energy markets.
+TS1 data is available in three frequencies; daily, weekly, and monthly.
+For daily data there is up to two years worth of history, for weekly data there is five years, and for monthly data up to ten years.
+
 __setTimeSeriesPeriod__ _daily|weekly|monthly_  
 Define a time period for a time series subscription. Default is daily.
 
