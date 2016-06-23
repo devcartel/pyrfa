@@ -56,6 +56,12 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.5+
 7. [License](#license)
 
 # Changelog
+
+8.0.1.1
+* 23 June 2016
+* Supports RMTES strings to UTF-8
+* New getFieldID function
+
 8.0.1.0
 * 18 May 2016
 * Supports FID filtering subscription with View
@@ -102,6 +108,11 @@ Tclrfa is written with C++ and ported as a stub extension for Tcl 8.5+
 * Fixed for service group failover by RFA 8.0
 * Minimum requirement is now Tcl 8.5
 * Available in 64-bit only
+
+7.6.2.2
+* 23 June 2016
+* Supports RMTES strings to UTF-8
+* New getFieldID function
 
 7.6.2.1
 * 18 May 2016
@@ -428,6 +439,14 @@ Check whether the data dictionary is successfully downloaded from the server.
 
     % $t isNetworkDictionaryAvailable
     1
+
+__getFieldID__ _FID_  
+_FID = a valid field name_  
+To translate field name to field ID.
+
+    % $t getFieldID BID
+    22
+
 
 ## Logging
 __log__ _message_  
