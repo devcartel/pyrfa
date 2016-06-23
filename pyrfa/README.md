@@ -55,6 +55,12 @@ __Features__
 9. [License](#license)
 
 # Changelog
+
+8.0.1.1
+* 23 June 2016
+* Supports RMTES strings to UTF-8
+* New getFieldID() function
+
 8.0.1.0
 * 19 May 2016
 * Supports FID filtering subscription with View
@@ -104,6 +110,11 @@ __Features__
 * Fixed for service group failover by RFA 8.0
 * Support for Python 3.4
 * Available in 64-bit only
+
+7.6.2.2
+* 23 June 2016
+* Supports RMTES strings to UTF-8
+* New getFieldID() function
 
 7.6.2.1
 * 19 May 2016
@@ -494,6 +505,13 @@ Check whether the data dictionary is successfully downloaded from the server. Re
 
     >>> p.isNetworkDictionaryAvailable()
     True
+
+__Pyrfa.getFieldID(_fids_)__  
+_fids: String_  
+To translate field name to field ID.
+
+    >>> p.getFieldID(‘DSPL_NMLL’)
+    >>> 1352
 
 ## Logging
 
