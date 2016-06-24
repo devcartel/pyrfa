@@ -440,8 +440,8 @@ Check whether the data dictionary is successfully downloaded from the server.
     % $t isNetworkDictionaryAvailable
     1
 
-__getFieldID__ _FID_  
-_FID = a valid field name_  
+__getFieldID__ _field_name_  
+_field_name = a valid field name_  
 To translate field name to field ID.
 
     % $t getFieldID BID
