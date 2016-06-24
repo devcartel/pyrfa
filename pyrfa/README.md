@@ -506,8 +506,8 @@ Check whether the data dictionary is successfully downloaded from the server. Re
     >>> p.isNetworkDictionaryAvailable()
     True
 
-__Pyrfa.getFieldID(_fids_)__  
-_fids: String_  
+__Pyrfa.getFieldID(_fieldName_)__    
+_fieldName: String_  
 To translate field name to field ID.
 
     >>> p.getFieldID(‘DSPL_NMLL’)
