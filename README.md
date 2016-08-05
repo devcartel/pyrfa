@@ -4,7 +4,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
 Version | Release Date | Windows (64bit, Python3.4)| Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | RHEL6 (64bit, Python2.6)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 8.0.1.1 | 23 June 16| [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py26.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-rhel64-gcc447-x86_64-py26.zip)
-[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/pyrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
+[Changelog](https://github.com/devcartel/thomsonreuters/blob/master/PYRFA8.md#changelog) / [Examples](https://github.com/devcartel/thomsonreuters/blob/master/PYRFA8.md#example) / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/PYRFA8.md) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
 
 # PyRFA 7
 Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
@@ -12,7 +12,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
 Version | Release Date | Windows (x86 + Python2.7) | Windows (x86 + Python2.6) | RHEL5 (64-bit + Python2.4)
 :-:|:-:|:-:|:-:|:-:
 7.6.2.2 | 23 June 16 | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py27.zip)| [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py26.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-rhel5-gcc412-x86_64-py24.zip)
-[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/pyrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
+[Changelog](https://github.com/devcartel/thomsonreuters/blob/master/PYRFA7.md#changelog) / [Examples](https://github.com/devcartel/thomsonreuters/blob/master/PYRFA7.md#example) / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/PYRFA7.md) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
 
 # TclRFA 8
 Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl language. Requires Tcl8.5+.
@@ -20,7 +20,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl langua
 Version | Release Date | Windows (64-bit) | Linux (64-bit)
 :-:|:-:|:-:|:-:|:-:|
 8.0.1.1 | 23 June 16 | [download](https://github.com/devcartel/thomsonreuters/releases/download/tclrfa8.0.1.1/tclrfa8.0.1.1-win32-ix86_64.zip)  | [download](https://github.com/devcartel/thomsonreuters/releases/download/tclrfa8.0.1.1/tclrfa8.0.1.1-linux-x86_64.zip)
-[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/tclrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
+[Changelog](https://github.com/devcartel/thomsonreuters/blob/master/TCLRFA8.md#changelog) / [Examples](https://github.com/devcartel/thomsonreuters/blob/master/TCLRFA8.md#example) / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/TCLRFA8.md) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
 
 # TclRFA 7
 Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl language. Requires Tcl8.5+.
@@ -28,7 +28,7 @@ Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl langua
 Version | Release Date| Windows (x86)
 :-:|:-:|:-:|:-:|:-:
 7.6.2.2 | 23 June 16 | [download](https://github.com/devcartel/thomsonreuters/releases/download/tclrfa7.6.2.2/tclrfa7.6.2.2-win32-ix86.zip)
-[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/tclrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
+[Changelog](https://github.com/devcartel/thomsonreuters/blob/master/TCLRFA7.md#changelog) / [Examples](https://github.com/devcartel/thomsonreuters/blob/master/TCLRFA7.md#example) / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/TCLRFA7.md) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
 
 # Download Statistics
 ![PyRFA Downloads](https://cloud.githubusercontent.com/assets/3415706/15391563/fb9a0c4e-1deb-11e6-8f23-776fb7adb798.png "Updated on 19 May 2016")
