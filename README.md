@@ -1,39 +1,39 @@
-`#!/dev/cartel`
-===============
-At Devcartel, our consultants are helping companies in financial service industry access, integrate, visualize and make sense of financial market data such as streaming stock prices, FX rates, economic indicators, historical prices, real-time news. Enabling market engagement with world's leading brokers. Through our professional consultancy services and our own super robust API products, we are helping our clients making informed decision and stay afloat. Visit http://devcartel.com for more information.
+# PyRFA 8
+Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
 
-## API
+Version | Release Date | Windows (64bit, Python3.4)| Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | RHEL6 (64bit, Python2.6)
+:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
+8.0.1.1 | 23 June 16| [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py26.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-rhel64-gcc447-x86_64-py26.zip)
+[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/pyrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
 
-#### PyRFA ( [Documentation](https://github.com/devcartel/api/blob/master/pyrfa/README.md#table-of-contents) |  [Issue](https://github.com/devcartel/api/issues) )
-Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.  
+# PyRFA 7
+Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Python.
 
-| Version | Release Date | Windows (x86 + Python2.7) | Windows (x86 + Python2.6) | Windows (64-bit + Python3.4)| Windows (64-bit + Python2.7) | Windows (64-bit + Python2.6) |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| 8.0.1.1 | 23 June 16| |  | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py26.zip)  |
-|  7.6.2.2 | 23 June 16 | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py27.zip)| [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py26.zip) |   |  |  |
+Version | Release Date | Windows (x86 + Python2.7) | Windows (x86 + Python2.6) | RHEL5 (64-bit + Python2.4)
+:-:|:-:|:-:|:-:|:-:
+7.6.2.2 | 23 June 16 | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py27.zip)| [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py26.zip) | [download](https://github.com/devcartel/thomsonreuters/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-rhel5-gcc412-x86_64-py24.zip)
+[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/pyrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
 
-| Version | Release Date | Linux (64-bit + Python3.4) | Linux/RHEL7 (64-bit + Python2.7) | RHEL6 (64-bit + Python 2.6) | RHEL5 (64-bit + Python2.4)  |
-|:-:|:-:|:-:|:-:|:-:|:-:|
-| 8.0.1.1 | 23 June 16 | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/api/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-rhel64-gcc447-x86_64-py26.zip) |   |
-| 7.6.2.2 | 23 June 16 |  |   |   | [download](https://github.com/devcartel/api/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-rhel5-gcc412-x86_64-py24.zip) |
-
-
-#### TclRFA ( [Documentation](https://github.com/devcartel/api/blob/master/tclrfa/README.md#table-of-contents) |  [Issue](https://github.com/devcartel/api/issues) )
+# TclRFA 8
 Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl language. Requires Tcl8.5+.
 
-| Version | Release Date| Windows (x86) | Windows (64-bit) | Linux (64-bit) |
-|:-:|:-:|:-:|:-:|:-:|
-| 8.0.1.1  | 23 June 16 |  | [download](https://github.com/devcartel/api/releases/download/tclrfa8.0.1.1/tclrfa8.0.1.1-win32-ix86_64.zip)  | [download](https://github.com/devcartel/api/releases/download/tclrfa8.0.1.1/tclrfa8.0.1.1-linux-x86_64.zip) |
-| 7.6.2.2 | 23 June 16 | [download](https://github.com/devcartel/api/releases/download/tclrfa7.6.2.2/tclrfa7.6.2.2-win32-ix86.zip)  |   |   |
+Version | Release Date | Windows (64-bit) | Linux (64-bit)
+:-:|:-:|:-:|:-:|:-:|
+8.0.1.1 | 23 June 16 | [download](https://github.com/devcartel/thomsonreuters/releases/download/tclrfa8.0.1.1/tclrfa8.0.1.1-win32-ix86_64.zip)  | [download](https://github.com/devcartel/thomsonreuters/releases/download/tclrfa8.0.1.1/tclrfa8.0.1.1-linux-x86_64.zip)
+[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/tclrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
 
-Download Statistics
-=======
+# TclRFA 7
+Thomson Reuters real-time feed API for TREP-RT, RMDS and Elektron for Tcl language. Requires Tcl8.5+.
 
+Version | Release Date| Windows (x86)
+:-:|:-:|:-:|:-:|:-:
+7.6.2.2 | 23 June 16 | [download](https://github.com/devcartel/thomsonreuters/releases/download/tclrfa7.6.2.2/tclrfa7.6.2.2-win32-ix86.zip)
+[Changelog]() / [Examples]() / [API doc](https://github.com/devcartel/thomsonreuters/blob/master/tclrfa/README.md#table-of-contents) / [Issues](https://github.com/devcartel/thomsonreuters/issues) / [Other releases](https://github.com/devcartel/thomsonreuters/releases)
+
+# Download Statistics
 ![PyRFA Downloads](https://cloud.githubusercontent.com/assets/3415706/15391563/fb9a0c4e-1deb-11e6-8f23-776fb7adb798.png "Updated on 19 May 2016")
 
-
-License
-=======
+# License
 Copyright (C) 2015-2018 Devcartel Company Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -41,3 +41,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+`#!/dev/cartel`
+===============
+At DevCartel, our consultants are helping companies in financial service industry access, integrate, visualize and make sense of financial market data such as streaming stock prices, FX rates, economic indicators, historical prices, real-time news. Enabling market engagement with world's leading brokers. Through our professional consultancy services and our own super robust API products, we are helping our clients making informed decision and stay afloat. Visit http://devcartel.com for more information.

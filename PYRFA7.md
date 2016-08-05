@@ -1,4 +1,4 @@
-# PyRFA
+# PyRFA 7
 PyRFA is a Python API for accessing Thomson Reuters market data feeds know as RMDS or
 Thomson Reuter Enterprise Platform for Real-time (TREP-RT). It supports subscription
 and publication of market data using OMM data message model.
@@ -55,61 +55,6 @@ __Features__
 9. [License](#license)
 
 # Changelog
-
-8.0.1.1
-* 23 June 2016
-* Supports RMTES strings to UTF-8
-* New getFieldID() function
-
-8.0.1.0
-* 19 May 2016
-* Supports FID filtering subscription with View
-* Updates RDMDictionary and enumtype.def
-* Compiled with RFA 8.0.1.L1
-
-8.0.0.6
-* 3 March 2016
-* Supports Interactive Provider
-
-8.0.0.5
-* 8 October 2015
-* Replaced serviceStateSubmit() with serviceUpSubmit() and serviceDownSubmit()
-* Fixed a bug where it fails to close a complete published item list
-
-8.0.0.4
-* 30 September 2015
-* Added serviceStateSubmit() for bringing service up or down
-* Fixed serviceDownSubmit() that caused session disconnection
-
-8.0.0.3
-* 25 August 2015
-* Prevent memory leak caused by login handler
-* Fixed another potential memory leak
-
-8.0.0.2
-* 17 August 2015
-* Fixed timeseries floating point data limitation
-* Fixed memory leak in data dictionary handler
-
-8.0.0.1
-* 6 August 2015
-* Supports Pause and Resume
-* Supports OMM Posting for market price
-* Provider can submit data as unsolicited REFRESH using MTYPE = IMAGE
-* Provider can submit data to different service using SERVICE key in dict 
-* Supports sending service up/down status
-
-8.0.0.0
-* 22 June 2015
-* Compiled with RFA 8.0.0.L1
-* New output message in pure dictionary format
-* Supports STATUS output message type
-* New message types include REFRESH, IMAGE, UPDATE, STATUS
-* RIC and SERVICE now treated as part of data output
-* Translate Reuters price tick symbol to unicode
-* Fixed for service group failover by RFA 8.0
-* Support for Python 3.4
-* Available in 64-bit only
 
 7.6.2.2
 * 23 June 2016
@@ -247,10 +192,9 @@ Publication
 * N/A
 
 # Supported systems
-* Linux x86 64bit
-* Windows x86 64bit
-* Windows x86 32bit (only with 7.6)
-* Python 2.6, 2.7, 3.4
+* Windows x86 32bit
+* RHEL 5 64bit
+* Python 2.4, 2.6, 2.7
 
 # Installation
 Run below commands in terminal or command prompt:
