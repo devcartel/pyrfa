@@ -26,15 +26,20 @@ Features:
 * Subscription outbound NIC binding
 
 # INSTALLATION
-Download a package from:
+PyRFA supports both Windows and Linux platform. Select your platform for download below.
+### Windows
 
-Version | Release Date | Windows (64bit, Python3.4)| Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | RHEL6 (64bit, Python2.6)
-:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.0.1.1 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py26.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-rhel64-gcc447-x86_64-py26.zip)
+Version | Release Date | Windows (64bit, Python3.4)| Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Windows (x86, Python2.7) | Windows (x86, Python2.6)
+:-:|:-:|:-:|:-:|:-:|:-:|:-:
+8.0.1.1 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py26.zip) | |
+7.6.2.2 | 23 Jun 16 | | | | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py27.zip)| [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py26.zip)
 
-Version | Release Date | Windows (x86 + Python2.7) | Windows (x86 + Python2.6) | RHEL5 (64-bit + Python2.4)
-:-:|:-:|:-:|:-:|:-:
-7.6.2.2 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py27.zip)| [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py26.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-rhel5-gcc412-x86_64-py24.zip)
+### Linux
+
+Version | Release Date | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | RHEL6 (64bit, Python2.6) | RHEL5 (64bit, Python2.4)
+:-:|:-:|:-:|:-:|:-:|:-:
+8.0.1.1 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-rhel64-gcc447-x86_64-py26.zip) |
+7.6.2.2 | 23 Jun 16 | | | | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-rhel5-gcc412-x86_64-py24.zip)
 
 Then run:
 
@@ -44,7 +49,7 @@ Then run:
 > python setup.py install --force
 ```
 
-Or simply install from the links using `pip`:
+Or simply install from download links using `pip`:
 ```
 > pip install --upgrade https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip
 ```
