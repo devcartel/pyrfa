@@ -270,7 +270,7 @@ Subscription
 Publication
 * N/A
 
-# SUPPORTED SYSTEM
+# SUPPORTED SYSTEMS
 * Linux x86 64bit
 * Windows x86 32 and 64bit
 * Python 2.6, 2.7, 3.4
