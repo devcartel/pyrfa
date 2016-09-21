@@ -51,7 +51,7 @@ Then run:
 
 Or simply install from download links using `pip`:
 ```
-> pip install --upgrade https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip
+> pip install --upgrade https://github.com/devcartel/pyrfa/releases/download/8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip
 ```
 
 # TABLE OF CONTENTS
