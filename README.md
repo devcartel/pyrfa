@@ -31,14 +31,14 @@ PyRFA supports both Windows and Linux platform. Select your platform for downloa
 
 Version | Release Date | Windows (64bit, Python3.4)| Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Windows (x86, Python2.7) | Windows (x86, Python2.6)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.0.1.1 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py26.zip) | |
+8.0.1.1 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/pyrfa/releases/download/8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.1.1/pyrfa8.0.1.1-win32-x86_64-py26.zip) | |
 7.6.2.2 | 23 Jun 16 | | | | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py27.zip)| [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-win32-x86-py26.zip)
 
 ### Linux
 
 Version | Release Date | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | RHEL6 (64bit, Python2.6) | RHEL5 (64bit, Python2.4)
 :-:|:-:|:-:|:-:|:-:|:-:
-8.0.1.1 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa8.0.1.1/pyrfa8.0.1.1-rhel64-gcc447-x86_64-py26.zip) |
+8.0.1.1 | 23 Jun 16 | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.1.1/pyrfa8.0.1.1-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.1.1/pyrfa8.0.1.1-rhel64-gcc447-x86_64-py26.zip) |
 7.6.2.2 | 23 Jun 16 | | | | [download](https://github.com/devcartel/pyrfa/releases/download/pyrfa7.6.2.2/pyrfa7.6.2.2-rhel5-gcc412-x86_64-py24.zip)
 
 Then run:
