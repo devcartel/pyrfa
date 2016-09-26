@@ -418,7 +418,7 @@ Instantiate a PyRFA object.
 
 __Pyrfa.setDebugMode([_mode_])__  
 _mode: Boolean_  
-Enable or disable debug messages. If argument is empty, it will read a value from `\pyrfa\debug` in the configuration file.
+Enable or disable debug messages. If argument is empty, it will read a value from `\pyrfa\debug` in the configuration file. This function can only be called after `createConfigDb`.
 
     >>> p.setDebugMode(True)
 
