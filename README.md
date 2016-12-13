@@ -31,15 +31,15 @@ PyRFA supports both Windows and Linux platform. Select your platform for downloa
 
 Version | Release Date | Windows (64bit, Python3.5) | Windows (64bit, Python3.4) | Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Windows (x86, Python2.7) | Windows (x86, Python2.6)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.0.2 | 5 Oct 16 | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-win32-x86_64-py35.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-win32-x86_64-py26.zip) | |
-7.6.3 | 5 Oct 16 | || | | [download](https://github.com/devcartel/pyrfa/releases/download/7.6.3/pyrfa7.6.3-win32-x86-py27.zip)| [download](https://github.com/devcartel/pyrfa/releases/download/7.6.3/pyrfa7.6.3-win32-x86-py26.zip)
+8.0.3 | 13 Dec 16 | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-win32-x86_64-py35.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-win32-x86_64-py34.zip) |  [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-win32-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-win32-x86_64-py26.zip) | |
+7.6.4 | 13 Dec 16 | || | | [download](https://github.com/devcartel/pyrfa/releases/download/7.6.4/pyrfa7.6.4-win32-x86-py27.zip)| [download](https://github.com/devcartel/pyrfa/releases/download/7.6.4/pyrfa7.6.4-win32-x86-py26.zip)
 
 ### Linux
 
 Version | Release Date | Linux (64bit, Python3.5) | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | RHEL6 (64bit, Python2.6) | RHEL5 (64bit, Python2.4)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.0.2 | 5 Oct 16 | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-linux-x86_64-py35.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-rhel64-gcc447-x86_64-py26.zip) |
-7.6.3 | 5 Oct 16 | | | | | [download](https://github.com/devcartel/pyrfa/releases/download/7.6.3/pyrfa7.6.3-rhel5-gcc412-x86_64-py24.zip)
+8.0.3 | 13 Dec 16 | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-linux-x86_64-py35.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-linux-x86_64-py34.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-linux-x86_64-py27.zip) | [download](https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-rhel64-gcc447-x86_64-py26.zip) |
+7.6.4 | 13 Dec 16 | | | | | [download](https://github.com/devcartel/pyrfa/releases/download/7.6.4/pyrfa7.6.4-rhel5-gcc412-x86_64-py24.zip)
 
 Then run:
 
@@ -51,7 +51,7 @@ Then run:
 
 Or simply install from download links using `pip`:
 ```
-> pip install --upgrade https://github.com/devcartel/pyrfa/releases/download/8.0.2/pyrfa8.0.2-linux-x86_64-py27.zip
+> pip install --upgrade https://github.com/devcartel/pyrfa/releases/download/8.0.3/pyrfa8.0.3-linux-x86_64-py27.zip
 ```
 
 # TABLE OF CONTENTS
@@ -85,7 +85,13 @@ Or simply install from download links using `pip`:
 
 # CHANGELOG
 ## PyRFA 8
- 8.0.2
+8.0.3
+* 13 December 2016
+* date month year
+* Interactive provider is able to logout clients with logoutSubmit
+* Fixed a bug where NIP not closeAllSubmit when call serviceDownSubmit
+
+8.0.2
 * 5 October 2016
 * Supports Python 3.5
 * Supports unicode string function calls
@@ -152,6 +158,12 @@ Or simply install from download links using `pip`:
 * Available in 64-bit only
 
 ## PyRFA 7
+7.6.4
+* 13 December 2016
+* date month year
+* Interactive provider is able to logout clients with logoutSubmit
+* Fixed a bug where NIP not closeAllSubmit when call serviceDownSubmit
+
 7.6.3
 * 5 October 2016
 * Supports unicode string function calls
@@ -583,7 +595,7 @@ _symbolList: str_
 For consumer application to subscribe symbol lists. User can define multiple symbol list names using “,” to separate each name in _symbolList_ e.g. `'ric1,ric2,ric3'`. Data dispatched through `dispatchEventQueue` function in dictionary.
 
 __Pyrfa.symbolListCloseRequest(_symbolList_)__  
-_**symbolList**: str_  
+_symbolList: str_  
 Unsubscribe the specified symbol lists. User can define multiple symbol list names using “,” to separate each name in _symbolList_.
 
 __Pyrfa.symbolListCloseAllRequest()__  
