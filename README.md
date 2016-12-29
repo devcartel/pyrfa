@@ -574,7 +574,7 @@ Write an error message to a log file.
 
 Example:
 ```python
-p.log('Print log message out')
+p.logInfo('Print log message out')
 p.logWarning('Print warning message out')
 p.logError('Print error message out')
 ```
