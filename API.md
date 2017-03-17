@@ -24,7 +24,7 @@
    17. [Non-Interactive Provider](#non-interactive-provider)
    18. [Interactive Provider](#interactive-provider)
   
-## 1. DATA TYPE
+## DATA TYPE
 
 OMM DATA TYPE | PYTHON
 --------------|--------------
@@ -38,7 +38,7 @@ UINT32        | INTEGER
 INT64         | LONG
 UINT64        | LONG
 
-## 2. CONFIGURATION FILE
+## CONFIGURATION FILE
 ### Example of pyrfa.cfg
 
     \pyrfa\debug = false
@@ -124,7 +124,7 @@ Namespace: `\ServiceGroups\<service_group_name>\`
 |--------------------|-----------------------|--------------------------------------------------------|
 | `serviceList`      | `"SERVICE1, SERVICE2"`| Available service names for the group                  |
 
-## 3. API
+## API
 ### Initialization
 
 __Pyrfa.pyrfa()__    
