@@ -722,7 +722,7 @@ UPDATE = {'RIC':'tANZ.AX', 'TRDPRC_1':40.124, 'SALTIM':'now', 'TRADE_ID':'123456
 p.historySubmit(UPDATE)
 ```
 
-__Pyrfa.closeSubmit([_symbol.service_])__  
+__Pyrfa.closeSubmit(_symbol.service_)__  
 _symbol.service: str_  
 For a provider to close published items with specific services. User can define multiple symbol/service pairs using “,” to separate each name.  Example:
 
@@ -804,7 +804,7 @@ Example:
 p.marketPriceSubmit({'RIC':'JPY=','TRDPRC_1':115.2,'TIMACT':'now', 'SESSIONID':'140339066107568'})
 ```
 
-__Pyrfa.closeSubmit(_[symbols],[sessionID]_)__  
+__Pyrfa.closeSubmit(_symbols,[sessionID]_)__  
 _symbols: str_  
 _sessionID: str (Optional)_  
 For a provider to close published items for all clients. Or close published items for a spicific client referenced by _sessionID_. User can define multiple item names using “,” to separate each name in _symbols_.
