@@ -1,5 +1,7 @@
 # PyRFA - API
-## TABLE OF CONTENTS
+
+**TABLE OF CONTENTS**
+
 1. [Data Type](#data-type)
 2. [Configuration File](#configuration-file)
 3. [API](#api)
@@ -22,7 +24,7 @@
    17. [Non-Interactive Provider](#non-interactive-provider)
    18. [Interactive Provider](#interactive-provider)
   
-## DATA TYPE
+## 1. DATA TYPE
 
 OMM DATA TYPE | PYTHON
 --------------|--------------
@@ -36,7 +38,7 @@ UINT32        | INTEGER
 INT64         | LONG
 UINT64        | LONG
 
-## CONFIGURATION FILE
+## 2. CONFIGURATION FILE
 ### Example of pyrfa.cfg
 
     \pyrfa\debug = false
@@ -63,6 +65,8 @@ UINT64        | LONG
 
     \ServiceGroups\SG1\serviceList = "SERVICE1, SERVICE2"
     \Sessions\Session1\serviceGroupList = "SG1"
+
+---
 
 ### Parameter
 #### Debug
@@ -120,7 +124,7 @@ Namespace: `\ServiceGroups\<service_group_name>\`
 |--------------------|-----------------------|--------------------------------------------------------|
 | `serviceList`      | `"SERVICE1, SERVICE2"`| Available service names for the group                  |
 
-## API
+## 3. API
 ### Initialization
 
 __Pyrfa.pyrfa()__    
@@ -140,6 +144,7 @@ Example:
 ```python
 p.setDebugMode(True)
 ```
+---
 
 ### Configuration
 
@@ -169,6 +174,7 @@ Output:
 \Default\Sessions\Session3\connectionList = Connection_RSSL3
 \Default\Sessions\Session4\connectionList = Connection_RSSL4
 ```
+---
 
 ### Session
 
@@ -181,6 +187,7 @@ Example:
 ```python
 p.acquireSession('Session1')
 ```
+---
 
 ### Client
 
@@ -221,11 +228,14 @@ Example:
 p.setServiceName('IDN')
 p.marketPriceRequest('EUR=')
 ```
+---
 
 ### Directory
 
 __Pyrfa.directoryRequest()__  
 Send a directory request through the acquired session. This step is the mandatory in order to consume the market data from P2PS/ADS.
+
+---
 
 ### Dictionary
 
@@ -250,6 +260,7 @@ Output:
 ```python
 1352
 ```
+---
 
 ### Logging
 
@@ -278,6 +289,7 @@ Output in log file with date, time and severity level:
 [Thu Jul 04 17:47:03 2013]: (ComponentName) Pyrfa: (Severity) Warning: Print warning message out
 [Thu Jul 04 17:48:00 2013]: (ComponentName) Pyrfa: (Severity) Error: Unexpected error: Print error message out
 ```
+---
 
 ### Symbol List
 
@@ -315,6 +327,7 @@ Output:
 ```
 FPCO FPKC FPRD FPGO
 ```
+---
 
 ### Market Price
 
@@ -386,6 +399,8 @@ Output:
 EUR=.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 ```
 
+---
+
 ### Market by Order
 
 __Pyrfa.marketByOrderRequest(_symbols_)__  
@@ -437,6 +452,8 @@ __Pyrfa.getMarketByOrderWatchList()__
 _➥return: str_  
 Return all subscribed item names on order book streaming data with service names.
 
+---
+
 ### Market by Price
 
 __Pyrfa.marketByPriceRequest(_symbols_)__  
@@ -486,6 +503,8 @@ __Pyrfa.getMarketByPriceWatchList()__
 _➥return: str_  
 Return all subscribed item names on market depth streaming data with service names.
 
+---
+
 ### OMM Posting
 OMM Posting leverages on consumer login channel (off-stream) to contribute data up to ADH/ADS cache or provider application. The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
 
@@ -514,6 +533,8 @@ POSTED UPDATE TO A SELECTIVE SERVICE:
 {'RIC':'TRI.N','TRDPRC_1':4.247,'TIMACT':'now','SERVICE':'NIP'} 
 ```
 
+---
+
 ### Pause and Resume
 
 __Pyrfa.pauseAll()__  
@@ -529,6 +550,8 @@ Pause subscription to items. User can define multiple item names using “,” t
 __Pyrfa.marketPriceResume(_symbols_)__  
 _symbols: str_  
 Resume subscription to the item. User can define multiple item names using “,” to separate each name in _symbols_.
+
+---
 
 ### Timeseries
 Time Series One (TS1) provides access to historical data distributed via the Reuter Integrated Data Network (IDN). It provides a range of facts (such as Open, High, Low, Close) for the equity, money, fixed income, commodities and energy markets. TS1 data is available in three frequencies -- _daily_, _weekly_, and _monthly_. For daily data there is up to _two years_ worth of history, for weekly data there is _five years_, and for monthly data up to _ten years_.
@@ -575,6 +598,8 @@ DATE,CLOSE,OPEN,HIGH,LOW,VOLUME,VWAP
 2013/10/23,28.370,27.660,28.680,27.470,1773109,28.163
 ```
 
+---
+
 ### History
 
 __Pyrfa.historyRequest(_symbols_)__  
@@ -605,11 +630,15 @@ Unsubscribe items from historical data streaming service. The user can define mu
 __Pyrfa.historyCloseAllRequest()__  
 Unsubscribe all items from historical data streaming service.
 
+---
+
 ### Getting Data
 __Pyrfa.dispatchEventQueue([_timeout_])__  
 _timeout: int_  
 _➥return: tuple_  
 Dispatch the events and data from event queue within a period of time in milliseconds (If _timeout_ is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in dictionary format.
+
+---
 
 ### Non-Interactive Provider
 __Pyrfa.directorySubmit([_domains_],[_service_])__  
@@ -703,6 +732,8 @@ p.closeSubmit('EUR=.DEV')
 
 __Pyrfa.closeAllSubmit()__  
 For a provider to close all published item.
+
+---
 
 ### Interactive Provider
 A publisher server for market price domain. Interactive provider's `dispatchEventQueue` output yields `MTYPE` of `LOGIN`, `REQUEST`, `CLOSE` and `LOGOUT`.
