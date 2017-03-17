@@ -364,7 +364,7 @@ STATUS:
 ```
 
 __Pyrfa.setView([_fids_])__  
-_fids: str_  
+_fids: str (Optional)_  
 To specifies a view (a subset of fields to be filtered at source) for the next subscribed items. User can define multitple fields using “,” to separate each field in _fids_ which can be a valid field name or number.
 
 Example:
@@ -634,7 +634,7 @@ Unsubscribe all items from historical data streaming service.
 
 ### Getting Data
 __Pyrfa.dispatchEventQueue([_timeout_])__  
-_timeout: int_  
+_timeout: int (Optional)_  
 _➥return: tuple_  
 Dispatch the events and data from event queue within a period of time in milliseconds (If _timeout_ is omitted, it will return immediately). If there are many events in the queue at any given time, a single call gets all the data until the queue is empty. Data is in dictionary format.
 
@@ -642,8 +642,8 @@ Dispatch the events and data from event queue within a period of time in millise
 
 ### Non-Interactive Provider
 __Pyrfa.directorySubmit([_domains_],[_service_])__  
-_domains: str_  
-_service: str_  
+_domains: str (Optional)_  
+_service: str (Optional)_  
 Submit directory with domain types (capability) in a provider application and service name, domain type currently supports:
 
 * 6 - market price
@@ -660,11 +660,11 @@ p.directorySubmit('6,7,8','IDN')
 ```
     
 __Pyrfa.serviceDownSubmit([_service_])__  
-_service: str_  
+_service: str (Optional)_  
 Submit the specified down service status to ADH. If _service_ is omitted, it will use the value from configuration file. For Interactive Provider, _service_ will be ignored and use the default value from configuration file instead. This function must be called after `directorySubmit`.
 
 __Pyrfa.serviceUpSubmit([_service_])__  
-_service: str_  
+_service: str (Optional)_  
 Submit the specified up service status to ADH. If _service_ is omitted, it will use the value from configuration file. For Interactive Provider, _service_ will be ignored and use the default value from configuration file instead. This function must be called after `directorySubmit`. However, service will be automatically up if an `IMAGE` is sent.
 
 __Pyrfa.symbolListSubmit(_data_)__  
@@ -758,11 +758,11 @@ Output:
 ```
 
 __Pyrfa.serviceDownSubmit([_service_])__  
-_service: str_  
+_service: str (Optional)_  
 Submit the specified down service status to ADH. If _service_ is omitted, it will use the value from configuration file. For Interactive Provider, _service_ will be ignored and use the default value from configuration file instead. This function must be called after `directorySubmit`.
 
 __Pyrfa.serviceUpSubmit([_service_])__  
-_service: str_  
+_service: str (Optional)_  
 Submit the specified up service status to ADH. If _service_ is omitted, it will use the value from configuration file. For Interactive Provider, _service_ will be ignored and use the default value from configuration file instead. This function must be called after `directorySubmit`. However, service will be automatically up if an `IMAGE` is sent.
 
 __Pyrfa.getClientSessions()__  
