@@ -23,7 +23,7 @@
    16. [Getting Data](#getting-data)
    17. [Non-Interactive Provider](#non-interactive-provider)
    18. [Interactive Provider](#interactive-provider)
-  
+
 ## DATA TYPE
 
 OMM DATA TYPE | PYTHON
@@ -78,7 +78,7 @@ Namespace: `#pyrfa\`
 
 #### Logger  
 Namespace: `\Logger\AppLogger\`
-   
+
 | Parameter            | Example value    | Description                                        |
 |----------------------|------------------|----------------------------------------------------|
 | `fileLoggerEnabled`  | `true`/`false`   | Enable/Disable logging capability                  |
@@ -210,7 +210,7 @@ Check whether the client successfully receives a login status from the P2PS/ADS.
 
 __Pyrfa.setInteractionType(_type_)__  
 _type: str_  
-Set subscription _type_ to either `snapshot` or `streaming` before making a subscription request. If `snapshot` is set, the client will receive only a full image of an instrument then the subscribed stream will be closed.
+Set subscription _type_ to either `snapshot` or `streaming` before making a subscription request. If `snapshot` is set, the client will receive only a full image of an instrument then the subscribed stream will be closed. Default is `streaming`.
 
 Example:
 
@@ -349,7 +349,7 @@ while True:
 IMAGE:
 ```python
 {'MTYPE':'REFRESH','RIC':'EUR=','SERVICE':'NIP'},
-{'MTYPE':'IMAGE','SERVICE':'NIP','ASK_TIME':'20:43:54:829:000:000','BID':0.988,'DIVPAYDATE':'23 JUN 2011','RDN_EXCHID':'SES','BID_NET_CH':0.004,'RDNDISPLAY':200,'ASK':0.999,'RIC':'EUR='} 
+{'MTYPE':'IMAGE','SERVICE':'NIP','ASK_TIME':'20:43:54:829:000:000','BID':0.988,'DIVPAYDATE':'23 JUN 2011','RDN_EXCHID':'SES','BID_NET_CH':0.004,'RDNDISPLAY':200,'ASK':0.999,'RIC':'EUR='}
 ```
 
 UPDATE:
@@ -405,7 +405,7 @@ EUR=.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
 __Pyrfa.marketByOrderRequest(_symbols_)__  
 _symbols: str_  
-For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name in _symbols_. 
+For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name in _symbols_.
 
 Example:
 
@@ -527,29 +527,30 @@ POSTED UPDATE:
 ```python
 {'RIC':'TRI.N','TRDPRC_1':4.536,'TIMACT':'now'}
 ```
-    
+
 POSTED UPDATE TO A SELECTIVE SERVICE:
 ```python
-{'RIC':'TRI.N','TRDPRC_1':4.247,'TIMACT':'now','SERVICE':'NIP'} 
+{'RIC':'TRI.N','TRDPRC_1':4.247,'TIMACT':'now','SERVICE':'NIP'}
 ```
 
 ---
 
 ### Pause and Resume
+Pause and resume openning subcriptions. Updates are conflated during the pause and only work with interaction type `streaming`.
 
 __Pyrfa.pauseAll()__  
-Pause all subscriptions on all domains. Updates are conflated during the pause.
+Pause all streaming subscriptions on all domains.
 
 __Pyrfa.resumeAll()__  
-Resume all subscriptions.
+Resume all streaming subscriptions on all domains.
 
 __Pyrfa.marketPricePause(_symbols_)__  
 _symbols: str_  
-Pause subscription to items. User can define multiple item names using “,” to separate each name in _symbols_.
+Pause streaming subscription for symobls. User can define multiple symbol names using “,” to separate each name in _symbols_.
 
 __Pyrfa.marketPriceResume(_symbols_)__  
 _symbols: str_  
-Resume subscription to the item. User can define multiple item names using “,” to separate each name in _symbols_.
+Resume streaming subscription for symbols. User can define multiple symbol names using “,” to separate each name in _symbols_.
 
 ---
 
@@ -658,7 +659,7 @@ Example:
 ```python
 p.directorySubmit('6,7,8','IDN')
 ```
-    
+
 __Pyrfa.serviceDownSubmit([_service_])__  
 _service: str (Optional)_  
 Submit the specified down service status to ADH. If _service_ is omitted, it will use the value from configuration file. For Interactive Provider, _service_ will be ignored and use the default value from configuration file instead. This function must be called after `directorySubmit`.
@@ -679,7 +680,7 @@ p.symbolListSubmit({'ACTION':'UPDATE', 'RIC':'0#BMD', 'KEY':'FKLI', 'PROD_PERM':
 
 __Pyrfa.marketPriceSubmit(_data_)__  
 _data: dict_  
-For provider client to publish market data to MDH/ADH, the market data image/update _data_ must contain python dictionaries. _data_ dict can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). 
+For provider client to publish market data to MDH/ADH, the market data image/update _data_ must contain python dictionaries. _data_ dict can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`).
 
 Example:
 
