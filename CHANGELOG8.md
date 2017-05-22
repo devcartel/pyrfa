@@ -1,5 +1,11 @@
 # CHANGELOG
 ## PyRFA 8
+8.2.0
+* 22 May 2017
+* Adds staleSubmit() and staleAllSubmit()
+* Fixes a bug where serviceDownSubmit() inadvertently closes items on other services
+* Changes closeSubmit() that can take only RIC name
+
 8.1.0
 * 17 March 2017
 * Supports Python3.6

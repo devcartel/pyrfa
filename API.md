@@ -137,9 +137,7 @@ p = Pyrfa.pyrfa()
 
 __Pyrfa.setDebugMode([_mode_])__  
 _mode: boolean_  
-Enable or disable debug messages. If argument is empty, it will read a value from `\pyrfa\debug` in the configuration file. This function can only be called after `createConfigDb`.
-
-Example:
+Enable or disable debug messages. If argument is empty, it will read a value from `\pyrfa\debug` in the configuration file. This function can only be called after `createConfigDb`. Example:
 
 ```python
 p.setDebugMode(True)
@@ -150,9 +148,7 @@ p.setDebugMode(True)
 
 __Pyrfa.createConfigDb(_filename_)__    
 _filename: str_  
-Locate and load a configuration file where _filename_ can be an absolute path or a relative path.
-
-Example:
+Locate and load a configuration file where _filename_ can be an absolute path or a relative path. Example:
 
 ```python
 p.createConfigDb("./pyrfa.cfg")
@@ -160,9 +156,7 @@ p.createConfigDb("./pyrfa.cfg")
 
 __Pyrfa.printConfigDb([_node_])__  
 _node: str_  
-Print a configuration node. If the input parameter _node_ is omitted, this function returns all of the configuration values under the `Default` namespace.
-
-Example:
+Print a configuration node. If the input parameter _node_ is omitted, this function returns all of the configuration values under the `Default` namespace. Example:
 
 ```python
 p.printConfigDb("\\Default\\Sessions")
@@ -180,13 +174,12 @@ Output:
 
 __Pyrfa.acquireSession(_sessionName_)__  
 _sessionName: str_  
-Acquire a session as defined in the configuration file where _sessionName_ under `Sessions` node.Then look up for an appropriate connection and create a client-server network session.
-
-Example:
+Acquire a session as defined in the configuration file where _sessionName_ under `Sessions` node.Then look up for an appropriate connection and create a client-server network session. Example:
 
 ```python
 p.acquireSession('Session1')
 ```
+
 ---
 
 ### Client
@@ -210,9 +203,7 @@ Check whether the client successfully receives a login status from the P2PS/ADS.
 
 __Pyrfa.setInteractionType(_type_)__  
 _type: str_  
-Set subscription _type_ to either `snapshot` or `streaming` before making a subscription request. If `snapshot` is set, the client will receive only a full image of an instrument then the subscribed stream will be closed. Default is `streaming`.
-
-Example:
+Set subscription _type_ to either `snapshot` or `streaming` before making a subscription request. If `snapshot` is set, the client will receive only a full image of an instrument then the subscribed stream will be closed. Default is `streaming`. Example:
 
 ```python
 p.setInteractionType('snapshot')
@@ -220,14 +211,13 @@ p.setInteractionType('snapshot')
 
 __Pyrfa.setServiceName(_serviceName_)__  
 _serviceName: str_  
-Programmatically set service name before making a subcription request. Call this function before making any request. PyRFA also allows subcription to multiple services.
-
-Example:
+Programmatically set service name before making a subcription request. Call this function before making any request. PyRFA also allows subcription to multiple services. Example:
 
 ```python
 p.setServiceName('IDN')
 p.marketPriceRequest('EUR=')
 ```
+
 ---
 
 ### Directory
@@ -249,9 +239,7 @@ Check whether the data dictionary is successfully downloaded from the server.
 __Pyrfa.getFieldID(_fieldName_)__  
 _fieldName: str_  
 _➥return: int_  
-Translates field name to field ID.
-
-Example:
+Translates field name to field ID. Example:
 
 ```python
 p.getFieldID('DSPL_NMLL')
@@ -274,9 +262,8 @@ Write a warning message to a log file.
 
 __Pyrfa.logError(_message_)__  
 _message: str_  
-Write an error message to a log file.
+Write an error message to a log file. Example:
 
-Example:
 ```python
 p.logInfo('Print log message out')
 p.logWarning('Print warning message out')
@@ -315,9 +302,7 @@ Return names of the subscribed symbol Lists with service names in string format.
 __Pyrfa.getSymbolList(_symbolList_)__  
 _symbolList: str_  
 _➥return: str_  
-A helper function that subscribes for a symbol list and returns item names available under a symbol list in string format without dealing with symbol list subscription and data dispatching. Note that not all services provide symbol list in its capability.
-
-Example:
+A helper function that subscribes for a symbol list and returns item names available under a symbol list in string format without dealing with symbol list subscription and data dispatching. Note that not all services provide symbol list in its capability. Example:
 
 ```python
 symbollist = p.getSymbolList('0#BMD')
@@ -333,9 +318,7 @@ FPCO FPKC FPRD FPGO
 
 __Pyrfa.marketPriceRequest(_symbols_)__  
 _symbols: str_  
-For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names using “,” to separate each name in _symbols_ e.g `'ric1,ric2'`.
-
-Example:
+For consumer client to subscribe market data from P2PS/ADS, user can define multiple item names using “,” to separate each name in _symbols_ e.g `'ric1,ric2'`. Example:
 
 ```python
 p.marketPriceRequest('EUR=')
@@ -365,9 +348,7 @@ STATUS:
 
 __Pyrfa.setView([_fids_])__  
 _fids: str (Optional)_  
-To specifies a view (a subset of fields to be filtered at source) for the next subscribed items. User can define multitple fields using “,” to separate each field in _fids_ which can be a valid field name or number.
-
-Example:
+To specifies a view (a subset of fields to be filtered at source) for the next subscribed items. User can define multitple fields using “,” to separate each field in _fids_ which can be a valid field name or number. Example:
 
 ```python
 p.setView('RDNDISPLAY,TRDPRC_1,22,25')
@@ -387,9 +368,7 @@ Unsubscribe all items from streaming data.
 
 __Pyrfa.getMarketPriceWatchList()__  
 _➥return: str_  
-Returns names of the subscribed items suffixed with its service names.
-
-Example:
+Returns names of the subscribed items suffixed with its service names. Example:
 ```python
 watchlist = p.getMarketPriceWatchList()
 print(watchlist)
@@ -405,9 +384,7 @@ EUR=.IDN_SELECTFEED JPY=.IDN_SELECTFEED
 
 __Pyrfa.marketByOrderRequest(_symbols_)__  
 _symbols: str_  
-For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name in _symbols_.
-
-Example:
+For a consumer application to subscribe order book data, user can define multiple item names using “,” to separate each name in _symbols_. Example:
 
 ```python
 p.marketByOrderRequest('ANZ.AX')
@@ -458,9 +435,7 @@ Return all subscribed item names on order book streaming data with service names
 
 __Pyrfa.marketByPriceRequest(_symbols_)__  
 _symbols: str_  
-For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name.
-
-Example:
+For consumer application to subscribe market depth data, user can define multiple item names using “,” to separate each name. Example:
 
 ```python
 p.marketByPriceRequest('ANZ.CHA')
@@ -510,9 +485,7 @@ OMM Posting leverages on consumer login channel (off-stream) to contribute data 
 
 __marketPricePost(_data_)__  
 _data: dict_  
-Post market price data. _data_ can be populated as below. `MTYPE` = `IMAGE` can also be added to _data_ dict in order to force post as `IMAGE` (default `MTYPE` is `UPDATE`) as well as `SERVICE`.
-
-Example:
+Post market price data. _data_ can be populated as below. `MTYPE` = `IMAGE` can also be added to _data_ dict in order to force post as `IMAGE` (default `MTYPE` is `UPDATE`) as well as `SERVICE`. Example:
 
 ```python
 p.marketPricePost({'MTYPE':'IMAGE','RIC':'TRI.N','TRDPRC_1':price,'TIMACT':'now'})
@@ -568,9 +541,7 @@ Define the maximum output before calling `getTimeSeries`.
 __getTimeSeries(_symbol_)__  
 _symbol: str_  
 _➥return: tuple_  
-A helper function that subscribes, wait for data dissemination to be complete, unsubscribe from the service and return series as a list of records. `getTimeSeries` supports only one time series retrieval at a time.
-
-Example:
+A helper function that subscribes, wait for data dissemination to be complete, unsubscribe from the service and return series as a list of records. `getTimeSeries` supports only one time series retrieval at a time. Example:
 
 ```python
 ric = 'CHK.N'
@@ -604,10 +575,8 @@ DATE,CLOSE,OPEN,HIGH,LOW,VOLUME,VWAP
 ### History
 
 __Pyrfa.historyRequest(_symbols_)__  
-_symbols: str_
-Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item using “,” to separate each one under _symbols_.
-
-Example:
+_symbols: str_  
+Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item names using “,” to separate each one under _symbols_. Example:
 
 ```python
 p.historyRequest('tANZ.AX')
@@ -653,9 +622,8 @@ Submit directory with domain types (capability) in a provider application and se
 * 10 - symbol list
 * 12 - history
 
-This function is called automatically upon data submission. If _service_ is omitted, it will use the value from configuration file.
+This function is called automatically upon data submission. If _service_ is omitted, it will use the value from configuration file. Example:
 
-Example:
 ```python
 p.directorySubmit('6,7,8','IDN')
 ```
@@ -670,9 +638,7 @@ Submit the specified up service status to ADH. If _service_ is omitted, it will 
 
 __Pyrfa.symbolListSubmit(_data_)__  
 _data: dict_  
-For a provider client to publish a list of symbols to MDH/ADH under data domain 10, _data_ must contain python dictionaries. _data_ dict can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). `ACTION` can be `ADD`, `UPDATE` and `DELETE`.
-
-Example:
+For a provider client to publish a list of symbols to MDH/ADH under data domain 10, _data_ must contain python dictionaries. _data_ dict can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). `ACTION` can be `ADD`, `UPDATE` and `DELETE`. Example:
 
 ```python
 p.symbolListSubmit({'ACTION':'UPDATE', 'RIC':'0#BMD', 'KEY':'FKLI', 'PROD_PERM':10, 'PROV_SYMB':'MY1244221'})
@@ -680,9 +646,7 @@ p.symbolListSubmit({'ACTION':'UPDATE', 'RIC':'0#BMD', 'KEY':'FKLI', 'PROD_PERM':
 
 __Pyrfa.marketPriceSubmit(_data_)__  
 _data: dict_  
-For provider client to publish market data to MDH/ADH, the market data image/update _data_ must contain python dictionaries. _data_ dict can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`).
-
-Example:
+For provider client to publish market data to MDH/ADH, the market data image/update _data_ must contain python dictionaries. _data_ dict can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). Example:
 
 ```python
 IMAGES = {'RIC':'EUR=', 'RDNDISPLAY':200, 'RDN_EXCHID':155, 'BID':0.988, 'ASK':0.999, 'DIVPAYDATE':'20110623'},
@@ -692,9 +656,7 @@ p.marketPriceSubmit(IMAGES)
 
 __Pyrfa.marketByOrderSubmit(_data_)__  
 _data: dict_  
-For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit(). _data_ must contain python dictionaries. _data_ tuple can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). `ACTION` can be `ADD`, `UPDATE` and `DELETE`.
-
-Example:
+For a provider client to publish specified order book data to MDH/ADH, marketByOrderSubmit(). _data_ must contain python dictionaries. _data_ tuple can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). `ACTION` can be `ADD`, `UPDATE` and `DELETE`. Example:
 
 ```python
 ORDER = {'ACTION':'ADD', 'RIC':'ANZ.AX', 'KEY':'538993C200035057B', 'ORDER_PRC': '20.260', 'ORDER_SIZE':50, 'ORDER_SIDE':'BID', 'SEQNUM_QT':2744, 'EX_ORD_TYP':0, 'CHG_REAS':6,'ORDER_TONE':''}
@@ -703,9 +665,7 @@ p.marketByOrderSubmit(ORDER)
 
 __Pyrfa.marketByPriceSubmit(_data_)__  
 _data: dict_  
-For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit(). _data_ must contain python dictionaries. _data_ tuple can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). `ACTION` can be `ADD`, `UPDATE` and `DELETE`.
-
-Example:
+For a provider client to publish the specified market depth data to MDH/ADH, marketByPriceSubmit(). _data_ must contain python dictionaries. _data_ tuple can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). `ACTION` can be `ADD`, `UPDATE` and `DELETE`. Example:
 
 ```python
 DEPTH = {'ACTION':'ADD', 'RIC':'ANZ.CHA','KEY':'201000B','ORDER_PRC': '20.1000', 'ORDER_SIDE':'BID', 'ORDER_SIZE':'1300', 'NO_ORD':13, 'QUOTIM_MS':16987567,'ORDER_TONE':''}
@@ -714,32 +674,43 @@ p.marketByPriceSubmit(DEPTH)
 
 __Pyrfa.historySubmit(_data_)__  
 _data: dict_  
-For a provider client to publish the specified history data to MDH/ADH, each history image/update. _data_ must contain python dictionaries. _data_ tuple can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`).
-
-Example:
+For a provider client to publish the specified history data to MDH/ADH, each history image/update. _data_ must contain python dictionaries. _data_ tuple can be populated as below and `MTYPE` = `IMAGE` can be added to _data_ in order to publish the `IMAGE` of the item (default `MTYPE` is `UPDATE`). Example:
 
 ```python
 UPDATE = {'RIC':'tANZ.AX', 'TRDPRC_1':40.124, 'SALTIM':'now', 'TRADE_ID':'123456789', 'BID_ORD_ID':'5307FBL20AL7B', 'ASK_ORD_ID':'5307FBL20BN8A'}
 p.historySubmit(UPDATE)
 ```
 
-__Pyrfa.closeSubmit(_symbol.service_)__  
-_symbol.service: str_  
-For a provider to close published items with specific services. User can define multiple symbol/service pairs using “,” to separate each name.  Example:
+__Pyrfa.closeSubmit(_symbols,[service]_)__  
+_symbol: str_  
+_service: str (Optional)_  
+For a provider to close published items on a default service or on a specified service. User can input multiple symbols using “,” to separate each symbol name. Example:
 
 ```python
-p.closeSubmit('EUR=.DEV')
+p.closeSubmit('EUR=,JPY=')
+p.closeSubmit('EUR=','DEV')
 ```
 
 __Pyrfa.closeAllSubmit()__  
 For a provider to close all published item.
 
+__Pyrfa.staleSubmit(_symbols,[service]_)__  
+_symbol: str_  
+_service: str (Optional)_  
+For a provider to mark published items as stale on a default service or on a specified service. User can input multiple symbols using “,” to separate each symbol name. Example:
+
+```python
+p.staleSubmit('EUR=,JPY=')
+p.staleSubmit('EUR=','DEV')
+```
+
+__Pyrfa.staleAllSubmit()__  
+For a provider to mark all published items as stale.
+
 ---
 
 ### Interactive Provider
-A publisher server for market price domain. Interactive provider's `dispatchEventQueue` output yields `MTYPE` of `LOGIN`, `REQUEST`, `CLOSE` and `LOGOUT`.
-
-Example:
+A publisher server for market price domain. Interactive provider's `dispatchEventQueue` output yields `MTYPE` of `LOGIN`, `REQUEST`, `CLOSE` and `LOGOUT`. Example:
 
 ```python
 ...
@@ -768,9 +739,7 @@ Submit the specified up service status to ADH. If _service_ is omitted, it will 
 
 __Pyrfa.getClientSessions()__  
 _➥return: str_  
-For interactive provider to obtain the connected client session IDs.
-
-Example:
+For interactive provider to obtain the connected client session IDs. Example:
 
 ```python
 p.getClientSessions()
@@ -783,9 +752,7 @@ Output:
 __Pyrfa.getClientWatchList(_sessionID_)__  
 _sessionID: str_  
 _➥return: str_  
-For interactive provider to obtains the watch list of a specific client referenced by _sessionID_.
-
-Example:
+For interactive provider to obtains the watch list of a specific client referenced by _sessionID_. Example:
 
 ```python
 p.getClientWatchList('139911109966880')
@@ -797,9 +764,7 @@ EUR= JPY=
 
 __Pyrfa.marketPriceSubmit(_data_)__  
 _data: dict_  
-For a provider to submit items to a specific client instead of all clients. _data_ dict can be populated as below and can referrence to the client by _sessionID_.
-
-Example:
+For a provider to submit items to a specific client instead of all clients. _data_ dict can be populated as below and can referrence to the client by _sessionID_. Example:
 
 ```python
 p.marketPriceSubmit({'RIC':'JPY=','TRDPRC_1':115.2,'TIMACT':'now', 'SESSIONID':'140339066107568'})
@@ -808,9 +773,7 @@ p.marketPriceSubmit({'RIC':'JPY=','TRDPRC_1':115.2,'TIMACT':'now', 'SESSIONID':'
 __Pyrfa.closeSubmit(_symbols,[sessionID]_)__  
 _symbols: str_  
 _sessionID: str (Optional)_  
-For a provider to close published items for all clients. Or close published items for a spicific client referenced by _sessionID_. User can define multiple item names using “,” to separate each name in _symbols_.
-
-Example:
+For a provider to close published items for all clients. Or close published items for a spicific client referenced by _sessionID_. User can define multiple item names using “,” to separate each name in _symbols_. Example:
 
 ```python
 p.closeSubmit('EUR=')
@@ -820,11 +783,22 @@ p.closeSubmit('EUR=,JPY=','140339066107568')
 __Pyrfa.closeAllSubmit()__  
 For a provider to close all published items.
 
+__Pyrfa.staleSubmit(_symbols,[sessionID]_)__  
+_symbols: str_  
+_sessionID: str (Optional)_  
+For a provider to mark published items as stale for all clients or a spicific client referenced by _sessionID_. User can define multiple item names using “,” to separate each name in _symbols_. Example:
+
+```python
+p.staleSubmit('EUR=')
+p.staleSubmit('EUR=,JPY=','140339066107568')
+```
+
+__Pyrfa.staleAllSubmit()__  
+For a provider to mark all published items stale.
+
 __Pyrfa.logoutSubmit(_sessionID_)__  
 _sessionID: str_  
-For a provider to logout subscription from specific client by _sessionID_.
-
-Example:
+For a provider to logout subscription from specific client by _sessionID_. Example:
 
 ```python
 p.logoutSubmit('139911109966880')
