@@ -42,14 +42,14 @@ Or [download](https://pypi.python.org/pypi/pyrfa) a distribution package (.whl) 
 
 Version | Release Date | Windows (64bit, Python3.6) | Windows (64bit, Python3.5) | Windows (64bit, Python3.4) | Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Windows (32bit, Python2.7) | Windows (32bit, Python2.6)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.0 | 22 May 17 | ✔ | ✔ | ✔ | ✔ | ✔ | |
+8.2.1 | 11 Sep 17 | ✔ | ✔ | ✔ | ✔ | ✔ | |
 7.7.0 | 17 Mar 17 | | | | | | ✔ | ✔ 
 
 Version | Release Date | Linux (64bit, Python3.6) | Linux (64bit, Python3.5) | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | Linux/RHEL6 (64bit, Python2.6) | RHEL5 (64bit, Python2.4)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.0 | 22 May 17 | ✔| ✔ | ✔ | ✔ | ✔ | [Enterprise](http://devcartel.com/enterprise)
+8.2.1 | 11 Sep 17 | ✔| ✔ | ✔ | ✔ | ✔ | [Enterprise program](http://devcartel.com/enterprise)
 
-See [CHANGELOG](CHANGELOG8.md) for more information.
+✔ = available from PyPi. See [CHANGELOG](CHANGELOG8.md) for more information.
 
 ## EXAMPLE
 

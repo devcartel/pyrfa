@@ -99,11 +99,11 @@ Namespace: `\Connections\<connection_name>\`
 | `ApplicationId`  | `"180"`          | Application ID                                         |
 | `Position`       | `"127.0.0.1/net"`| DACS position                                          |
 | `ServiceName`    | `"NIP"`          | Service name to be subscribe                           |
-| `VendorName`     | `"OMMCProv_DevCartel"` | Name of the vendor that provides the data for this service |
-| `symbolList`     | `"0#BMD"`        | Symbollist name to be subscribe(d)                     |
+| `VendorName`     | `"OMMCProv_DevCartel"` | Vendor name for provider application             |
+| `symbolList`     | `"0#BMD"`        | Symbollist name to be subscribed                       |
 | `maxSymbols`     | `30`             | Configure maximum number of symbol inside symbollist   |
-| `fieldDictionaryFilename` | `"../etc/RDM/RDMFieldDictionary"`| Dictionary file path          |
-| `enumTypeFilename` | `"../etc/RDM/enumtype.def"` | enumtype file path                        |
+| `fieldDictionaryFilename` | `"../etc/RDM/RDMFieldDictionary"`| Dictionary path (optional)    |
+| `enumTypeFilename` | `"../etc/RDM/enumtype.def"` | Enumtype file path (optional)             |
 | `downloadDataDict` | `true`/`false` | Enable/Disable data dictionary download from P2PS/ADS  |
 | `dumpDataDict`   | `true`/`false`   | Enable/Disable to dump data dictionary from P2PS/ADS   |
 

@@ -1,5 +1,11 @@
 # CHANGELOG
 ## PyRFA 8
+8.2.1
+* 11 September 2017
+* Fixed: view is retained calling marketPriceResume()
+* Fixed: support RMTES for SymbolList key data
+* New: chain.py example
+
 8.2.0
 * 22 May 2017
 * Adds staleSubmit() and staleAllSubmit()
