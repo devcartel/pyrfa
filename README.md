@@ -1,6 +1,7 @@
 # PyRFA
 [![PyPI](https://img.shields.io/badge/pypi-8.2.1-blue.svg)](https://pypi.python.org/pypi/pyrfa/8.2.1)
-[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](LICENSE.txt)
+[![Platform](https://img.shields.io/badge/platform-linux--64|win--64|win--32-lightgray.svg)](#platform-availability)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
 [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ADMRKER4V4LZL)
 
 PyRFA is a Python [API](API.md) for accessing Thomson Reuters market data feeds know as Elektron,
