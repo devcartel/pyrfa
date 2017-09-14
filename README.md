@@ -87,8 +87,8 @@ Output:
 ## API Reference
 See [API.md](API.md) for complete reference.
 
-## Report an Issue
-Visit [GitHub](https://github.com/devcartel/pyrfa/issues) for issues and questions.
+## Discussion
+If you run into bugs or have questions, file them in our [issue tracker](https://github.com/devcartel/pyrfa/issues).
 
 ## Sponsorship
 [![paypal](https://img.shields.io/badge/fund%20this%20project-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ADMRKER4V4LZL)  
