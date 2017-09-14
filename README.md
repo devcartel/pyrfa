@@ -1,6 +1,7 @@
 # PyRFA
 [![version](https://img.shields.io/pypi/v/pyrfa.svg)](https://pypi.python.org/pypi/pyrfa)
-[![pyversion](https://img.shields.io/pypi/pyversions/pyrfa.svg)]()
+[![pyversion](https://img.shields.io/pypi/pyversions/pyrfa.svg)](#platform-availability)
+[![version](https://img.shields.io/pypi/format/pyrfa.svg)](https://pypi.python.org/pypi/pyrfa)
 [![platform](https://img.shields.io/badge/platform-linux--64%20|%20win--64%20|%20win--32-lightgray.svg)](#platform-availability)
 [![license](https://img.shields.io/pypi/l/pyrfa.svg)](LICENSE.txt)
 [![paypal](https://img.shields.io/badge/fund%20this%20project-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ADMRKER4V4LZL)
