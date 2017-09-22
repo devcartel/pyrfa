@@ -101,7 +101,6 @@ Namespace: `\Connections\<connection_name>\`
 | `ServiceName`    | `"NIP"`          | Service name to be subscribe                           |
 | `VendorName`     | `"OMMCProv_DevCartel"` | Vendor name for provider application             |
 | `symbolList`     | `"0#BMD"`        | Symbollist name to be subscribed                       |
-| `maxSymbols`     | `30`             | Configure maximum number of symbol inside symbollist   |
 | `fieldDictionaryFilename` | `"../etc/RDM/RDMFieldDictionary"`| Dictionary path (optional)    |
 | `enumTypeFilename` | `"../etc/RDM/enumtype.def"` | Enumtype file path (optional)             |
 | `downloadDataDict` | `true`/`false` | Enable/Disable data dictionary download from P2PS/ADS  |

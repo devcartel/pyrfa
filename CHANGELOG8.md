@@ -1,5 +1,12 @@
 # CHANGELOG
 ## PyRFA 8
+8.2.2
+* 22 September 2017
+* Fixed: SymbolList crashes when decoding empty FieldList
+* Fixed: SymbolList hangs when requesting invalid symbols
+* Updated: RDMFieldDictionary and enumtype.def v4.20.28
+* Removed: maxSymbols usage for SymbolList
+
 8.2.1
 * 11 September 2017
 * Fixed: view is retained calling marketPriceResume()
