@@ -4,7 +4,6 @@
 [![version](https://img.shields.io/pypi/format/pyrfa.svg)](https://pypi.python.org/pypi/pyrfa)
 [![platform](https://img.shields.io/badge/platform-linux--64%20|%20win--64%20|%20win--32-lightgray.svg)](#platform-availability)
 [![license](https://img.shields.io/pypi/l/pyrfa.svg)](LICENSE.txt)
-[![paypal](https://img.shields.io/badge/fund%20this%20project-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ADMRKER4V4LZL)
 
 PyRFA is a Python [API](API.md) for accessing Thomson Reuters market data feeds know as Elektron,
 Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or legacy RMDS. It supports subscription
@@ -49,14 +48,15 @@ Or [download](https://pypi.python.org/pypi/pyrfa) a distribution package (.whl) 
 
 Version | Release Date | Windows (64bit, Python3.6) | Windows (64bit, Python3.5) | Windows (64bit, Python3.4) | Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Windows (32bit, Python2.7) | Windows (32bit, Python2.6)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.2 | 22 Sep 17 | ✔ | ✔ | ✔ | ✔ | ✔ | |
-7.7.0 | 17 Mar 17 | | | | | | ✔ | ✔ 
+8.2.2 | 22 Sep 17 | 🐈 | 🐈 | 🐈 | 🐈 | 🐈 | |
+7.7.0 | 17 Mar 17 | | | | | | 🐈 | 🐈 
 
 Version | Release Date | Linux (64bit, Python3.6) | Linux (64bit, Python3.5) | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | Linux/RHEL6 (64bit, Python2.6)
 :-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.2 | 22 Sep 17 | ✔| ✔ | ✔ | ✔ | ✔
+8.2.2 | 22 Sep 17 | 🐈 | 🐈 | 🐈 | 🐈 | 🐈
 
-✔ = available from PyPi. See [CHANGELOG](CHANGELOG8.md) for more information.
+🐈 = available from [PyPI](https://pypi.python.org/pypi/pyrfa)  
+🐋 = only from [PyRFA Enterprise](https://github.com/devcartel/pyrfa-enterprise/releases)
 
 ## Example
 
@@ -86,12 +86,8 @@ Output:
 {'MTYPE': 'UPDATE', 'BID_NET_CH': 0.26, 'RIC': 'JPY=', 'SERVICE': 'IDN_RDF_SDS'}
 ...
 ```
-## API Reference
-See [API.md](API.md) for complete reference.
+## Support
+See [API.md](API.md) for limited documentation. If you run into bugs or have questions, file them in our [issue tracker](https://github.com/devcartel/pyrfa/issues).
 
-## Discussion
-If you run into bugs or have questions, file them in our [issue tracker](https://github.com/devcartel/pyrfa/issues).
-
-## Sponsorship
-[![paypal](https://img.shields.io/badge/fund%20this%20project-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ADMRKER4V4LZL)  
-This project requires commercial licensing from Thomson Reuters. If you guys feel like supporting this project for [$19.99/month](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ADMRKER4V4LZL) in order to keep PyRFA available, updated and improved. We appreciate your support.  :)
+## PyRFA Enterprise Support
+With PyRFA Enterprise you benefit from unlimited business hours access to out Support Engineers via email, test with our simulated feed 24/7 from anywhere, use our Replay Data Service, additionaly API reference documentation and more. Check out details at http://devcartel.com/pyrfa-enterprise.

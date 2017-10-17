@@ -57,14 +57,7 @@ UINT64        | LONG
     \Connections\Connection_RSSL1\ApplicationId = "180"
     \Connections\Connection_RSSL1\Position = "127.0.0.1"
     \Connections\Connection_RSSL1\ServiceName = "SERVICE"
-    \Connections\Connection_RSSL1\fieldDictionaryFilename = "../etc/RDM/RDMFieldDictionary"
-    \Connections\Connection_RSSL1\enumTypeFilename  = "../etc/RDM/enumtype.def"
     \Connections\Connection_RSSL1\downloadDataDict = false
-
-    \Sessions\Session1\connectionList = "Connection_RSSL1"
-
-    \ServiceGroups\SG1\serviceList = "SERVICE1, SERVICE2"
-    \Sessions\Session1\serviceGroupList = "SG1"
 
 ---
 
@@ -101,8 +94,6 @@ Namespace: `\Connections\<connection_name>\`
 | `ServiceName`    | `"NIP"`          | Service name to be subscribe                           |
 | `VendorName`     | `"OMMCProv_DevCartel"` | Vendor name for provider application             |
 | `symbolList`     | `"0#BMD"`        | Symbollist name to be subscribed                       |
-| `fieldDictionaryFilename` | `"../etc/RDM/RDMFieldDictionary"`| Dictionary path (optional)    |
-| `enumTypeFilename` | `"../etc/RDM/enumtype.def"` | Enumtype file path (optional)             |
 | `downloadDataDict` | `true`/`false` | Enable/Disable data dictionary download from P2PS/ADS  |
 | `dumpDataDict`   | `true`/`false`   | Enable/Disable to dump data dictionary from P2PS/ADS   |
 
@@ -112,16 +103,12 @@ Namespace: `\Sessions\<session_name>\`
 | Parameter          | Example value         | Description                                            |
 |--------------------|-----------------------|--------------------------------------------------------|
 | `connectionList`   | `"Connection_RSSL1"`  | Match `connection_name`                                |
-| `serviceGroupList` | `"SG1"`               | Service group name                                     |
 
 `session_name` must be passed to `acquireSession()` function.
 
 #### Service Group
-Namespace: `\ServiceGroups\<service_group_name>\`
 
-| Parameter          | Example value         | Description                                            |
-|--------------------|-----------------------|--------------------------------------------------------|
-| `serviceList`      | `"SERVICE1, SERVICE2"`| Available service names for the group                  |
+*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
 
 ## API
 ### Initialization
@@ -345,18 +332,9 @@ STATUS:
 {'STREAM_STATE':'Closed','SERVICE':'NIP','TEXT':'F10: Not In Cache','MTYPE':'STATUS','DATA_STATE':'Suspect','RIC':'JPY='}
 ```
 
-__Pyrfa.setView([_fids_])__  
-_fids: str (Optional)_  
-To specifies a view (a subset of fields to be filtered at source) for the next subscribed items. User can define multitple fields using “,” to separate each field in _fids_ which can be a valid field name or number. Example:
+__Pyrfa.setView()__  
 
-```python
-p.setView('RDNDISPLAY,TRDPRC_1,22,25')
-p.marketPriceRequest('EUR=')
-```
-Or reset view to get all the fields with:
-```python
-p.setView()
-```
+*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
 
 __Pyrfa.marketPriceCloseRequest(_symbols_)__  
 _symbols: str_  
@@ -482,47 +460,14 @@ Return all subscribed item names on market depth streaming data with service nam
 ### OMM Posting
 OMM Posting leverages on consumer login channel (off-stream) to contribute data up to ADH/ADS cache or provider application. The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
 
-__marketPricePost(_data_)__  
-_data: dict_  
-Post market price data. _data_ can be populated as below. `MTYPE` = `IMAGE` can also be added to _data_ dict in order to force post as `IMAGE` (default `MTYPE` is `UPDATE`) as well as `SERVICE`. Example:
-
-```python
-p.marketPricePost({'MTYPE':'IMAGE','RIC':'TRI.N','TRDPRC_1':price,'TIMACT':'now'})
-```
-
-POSTED IMAGE:
-```python
-{'MTYPE':'IMAGE','RIC':'TRI.N','TRDPRC_1':4.911,'TIMACT':'now'}
-```
-
-POSTED UPDATE:
-```python
-{'RIC':'TRI.N','TRDPRC_1':4.536,'TIMACT':'now'}
-```
-
-POSTED UPDATE TO A SELECTIVE SERVICE:
-```python
-{'RIC':'TRI.N','TRDPRC_1':4.247,'TIMACT':'now','SERVICE':'NIP'}
-```
+*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
 
 ---
 
 ### Pause and Resume
 Pause and resume openning subcriptions. Updates are conflated during the pause and only work with interaction type `streaming`.
 
-__Pyrfa.pauseAll()__  
-Pause all streaming subscriptions on all domains.
-
-__Pyrfa.resumeAll()__  
-Resume all streaming subscriptions on all domains.
-
-__Pyrfa.marketPricePause(_symbols_)__  
-_symbols: str_  
-Pause streaming subscription for symobls. User can define multiple symbol names using “,” to separate each name in _symbols_.
-
-__Pyrfa.marketPriceResume(_symbols_)__  
-_symbols: str_  
-Resume streaming subscription for symbols. User can define multiple symbol names using “,” to separate each name in _symbols_.
+*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
 
 ---
 
@@ -577,27 +522,7 @@ __Pyrfa.historyRequest(_symbols_)__
 _symbols: str_  
 Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item names using “,” to separate each one under _symbols_. Example:
 
-```python
-p.historyRequest('tANZ.AX')
-while True:
-    updates = dispatchEventQueue(100)
-    if updates:
-        for u in updates:
-            print(u)
-```
-
-IMAGE:
-```python
-{'MTYPE':'REFRESH','RIC':'tANZ.AX','SERVICE':'NIP'}
-{'SERVICE':'NIP','SALTIM':'08:05:22:612:000:000','MTYPE':'IMAGE','TRADE_ID':'123456789', 'BID_ORD_ID':'5307FBL20AL7B','TRDPRC_1':40.124,'RIC':'tANZ.AX','ASK_ORD_ID':'5307FBL20BN8A'}
-```
-
-__Pyrfa.historyCloseRequest(_symbols_)__  
-_symbols: str_  
-Unsubscribe items from historical data streaming service. The user can define multiple item names using “,” to separate each name under _symbols_.
-
-__Pyrfa.historyCloseAllRequest()__  
-Unsubscribe all items from historical data streaming service.
+*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
 
 ---
 
@@ -711,97 +636,4 @@ For a provider to mark all published items as stale.
 ### Interactive Provider
 A publisher server for market price domain. Interactive provider's `dispatchEventQueue` output yields `MTYPE` of `LOGIN`, `REQUEST`, `CLOSE` and `LOGOUT`. Example:
 
-```python
-...
-p.createOMMProvider()
-p.dictionaryRequest()
-updates = p.dispatchEventQueue():
-    if updates:
-        for u in updates:
-            print(u)
-```
-Output:
-```python
-{'MTYPE': 'LOGIN', 'USERNAME': 'pyrfa', 'SESSIONID': '140194443590688', 'SERVICE': 'DIRECT_FEED'}
-{'MTYPE': 'REQUEST', 'USERNAME': 'pyrfa', 'SESSIONID': '140194443590688', 'RIC': 'JPY=', 'SERVICE': 'DIRECT_FEED'}
-{'MTYPE': 'CLOSE', 'USERNAME': 'JPY=', 'SESSIONID': '140194443590688', 'RIC': 'JPY=', 'SERVICE': 'DIRECT_FEED'}
-{'MTYPE': 'LOGOUT', 'USERNAME': 'pyrfa', 'SESSIONID': '140194443590688', 'SERVICE': 'DIRECT_FEED'}
-```
-
-__Pyrfa.serviceDownSubmit([_service_])__  
-_service: str (Optional)_  
-Submit the specified down service status to ADH. If _service_ is omitted, it will use the value from configuration file. For Interactive Provider, _service_ will be ignored and use the default value from configuration file instead. This function must be called after `directorySubmit`.
-
-__Pyrfa.serviceUpSubmit([_service_])__  
-_service: str (Optional)_  
-Submit the specified up service status to ADH. If _service_ is omitted, it will use the value from configuration file. For Interactive Provider, _service_ will be ignored and use the default value from configuration file instead. This function must be called after `directorySubmit`. However, service will be automatically up if an `IMAGE` is sent.
-
-__Pyrfa.getClientSessions()__  
-_➥return: str_  
-For interactive provider to obtain the connected client session IDs. Example:
-
-```python
-p.getClientSessions()
-```
-Output:
-```python
-139911109966880 140194443590688
-```
-
-__Pyrfa.getClientWatchList(_sessionID_)__  
-_sessionID: str_  
-_➥return: str_  
-For interactive provider to obtains the watch list of a specific client referenced by _sessionID_. Example:
-
-```python
-p.getClientWatchList('139911109966880')
-```
-Output:
-```python
-EUR= JPY=
-```
-
-__Pyrfa.marketPriceSubmit(_data_)__  
-_data: dict_  
-For a provider to submit items to a specific client instead of all clients. _data_ dict can be populated as below and can referrence to the client by _sessionID_. Example:
-
-```python
-p.marketPriceSubmit({'RIC':'JPY=','TRDPRC_1':115.2,'TIMACT':'now', 'SESSIONID':'140339066107568'})
-```
-
-__Pyrfa.closeSubmit(_symbols,[sessionID]_)__  
-_symbols: str_  
-_sessionID: str (Optional)_  
-For a provider to close published items for all clients. Or close published items for a spicific client referenced by _sessionID_. User can define multiple item names using “,” to separate each name in _symbols_. Example:
-
-```python
-p.closeSubmit('EUR=')
-p.closeSubmit('EUR=,JPY=','140339066107568')
-```
-
-__Pyrfa.closeAllSubmit()__  
-For a provider to close all published items.
-
-__Pyrfa.staleSubmit(_symbols,[sessionID]_)__  
-_symbols: str_  
-_sessionID: str (Optional)_  
-For a provider to mark published items as stale for all clients or a spicific client referenced by _sessionID_. User can define multiple item names using “,” to separate each name in _symbols_. Example:
-
-```python
-p.staleSubmit('EUR=')
-p.staleSubmit('EUR=,JPY=','140339066107568')
-```
-
-__Pyrfa.staleAllSubmit()__  
-For a provider to mark all published items stale.
-
-__Pyrfa.logoutSubmit(_sessionID_)__  
-_sessionID: str_  
-For a provider to logout subscription from specific client by _sessionID_. Example:
-
-```python
-p.logoutSubmit('139911109966880')
-```
-
-__Pyrfa.logoutAllSubmit()__  
-For a provider to logout subscription from all clients.
+*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
