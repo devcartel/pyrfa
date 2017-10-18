@@ -106,9 +106,9 @@ Namespace: `\Sessions\<session_name>\`
 
 `session_name` must be passed to `acquireSession()` function.
 
-#### Service Group
+#### Service Groups
 
-*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
+*!! This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. !!*
 
 ## API
 ### Initialization
@@ -334,7 +334,7 @@ STATUS:
 
 __Pyrfa.setView()__  
 
-*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
+*!! This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. !!*
 
 __Pyrfa.marketPriceCloseRequest(_symbols_)__  
 _symbols: str_  
@@ -460,14 +460,14 @@ Return all subscribed item names on market depth streaming data with service nam
 ### OMM Posting
 OMM Posting leverages on consumer login channel (off-stream) to contribute data up to ADH/ADS cache or provider application. The posted service must be up before receiving any post message. For posting to an Interactive Provider, the posted RIC must already be made available by the provider.
 
-*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
+*!! This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. !!*
 
 ---
 
 ### Pause and Resume
 Pause and resume openning subcriptions. Updates are conflated during the pause and only work with interaction type `streaming`.
 
-*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
+*!! This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. !!*
 
 ---
 
@@ -522,7 +522,7 @@ __Pyrfa.historyRequest(_symbols_)__
 _symbols: str_  
 Request for historical data (RDM type 12), this domain is not officially supported by Thomson Reuters. User can define multiple item names using “,” to separate each one under _symbols_. Example:
 
-*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
+*!! This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. !!*
 
 ---
 
@@ -636,4 +636,4 @@ For a provider to mark all published items as stale.
 ### Interactive Provider
 A publisher server for market price domain. Interactive provider's `dispatchEventQueue` output yields `MTYPE` of `LOGIN`, `REQUEST`, `CLOSE` and `LOGOUT`. Example:
 
-*~~ This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. ~~*
+*!! This section is only available on PyRFA Enterprise Support subcription. Please visit http://devcartel.com/pyrfa-enterprise for more information. !!*
