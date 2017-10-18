@@ -49,14 +49,14 @@ UINT64        | LONG
     \Logger\AppLogger\fileLoggerFilename     = "./pyrfa.log"
 
     \Connections\Connection_RSSL1\rsslPort = "14002"
-    \Connections\Connection_RSSL1\ServerList = "127.0.0.1"
+    \Connections\Connection_RSSL1\serverList = "127.0.0.1"
     \Connections\Connection_RSSL1\connectionType = "RSSL"
     \Connections\Connection_RSSL1\logEnabled = true
-    \Connections\Connection_RSSL1\UserName = "USERNAME"
-    \Connections\Connection_RSSL1\InstanceId = "1"
-    \Connections\Connection_RSSL1\ApplicationId = "180"
-    \Connections\Connection_RSSL1\Position = "127.0.0.1"
-    \Connections\Connection_RSSL1\ServiceName = "SERVICE"
+    \Connections\Connection_RSSL1\userName = "USERNAME"
+    \Connections\Connection_RSSL1\instanceId = "1"
+    \Connections\Connection_RSSL1\applicationId = "180"
+    \Connections\Connection_RSSL1\position = "127.0.0.1"
+    \Connections\Connection_RSSL1\serviceName = "SERVICE"
     \Connections\Connection_RSSL1\downloadDataDict = false
 
 ---
@@ -75,7 +75,7 @@ Namespace: `\Logger\AppLogger\`
 | Parameter            | Example value    | Description                                        |
 |----------------------|------------------|----------------------------------------------------|
 | `fileLoggerEnabled`  | `true`/`false`   | Enable/Disable logging capability                  |
-| `fileLoggerFilename` | `"./pyrfa.log"`  | Log file name                                      |
+| `fileLoggerFilename` | `"./pyrfa.{T}.log"` | Sets the name of the file (with absolute or relative file path) in which the log message is written. Used only when `fileLoggerEnabled` is set to `true`.<br />Options:<br />{A} = process name<br />{P} = PID<br />{T} = UTC timestamp<br />{H} = hostname
 
 
 #### Connection
@@ -84,15 +84,15 @@ Namespace: `\Connections\<connection_name>\`
 | Parameter        | Example value    | Description                                            |
 |------------------|------------------|--------------------------------------------------------|
 | `rsslPort`       | `"14002"`        | P2PS/ADS RSSL port number                              |
-| `ServerList`     | `"127.0.0.1"`    | P2PS/ADS IP address or hostnam                         |
+| `serverList`     | `"127.0.0.1"`    | P2PS/ADS IP address or hostnam                         |
 | `connectionType` | `"RSSL"`         | `RSSL`, `RSSL_NIPROV` or `RSSL_PROV`                   |
 | `logEnabled`     | `true`/`false`   | Enable/Disable logging capability                      |
-| `UserName`       | `"pyrfa"`        | DACS username                                          |
-| `InstanceId`     | `"123"`          | Application instance ID                                |
-| `ApplicationId`  | `"180"`          | Application ID                                         |
-| `Position`       | `"127.0.0.1/net"`| DACS position                                          |
-| `ServiceName`    | `"NIP"`          | Service name to be subscribe                           |
-| `VendorName`     | `"OMMCProv_DevCartel"` | Vendor name for provider application             |
+| `userName`       | `"pyrfa"`        | DACS username                                          |
+| `instanceId`     | `"123"`          | Application instance ID                                |
+| `applicationId`  | `"180"`          | Application ID                                         |
+| `position`       | `"127.0.0.1/net"`| DACS position                                          |
+| `serviceName`    | `"NIP"`          | Service name to be subscribe                           |
+| `vendorName`     | `"OMMCProv_DevCartel"` | Vendor name for provider application             |
 | `symbolList`     | `"0#BMD"`        | Symbollist name to be subscribed                       |
 | `downloadDataDict` | `true`/`false` | Enable/Disable data dictionary download from P2PS/ADS  |
 | `dumpDataDict`   | `true`/`false`   | Enable/Disable to dump data dictionary from P2PS/ADS   |
