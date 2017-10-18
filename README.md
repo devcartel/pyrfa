@@ -9,6 +9,8 @@ PyRFA is a Python [API](API.md) for accessing Thomson Reuters market data feeds 
 Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or legacy RMDS. It supports subscription
 and publication of market data using OMM data message model.
 
+![application](http://media.virbcdn.com/cdn_images/resize_1024x1365/6d/64a90d875c40da95-ScreenShot2017-10-18at151123.png)
+
 **Features**
 
 * Subscription for `MARKET_PRICE` (level 1)
@@ -86,8 +88,11 @@ Output:
 {'MTYPE': 'UPDATE', 'BID_NET_CH': 0.26, 'RIC': 'JPY=', 'SERVICE': 'IDN_RDF_SDS'}
 ...
 ```
+
 ## Support
-See [API.md](API.md) for limited documentation. If you run into bugs or have questions, file them in our [issue tracker](https://github.com/devcartel/pyrfa/issues).
+* [Email](mailto:support@devcartel.com)
+* [GitHub issue tracker](https://github.com/devcartel/pyrfa/issues)
+* [Documentation](API.md)
 
 ## PyRFA Enterprise Support
-With PyRFA Enterprise you benefit from unlimited business hours access to out Support Engineers via email, test with our simulated feed 24/7 from anywhere, use our Replay Data Service, additionaly API reference documentation and more. Check out details at http://devcartel.com/pyrfa-enterprise.
+With [PyRFA Enterprise Support](http://devcartel.com/pyrfa-enterprise), you benefit from unlimited business hours access to out Support Engineers via email, test with our simulated feed 24/7 from anywhere, use our Replay Data Service, additional API reference documentation and more.
