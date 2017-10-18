@@ -63,7 +63,7 @@ UINT64        | LONG
 
 ### Parameter
 #### Debug
-Namespace: `#pyrfa\`
+Namespace: `\pyrfa\`
 
 | Parameter        | Example value    | Description                                            |
 |------------------|------------------|--------------------------------------------------------|
