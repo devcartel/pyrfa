@@ -95,4 +95,6 @@ Output:
 * [Documentation](API.md)
 
 ## PyRFA Enterprise Support
-With [PyRFA Enterprise Support](http://devcartel.com/pyrfa-enterprise), you benefit from unlimited business hours access to out Support Engineers via email, test with our simulated feed 24/7 from anywhere, use our Replay Data Service, additional API reference documentation and more.
+With PyRFA Enterprise Support, you benefit from, for example, unlimited business hours access to out Support Engineers via email, test with our simulated feed 24/7 from anywhere, use our Replay Data Service, additional API reference documentation. See full benefits [here](http://devcartel.com/pyrfa-enterprise).
+
+* [Access PyRFA Enterprise Support](https://github.com/devcartel/pyrfa-enterprise)
