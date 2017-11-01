@@ -140,6 +140,15 @@ Locate and load a configuration file where _filename_ can be an absolute path or
 p.createConfigDb("./pyrfa.cfg")
 ```
 
+__Pyrfa.getConfigDb(_node_)__  
+_node: str_  
+_➥return: str_  
+Get a configuration value as a string. Example:
+
+```python
+p.getConfigDb("\\Default\\Connections\\Connection_RSSL1\\userName")
+```
+
 __Pyrfa.printConfigDb([_node_])__  
 _node: str_  
 Print a configuration node. If the input parameter _node_ is omitted, this function returns all of the configuration values under the `Default` namespace. Example:
