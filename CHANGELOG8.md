@@ -1,5 +1,10 @@
 # CHANGELOG
 ## PyRFA 8
+8.2.3
+* 3 October 2017
+* Fixed: retain white spaces for enumtype data
+* Fixed: interactive provider can submit data as image type
+
 8.2.2
 * 22 September 2017
 * Fixed: SymbolList crashes when decoding empty FieldList
