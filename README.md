@@ -5,13 +5,13 @@
 [![platform](https://img.shields.io/badge/platform-linux--64%20|%20win--64%20|%20win--32-lightgray.svg)](#platform-availability)
 [![license](https://img.shields.io/pypi/l/pyrfa.svg)](LICENSE.txt)
 
-PyRFA is a Python API for accessing Thomson Reuters market data feeds know as Elektron,
+PyRFA is a Python API for accessing Thomson Reuters market data feeds known as Elektron,
 Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or legacy RMDS. It supports subscription
 and publication of market data using OMM data message model.
 
 ![application](http://media.virbcdn.com/cdn_images/resize_1024x1365/6d/64a90d875c40da95-ScreenShot2017-10-18at151123.png)
 
-**Features**
+## Features
 
 * Subscription for `MARKET_PRICE` (level 1)
 * Subscription for `MARKET_BY_ORDER` (order book)
@@ -24,9 +24,9 @@ and publication of market data using OMM data message model.
 * Dictionary download or use local files
 * Directory request
 * Symbol list request
-* Timeseries request and decoder for IDN TS1
+* Time-series request and decoder for IDN TS1
 * Custom domain `MMT_HISTORY` which can be used for intraday timeseries publishing
-* Non-interactive provider for `MARKET_PRICE`, `MARKET_BY_ORDER`, `MARKET_BY_PRICE`, `SYMBOLLIST`, `HISTORY` domain
+* Non-interactive provider (full-cached) for `MARKET_PRICE`, `MARKET_BY_ORDER`, `MARKET_BY_PRICE`, `SYMBOLLIST`, `HISTORY` domains
 * Interactive provider for `MARKET_PRICE` domain
 * Debug mode
 * Logging
@@ -38,12 +38,6 @@ PyRFA supports both Windows and Linux platforms. Simply install from [PyPI](http
 
 ```
 > pip install pyrfa
-```
-
-Or [download](https://github.com/devcartel/pyrfa-enterprise/releases) a distribution package (.whl) and install it off-line with `pip` e.g.:
-
-```
-> pip install /path/to/pyrfa-8.2.3-cp36-none-manylinux1_x86_64.whl
 ```
 
 ## Platform Availability
@@ -89,7 +83,7 @@ Output:
 ...
 ```
 ## Support
-* [Email](mailto:support@devcartel.com)
-* [GitHub issue tracker](https://github.com/devcartel/pyrfa/issues)
+* [PyRFA Enterprise Support](http://devcartel.com/pyrfa-enterprise)
+* [Issue tracker](https://github.com/devcartel/pyrfa/issues)
 * [Documentation](https://github.com/devcartel/pyrfa-enterprise/tree/master/docs)
 
