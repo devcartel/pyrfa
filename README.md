@@ -16,7 +16,7 @@ and publication of market data using OMM data message model.
 * Subscription for `MARKET_PRICE` (level 1)
 * Subscription for `MARKET_BY_ORDER` (order book)
 * Subscription for `MARKET_BY_PRICE` (market depth)
-* Snapshot request
+* Snapshot/streaming request
 * Multiple service subscription
 * Pause and resume subscription
 * OMM Posting
@@ -42,17 +42,16 @@ PyRFA supports both Windows and Linux platforms. Simply install from [PyPI](http
 
 ## Platform Availability
 
-Version | Release Date | Windows (64bit, Python3.6) | Windows (64bit, Python3.5) | Windows (64bit, Python3.4) | Windows (64bit, Python2.7) | Windows (64bit, Python2.6) | Windows (32bit, Python2.7) | Windows (32bit, Python2.6)
+### Windows
+Version | Release Date | 64bit-Windows, Python 3.6 | 64bit-Windows, Python 3.5 | 64bit-Windows, Python 3.4 | 64bit-Windows, Python 2.7 | 64bit-Windows, Python 2.6 | 32bit-Windows, Python 2.7 | 32bit-Windows, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.3 | 3 Oct 17 | 🐈 | 🐈 | 🐈 | 🐈 | 🐈 | |
-7.7.0 | 17 Mar 17 | | | | | | 🐈 | 🐈 
+8.2.3 | 3 Oct 17 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬ | |
+7.7.0 | 17 Mar 17 | | | | | | ⚬ | ⚬ 
 
-Version | Release Date | Linux (64bit, Python3.6) | Linux (64bit, Python3.5) | Linux (64bit, Python3.4) | Linux/RHEL7 (64bit, Python2.7) | Linux/RHEL6 (64bit, Python2.6)
+### Linux
+Version | Release Date | 64bit-Linux, Python 3.6 | 64bit-Linux, Python 3.5 | 64bit-Linux, Python 3.4 | 64bit-Linux/RHEL7, Python 2.7 | 64bit-Linux/RHEL6, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.3 | 3 Oct 17 | 🐈 | 🐈 | 🐈 | 🐈 | 🐈
-
-🐈 = available from [PyPI](https://pypi.python.org/pypi/pyrfa)  
-🐋 = only from [PyRFA Enterprise](https://github.com/devcartel/pyrfa-enterprise/releases)
+8.2.3 | 3 Oct 17 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬
 
 ## Example
 
