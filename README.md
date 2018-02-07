@@ -45,13 +45,13 @@ PyRFA supports both Windows and Linux platforms. Simply install from [PyPI](http
 ### Windows
 Version | Release Date | 64bit-Windows, Python 3.6 | 64bit-Windows, Python 3.5 | 64bit-Windows, Python 3.4 | 64bit-Windows, Python 2.7 | 64bit-Windows, Python 2.6 | 32bit-Windows, Python 2.7 | 32bit-Windows, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.3 | 3 Oct 17 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬ | |
+8.3.0 | 7 Feb 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬ | |
 7.7.0 | 17 Mar 17 | | | | | | ⚬ | ⚬ 
 
 ### Linux
 Version | Release Date | 64bit-Linux, Python 3.6 | 64bit-Linux, Python 3.5 | 64bit-Linux, Python 3.4 | 64bit-Linux/RHEL7, Python 2.7 | 64bit-Linux/RHEL6, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.2.3 | 3 Oct 17 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬
+8.3.0 | 7 Feb 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬
 
 ## Example
 

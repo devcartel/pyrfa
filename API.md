@@ -218,8 +218,24 @@ p.marketPriceRequest('EUR=')
 ### Directory
 
 __Pyrfa.directoryRequest()__  
-Send a directory request through the acquired session. This step is the mandatory in order to consume the market data from P2PS/ADS.
+_➥return: tuple_  
+Send a directory request through the acquired session. This step is the mandatory in order to consume the market data from P2PS/ADS. Returns a tuple of service information in dict format. Example:
 
+```python
+({
+    'Vendor': 'OMMCProv',
+    'Name': 'NIP',
+    'SupportsOutOfBandSnapshots': '1',
+    'SupportsQoSRange': '0',
+    'IsSource': '1',
+    'AcceptingRequests': '1',
+    'Capabilities': '5 6 10',
+    'ServiceState': '1',
+    'ServiceID': '259',
+    'DictionariesUsed': 'RWFFld RWFEnum',
+    'DictionariesProvided': 'RWFFld RWFEnum'
+},)
+```
 ---
 
 ### Dictionary

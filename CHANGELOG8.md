@@ -1,5 +1,9 @@
 # CHANGELOG
 ## PyRFA 8
+8.3.0
+* 7 Febuary 2018
+* New: directoryRequest() returns service directory information
+
 8.2.3
 * 3 October 2017
 * Fixed: retain white spaces for enumtype data
