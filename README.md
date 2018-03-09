@@ -40,6 +40,8 @@ PyRFA supports both Windows and Linux platforms. Simply install from [PyPI](http
 > pip install pyrfa
 ```
 
+Windows users might need to install [Microsoft Visual C++ 2010 SP1 Redistributable Package (x64)](https://www.microsoft.com/en-us/download/details.aspx?id=13523) or [(x86)](https://www.microsoft.com/en-us/download/details.aspx?id=5555).
+
 ## Platform Availability
 
 ### Windows
