@@ -1,5 +1,9 @@
 # CHANGELOG
 ## PyRFA 8
+8.4.0
+* 24 April 2018
+* Support publishing time field in microsecond
+
 8.3.0
 * 7 Febuary 2018
 * New: directoryRequest() returns service directory information
