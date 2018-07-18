@@ -1,5 +1,12 @@
 # CHANGELOG
 ## PyRFA 8
+8.5.0
+* 18 July 2018
+* Add MTYPE=DIRECTORY for directory request response and update
+* Fix directory update with no MTYPE
+* Fix incorrect USERNAME in interactive publisher
+* Fix incorrect TS1 date decoding
+
 8.4.0
 * 24 April 2018
 * Support publishing time field in microsecond

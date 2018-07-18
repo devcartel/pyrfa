@@ -222,19 +222,10 @@ _➥return: tuple_
 Send a directory request through the acquired session. This step is the mandatory in order to consume the market data from P2PS/ADS. Returns a tuple of service information in dict format. Example:
 
 ```python
-({
-    'Vendor': 'OMMCProv',
-    'Name': 'NIP',
-    'SupportsOutOfBandSnapshots': '1',
-    'SupportsQoSRange': '0',
-    'IsSource': '1',
-    'AcceptingRequests': '1',
-    'Capabilities': '5 6 10',
-    'ServiceState': '1',
-    'ServiceID': '259',
-    'DictionariesUsed': 'RWFFld RWFEnum',
-    'DictionariesProvided': 'RWFFld RWFEnum'
-},)
+({'VENDOR': 'DEV', 'NAME': 'IDN_RDF_SDS', 'SERVICE': 'DIRECT_FEED',
+ 'CAPABILITIES': '5 6', 'SUPPORTS_OUT_OF_BAND_SNAPSHOTS': '1', 'MTYPE': 'DIRECTORY',
+ 'IS_SOURCE': '1', 'DICTIONARIES_USED': 'RWFFld RWFEnum', 'SERVICE_ID': '1',
+ 'ACCEPTING_REQUESTS': '1', 'SERVICE_STATE': '1'},)
 ```
 ---
 

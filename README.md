@@ -4,7 +4,7 @@
 [![version](https://img.shields.io/pypi/format/pyrfa.svg)](https://pypi.python.org/pypi/pyrfa)
 [![platform](https://img.shields.io/badge/platform-linux--64%20|%20win--64%20|%20win--32-lightgray.svg)](#platform-availability)
 [![license](https://img.shields.io/pypi/l/pyrfa.svg)](LICENSE.txt)
-[![downloads](https://img.shields.io/badge/downloads-47,912-green.svg)](http://devcartel.com/blog/14277235)
+[![downloads](https://img.shields.io/badge/downloads-54,919-green.svg)](http://devcartel.com/blog/14277235)
 
 PyRFA is a Python API for accessing Thomson Reuters market data feeds known as Elektron,
 Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or legacy RMDS. It supports subscription
@@ -48,13 +48,13 @@ Windows users might need to install [Microsoft Visual C++ 2010 SP1 Redistributab
 ### Windows
 Version | Release Date | 64bit-Windows, Python 3.6 | 64bit-Windows, Python 3.5 | 64bit-Windows, Python 3.4 | 64bit-Windows, Python 2.7 | 64bit-Windows, Python 2.6 | 32bit-Windows, Python 2.7 | 32bit-Windows, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.4.0 | 24 April 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬ | |
+8.5.0 | 18 July 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬ | |
 7.7.0 | 17 Mar 17 | | | | | | ⚬ | ⚬ 
 
 ### Linux
 Version | Release Date | 64bit-Linux, Python 3.6 | 64bit-Linux, Python 3.5 | 64bit-Linux, Python 3.4 | 64bit-Linux/RHEL7, Python 2.7 | 64bit-Linux/RHEL6, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.4.0 | 24 Apr 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬
+8.5.0 | 18 July 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬
 
 ## Example
 
