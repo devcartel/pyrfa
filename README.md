@@ -48,13 +48,13 @@ Windows users might need to install [Microsoft Visual C++ 2010 SP1 Redistributab
 ### Windows
 Version | Release Date | 64bit-Windows, Python 3.6 | 64bit-Windows, Python 3.5 | 64bit-Windows, Python 3.4 | 64bit-Windows, Python 2.7 | 64bit-Windows, Python 2.6 | 32bit-Windows, Python 2.7 | 32bit-Windows, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.5.0 | 18 July 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬ | |
-7.7.0 | 17 Mar 17 | | | | | | ⚬ | ⚬ 
+8.5.2 | 7 Sep 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬ | |
+7.7.0 | 17 Mar 17 | | | | | | ⚬ | ⚬
 
 ### Linux
 Version | Release Date | 64bit-Linux, Python 3.6 | 64bit-Linux, Python 3.5 | 64bit-Linux, Python 3.4 | 64bit-Linux/RHEL7, Python 2.7 | 64bit-Linux/RHEL6, Python 2.6
 :-:|:-:|:-:|:-:|:-:|:-:|:-:
-8.5.0 | 18 July 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬
+8.5.2 | 7 Sep 18 | ⚬ | ⚬ | ⚬ | ⚬ | ⚬
 
 ## Example
 
@@ -71,7 +71,7 @@ p.marketPriceRequest("JPY=,EUR=")
 end = False
 while not end:
     try:
-        for data in p.dispatchEventQueue(100):
+        for data in p.dispatchEventQueue(10):
             print(data)
     except KeyboardInterrupt:
         end = True
@@ -87,5 +87,5 @@ Output:
 ## Support
 Available support including API documentation, Replay Service guide, changelog, issue tracker:
 * Community support - [GitHub](https://github.com/devcartel/pyrfa)
-* [PyRFA Enterprise Support](http://devcartel.com/pyrfa-enterprise) - [private GitHub](https://github.com/devcartel/pyrfa-enterprise) 
+* [PyRFA Enterprise Support](http://devcartel.com/pyrfa-enterprise) - [private GitHub](https://github.com/devcartel/pyrfa-enterprise)
 * [Issue tracker](https://github.com/devcartel/pyrfa/issues)

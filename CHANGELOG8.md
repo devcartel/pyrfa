@@ -1,5 +1,10 @@
 # CHANGELOG
 ## PyRFA 8
+8.5.2
+* 7 September 2018
+* Add STATUS_CODE to subscription status message
+* Fix an issue in getTimeSeries() if request for an invalid symbol
+
 8.5.0
 * 18 July 2018
 * Add MTYPE=DIRECTORY for directory request response and update
@@ -64,7 +69,7 @@
 * New versioning number
 * Other bugs fixed
 * Compiled with RFA C++ 8.0.1.E1
- 
+
 8.0.1.1
 * 23 June 2016
 * Supports RMTES strings to UTF-8
@@ -105,7 +110,7 @@
 * Supports Pause and Resume
 * Supports OMM Posting for market price
 * Provider can submit data as unsolicited REFRESH using MTYPE = IMAGE
-* Provider can submit data to different service using SERVICE key in dict 
+* Provider can submit data to different service using SERVICE key in dict
 * Supports sending service up/down status
 
 8.0.0.0
