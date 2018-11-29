@@ -5,7 +5,7 @@
 import pyrfa
 import random
 import time
-exec(open('./utils/every.py').read())
+exec(open('./every.py').read())
 
 p = pyrfa.Pyrfa()
 p.createConfigDb("./pyrfa.cfg")
