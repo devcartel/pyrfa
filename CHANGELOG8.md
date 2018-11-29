@@ -1,5 +1,10 @@
 # CHANGELOG
 ## PyRFA 8
+8.5.3
+* 19 November 2018
+* Python 3.7 support
+* Fix an issue with getTimeseries() with empty refresh
+
 8.5.2
 * 7 September 2018
 * Add STATUS_CODE to subscription status message
