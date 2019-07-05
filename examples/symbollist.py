@@ -10,24 +10,16 @@
 #    {'ACTION':'ADD','MTYPE':'IMAGE','SERVICE':'NIP','RIC':'0#BMD','KEY':'FKLL'},
 #    {'ACTION':'ADD','MTYPE':'IMAGE','SERVICE':'NIP','RIC':'0#BMD','KEY':'FKLM'})
 #
-import threading
 import pyrfa
 
 p = pyrfa.Pyrfa()
 p.createConfigDb("./pyrfa.cfg")
 p.acquireSession("Session3")
 p.createOMMConsumer()
-
 p.login()
-
-# Must call directory/dictionary request first
 p.directoryRequest()
 p.dictionaryRequest()
-
 RIC = "0#BMD"
 symbolList = p.getSymbolList(RIC)
-
 print("\n=======\n" + RIC + "\n=======")
 print(symbolList.replace(" ","\n"))
-
-del p

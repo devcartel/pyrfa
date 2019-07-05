@@ -1,0 +1,77 @@
+VERSION =
+COMPILER = g++
+RFA=/reuters/rfa
+PYTHONLIBDIR=/usr/lib
+PYTHONINCLUDEDIR=/usr/include/python2.6
+PYTHON=python2.6
+PYTHON_TAG=cp26
+#BOOSTPYTHON=boost_python
+BOOSTPYTHON=:/usr/local/boost_1_68_0/stage/lib/libboost_python26.a
+BOOSTREGEX=:/usr/local/boost_1_68_0/stage/lib/libboost_regex.a
+ARCHTYPE=$(shell uname -m)
+ifeq ($(ARCHTYPE),x86_64)
+    COMPILE_BITS=64
+    PLATFORM_TAG=manylinux1_x86_64
+else
+    COMPILE_BITS=32
+    PLATFORM_TAG=manylinux1_i686
+endif
+CXXFLAGS = -Wno-long-long -pedantic -DLinux -D_REENTRANT -m$(COMPILE_BITS) -lnsl -lpthread -fPIC
+MODULEFLAGS = -shared
+USE_STATIC=1
+OUTPUTDIR=./pyrfa$(VERSION)
+INCLUDES = -I./ -I$(PYTHONINCLUDEDIR) -I/usr/local/boost_1_68_0 -I$(RFA)/Include -I$(RFA)/Include/rwf -I./common -I./config -I./logger -I$(RFA)/Include/TS1
+LIBDIRS = -L$(PYTHONLIBDIR) -L$(RFA)/Libs/RHEL6_$(COMPILE_BITS)_GCC444
+LIBS = -l$(PYTHON)
+
+ifeq ($(USE_STATIC),1)
+	LIBS += $(RFA)/Libs/RHEL6_$(COMPILE_BITS)_GCC444/Static/libRFA.a
+	EXE_DIR=$(OUTPUT_DIR)/Static
+	LN_HOMEPATH=../..
+else
+	LIBS += -lRFA_Common -lRFA_Data -lRFA_Config -lRFA_Logger -lRFA_SessionLayer -lRFA_Connections -lRFA_Connections_OMM
+	EXE_DIR=$(OUTPUT_DIR)
+	LN_HOMEPATH=..
+endif
+
+OUTPUTS = pyrfa.so
+
+SOURCES = \
+    pyrfa.cpp \
+    config/configdb.cpp \
+    exception/ExceptionHandler.cpp \
+    logger/ClientLog.cpp \
+    logger/LogMsgMapImpl.cpp \
+    client/LoginHandler.cpp \
+    client/DictionaryHandler.cpp \
+    client/DirectoryHandler.cpp \
+    client/MarketPriceHandler.cpp \
+    client/MarketByOrderHandler.cpp \
+    client/MarketByPriceHandler.cpp \
+    client/SymbolListHandler.cpp \
+    client/RDMCProvServer.cpp \
+    client/TimeSeriesHandler.cpp \
+    client/HistoryHandler.cpp \
+    client/OMMInteractiveProvider.cpp \
+    client/OMMPost.cpp \
+    common/Mutex.cpp \
+    common/RDMDictionaryDecoder.cpp \
+    common/RDMDictionaryEncoder.cpp \
+    common/Encoder.cpp \
+    common/AppUtil.cpp \
+    common/RDMUtils.cpp \
+    common/RDMDictDef.cpp \
+    common/RDMDict.cpp
+
+all : clean ${OUTPUTS} wheel
+
+pyrfa.so : $(SOURCES)
+	${COMPILER} ${MODULEFLAGS} $(SOURCES) -o $(OUTPUTDIR)/$@ ${CXXFLAGS} ${INCLUDES} ${LIBDIRS} ${LIBS} -l$(BOOSTPYTHON) -l$(BOOSTREGEX) -lrt
+
+clean :
+	rm -f ${OUTPUTDIR}/${OUTPUTS}
+
+wheel : ${OUTPUTDIR}/${OUTPUTS}
+	${PYTHON} setup.py bdist_wheel --python-tag=${PYTHON_TAG} --plat-name=${PLATFORM_TAG}
+	@echo To upload to Test PyPI, run \'twine upload -r testpypi --skip-existing dist/*\'
+	@echo To upload to PyPI, run \'twine upload -r pypi --skip-existing dist/*\'

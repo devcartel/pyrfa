@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pyrfa", "pyrfa.vcxproj", "{B80438DE-DAB0-4C60-940A-1E4F45730DE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Python26|Win32 = Python26|Win32
+		Python26|x64 = Python26|x64
+		Python27|Win32 = Python27|Win32
+		Python27|x64 = Python27|x64
+		Python34|Win32 = Python34|Win32
+		Python34|x64 = Python34|x64
+		Python35|Win32 = Python35|Win32
+		Python35|x64 = Python35|x64
+		Python36|Win32 = Python36|Win32
+		Python36|x64 = Python36|x64
+		Python37|Win32 = Python37|Win32
+		Python37|x64 = Python37|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python26|Win32.ActiveCfg = Release_Python26|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python26|Win32.Build.0 = Release_Python26|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python26|x64.ActiveCfg = Release_Python26|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python26|x64.Build.0 = Release_Python26|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python27|Win32.ActiveCfg = Release_Python27|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python27|Win32.Build.0 = Release_Python27|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python27|x64.ActiveCfg = Release_Python27|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python27|x64.Build.0 = Release_Python27|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python34|Win32.ActiveCfg = Release_Python34|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python34|Win32.Build.0 = Release_Python34|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python34|x64.ActiveCfg = Release_Python34|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python34|x64.Build.0 = Release_Python34|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python35|Win32.ActiveCfg = Release_Python35|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python35|Win32.Build.0 = Release_Python35|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python35|x64.ActiveCfg = Release_Python35|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python35|x64.Build.0 = Release_Python35|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python36|Win32.ActiveCfg = Release_Python36|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python36|Win32.Build.0 = Release_Python36|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python36|x64.ActiveCfg = Release_Python36|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python36|x64.Build.0 = Release_Python36|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python37|Win32.ActiveCfg = Release_Python37|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python37|Win32.Build.0 = Release_Python37|Win32
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python37|x64.ActiveCfg = Release_Python37|x64
+		{B80438DE-DAB0-4C60-940A-1E4F45730DE3}.Python37|x64.Build.0 = Release_Python37|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

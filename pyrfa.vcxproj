@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release_Python37|Win32">
+      <Configuration>Release_Python37</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python37|x64">
+      <Configuration>Release_Python37</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python26|Win32">
+      <Configuration>Release_Python26</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python26|x64">
+      <Configuration>Release_Python26</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python27|Win32">
+      <Configuration>Release_Python27</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python27|x64">
+      <Configuration>Release_Python27</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python34|Win32">
+      <Configuration>Release_Python34</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python34|x64">
+      <Configuration>Release_Python34</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python35|Win32">
+      <Configuration>Release_Python35</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python35|x64">
+      <Configuration>Release_Python35</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python36|Win32">
+      <Configuration>Release_Python36</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Python36|x64">
+      <Configuration>Release_Python36</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B80438DE-DAB0-4C60-940A-1E4F45730DE3}</ProjectGuid>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>pyrfa</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>false</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_51;C:\Python26\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python26\libs;C:\boost\boost_1_51\lib32py26;C:\rfa\current\Libs\WIN_32_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_51;C:\Python27\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python27\libs;C:\boost\boost_1_51\lib32py27;C:\rfa\current\Libs\WIN_32_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_51;C:\Python27\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python27\libs;C:\boost\boost_1_51\lib;C:\rfa\current\Libs\WIN_32_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\lib\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_51;C:\Python27\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python27\libs;C:\boost\boost_1_51\lib;C:\rfa\current\Libs\WIN_32_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\lib\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_51;C:\Python27\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python27\libs;C:\boost\boost_1_51\lib;C:\rfa\current\Libs\WIN_32_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\lib\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_51;C:\Python27\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python27\libs;C:\boost\boost_1_51\lib;C:\rfa\current\Libs\WIN_32_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\lib\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_68_0;C:\Python26_64\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python26_64\libs;C:\boost\boost_1_68_0\stage\lib;C:\rfa\current\Libs\WIN_64_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_68_0;C:\Python27_64\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python27_64\libs;C:\boost\boost_1_68_0\stage\lib;C:\rfa\current\Libs\WIN_64_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_68_0;C:\Python34_64\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python34_64\libs;C:\boost\boost_1_68_0\stage\lib;C:\rfa\current\Libs\WIN_64_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_68_0;C:\Python35_64\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python35_64\libs;C:\boost\boost_1_68_0\stage\lib;C:\rfa\current\Libs\WIN_64_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_68_0;C:\Python36_64\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python36_64\libs;C:\boost\boost_1_68_0\stage\lib;C:\rfa\current\Libs\WIN_64_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <IncludePath>./;C:\boost\boost_1_68_0;C:\Python37_64\include;C:\rfa\current\Include\rwf;C:\rfa\current\Include;C:\rfa\current\Include\TS1;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Python37_64\libs;C:\boost\boost_1_68_0\stage\lib;C:\rfa\current\Libs\WIN_64_VS100\Release_MD\Static;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\pyrfa\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python26.lib;libboost_python-vc100-mt-1_51.lib;libRFA7_100.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp26 --plat-name=win32</Command>
+      <Message>build wheel package</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python27.lib;libboost_python-vc100-mt-1_51.lib;libRFA7_100.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp27 --plat-name=win32</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>build wheel package</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python27.lib;libboost_python-vc100-mt-1_51.lib;libRFA7_100.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python27.lib;libboost_python-vc100-mt-1_51.lib;libRFA7_100.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python27.lib;libboost_python-vc100-mt-1_51.lib;libRFA7_100.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python27.lib;libboost_python-vc100-mt-1_51.lib;libRFA7_100.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python26|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python26.lib;libboost_python26-vc100-mt-x64-1_68.lib;libboost_regex-vc100-mt-x64-1_68.lib;libboost_date_time-vc100-mt-x64-1_68.lib;libRFA8_100_x64.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp26 --plat-name=win_amd64</Command>
+      <Message>build wheel package </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python27|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python27.lib;libboost_python27-vc100-mt-x64-1_68.lib;libboost_regex-vc100-mt-x64-1_68.lib;libboost_date_time-vc100-mt-x64-1_68.lib;libRFA8_100_x64.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PostBuildEvent>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp27 --plat-name=win_amd64</Command>
+      <Message>build wheel package </Message>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python34|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python34.lib;libboost_python34-vc100-mt-x64-1_68.lib;libboost_regex-vc100-mt-x64-1_68.lib;libboost_date_time-vc100-mt-x64-1_68.lib;libRFA8_100_x64.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PostBuildEvent>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp34 --plat-name=win_amd64</Command>
+      <Message>build wheel package </Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python35|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python35.lib;libboost_python35-vc100-mt-x64-1_68.lib;libboost_regex-vc100-mt-x64-1_68.lib;libboost_date_time-vc100-mt-x64-1_68.lib;libRFA8_100_x64.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PostBuildEvent>
+      <Message>build wheel package </Message>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp35 --plat-name=win_amd64</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python36|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python36.lib;libboost_python36-vc100-mt-x64-1_68.lib;libboost_regex-vc100-mt-x64-1_68.lib;libboost_date_time-vc100-mt-x64-1_68.lib;libRFA8_100_x64.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PostBuildEvent>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp36 --plat-name=win_amd64</Command>
+      <Message>build wheel package </Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Python37|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PYRFA_EXPORTS;BOOST_PYTHON_STATIC_LIB;__RFA_STATIC_BUILD__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <CompileAsManaged>
+      </CompileAsManaged>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>python37.lib;libboost_python37-vc100-mt-x64-1_68.lib;libboost_regex-vc100-mt-x64-1_68.lib;libboost_date_time-vc100-mt-x64-1_68.lib;libRFA8_100_x64.lib;ws2_32.lib;msvcprt.lib;msvcrt.lib;wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <PostBuildEvent>
+      <Command>C:\python27_64\python.exe setup.py bdist_wheel --python-tag=cp37 --plat-name=win_amd64</Command>
+      <Message>build wheel package </Message>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>del $(TargetDir)pyrfa*</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>cleanup built files</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="client\DictionaryHandler.h" />
+    <ClInclude Include="client\DirectoryHandler.h" />
+    <ClInclude Include="client\HistoryHandler.h" />
+    <ClInclude Include="client\LoginHandler.h" />
+    <ClInclude Include="client\MarketByOrderHandler.h" />
+    <ClInclude Include="client\MarketByPriceHandler.h" />
+    <ClInclude Include="client\MarketPriceHandler.h" />
+    <ClInclude Include="client\OMMInteractiveProvider.h" />
+    <ClInclude Include="client\OMMPost.h" />
+    <ClInclude Include="client\RDMCProvServer.h" />
+    <ClInclude Include="client\SymbolListHandler.h" />
+    <ClInclude Include="client\TimeSeriesHandler.h" />
+    <ClInclude Include="common\AppUtil.h" />
+    <ClInclude Include="common\Encoder.h" />
+    <ClInclude Include="common\Mutex.h" />
+    <ClInclude Include="common\RDMDict.h" />
+    <ClInclude Include="common\RDMDictDef.h" />
+    <ClInclude Include="common\RDMDictionaryDecoder.h" />
+    <ClInclude Include="common\RDMDictionaryEncoder.h" />
+    <ClInclude Include="common\RDMUtils.h" />
+    <ClInclude Include="config\configdb.h" />
+    <ClInclude Include="logger\ClientLog.h" />
+    <ClInclude Include="logger\LogMessages.h" />
+    <ClInclude Include="logger\LogMsgMapImpl.h" />
+    <ClInclude Include="pyrfa.h" />
+    <ClInclude Include="StdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="client\DictionaryHandler.cpp" />
+    <ClCompile Include="client\DirectoryHandler.cpp" />
+    <ClCompile Include="client\HistoryHandler.cpp" />
+    <ClCompile Include="client\LoginHandler.cpp" />
+    <ClCompile Include="client\MarketByOrderHandler.cpp" />
+    <ClCompile Include="client\MarketByPriceHandler.cpp" />
+    <ClCompile Include="client\MarketPriceHandler.cpp" />
+    <ClCompile Include="client\OMMInteractiveProvider.cpp" />
+    <ClCompile Include="client\OMMPost.cpp" />
+    <ClCompile Include="client\RDMCProvServer.cpp" />
+    <ClCompile Include="client\SymbolListHandler.cpp" />
+    <ClCompile Include="client\TimeSeriesHandler.cpp" />
+    <ClCompile Include="common\AppUtil.cpp" />
+    <ClCompile Include="common\Encoder.cpp" />
+    <ClCompile Include="common\Mutex.cpp" />
+    <ClCompile Include="common\RDMDict.cpp" />
+    <ClCompile Include="common\RDMDictDef.cpp" />
+    <ClCompile Include="common\RDMDictionaryDecoder.cpp" />
+    <ClCompile Include="common\RDMDictionaryEncoder.cpp" />
+    <ClCompile Include="common\RDMUtils.cpp" />
+    <ClCompile Include="config\configdb.cpp" />
+    <ClCompile Include="exception\ExceptionHandler.cpp" />
+    <ClCompile Include="logger\ClientLog.cpp" />
+    <ClCompile Include="logger\LogMsgMapImpl.cpp" />
+    <ClCompile Include="pyrfa.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
