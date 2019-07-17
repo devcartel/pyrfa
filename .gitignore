@@ -1,0 +1,6 @@
+/pyrfa/*.pyc
+/pyrfa/*.so
+/build/
+/dist/
+/pyrfa.egg-info/
+*.pyc
