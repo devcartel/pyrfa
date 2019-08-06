@@ -5,8 +5,7 @@
 [![platform](https://img.shields.io/badge/platform-linux--64%20|%20win--64%20|%20win--32-lightgray.svg)](#platform-availability)
 [![license](https://img.shields.io/pypi/l/pyrfa.svg)](LICENSE.txt)
 [![downloads](https://img.shields.io/pypi/dm/pyrfa.svg)](http://devcartel.com/blog/14277235)
-[![Enterprise Support](https://img.shields.io/badge/Enterprise%20Support-Available-blue.svg)](http://devcartel.com/pyrfa-enterprise)
-[![Sponsor](https://img.shields.io/badge/Sponsor%20PyRFA-%2419.99%2Fmonth-orange.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZNH2SHDFMTW9N)
+[![Sponsor](https://img.shields.io/badge/Sponsor%20PyRFA-%2419.99%2Fmonth-orange.svg?logo=paypal&style=social)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZNH2SHDFMTW9N)
 
 PyRFA is a Python API for accessing Thomson Reuters market data feeds known as Elektron,
 Thomson Reuter Enterprise Platform for Real-time (TREP-RT) or legacy RMDS. It supports subscription
@@ -91,4 +90,4 @@ Output:
 ## Support
 Available support including API documentation, Replay Service guide, changelog, issue tracker:
 * Community support & issue tracker - [GitHub](https://github.com/devcartel/pyrfa/issues)
-* [PyRFA Enterprise Support](http://devcartel.com/pyrfa-enterprise) 
+* [PyRFA Enterprise Support](http://devcartel.com/pyrfa-enterprise)
